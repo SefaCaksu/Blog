@@ -1,6 +1,6 @@
 using Dto;
 
-namespace Bussiness.Service
+namespace Business.Service
 {
     public interface IProfile
     {
