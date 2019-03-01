@@ -27,7 +27,7 @@ namespace Entity
         public string Body { get; set; }
 
         [Column("IMG")]
-        public byte[] Img {get;set;}
+        public byte[] Img { get; set; }
 
         [Column("CREATED_DATE")]
         [Required]

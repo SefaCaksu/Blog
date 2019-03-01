@@ -36,12 +36,13 @@ namespace Business
 
         public void Upsert(DtoProfile profile)
         {
-             var data = dc.Profile.FirstOrDefault();
+            var data = dc.Profile.FirstOrDefault();
 
-             if(data == null){
-                 data = new Profile();
-                 dc.Profile.Add(data);
-             }
+            if (data == null)
+            {
+                data = new Profile();
+                dc.Profile.Add(data);
+            }
 
             data.Name = profile.Name;
             data.Title = profile.Title;
