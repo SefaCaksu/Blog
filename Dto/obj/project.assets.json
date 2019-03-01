@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\MyBlog\\Dto\\Dto.csproj",
+      "projectUniqueName": "d:\\Blog\\Dto\\Dto.csproj",
       "projectName": "Dto",
-      "projectPath": "d:\\MyBlog\\Dto\\Dto.csproj",
+      "projectPath": "d:\\Blog\\Dto\\Dto.csproj",
       "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
-      "outputPath": "d:\\MyBlog\\Dto\\obj\\",
+      "outputPath": "d:\\Blog\\Dto\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

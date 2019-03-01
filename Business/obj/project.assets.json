@@ -3118,11 +3118,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MyBlog\\Business\\Business.csproj",
+      "projectUniqueName": "D:\\Blog\\Business\\Business.csproj",
       "projectName": "Business",
-      "projectPath": "D:\\MyBlog\\Business\\Business.csproj",
+      "projectPath": "D:\\Blog\\Business\\Business.csproj",
       "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
-      "outputPath": "D:\\MyBlog\\Business\\obj\\",
+      "outputPath": "D:\\Blog\\Business\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3142,11 +3142,11 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\MyBlog\\Dto\\Dto.csproj": {
-              "projectPath": "D:\\MyBlog\\Dto\\Dto.csproj"
+            "D:\\Blog\\Dto\\Dto.csproj": {
+              "projectPath": "D:\\Blog\\Dto\\Dto.csproj"
             },
-            "D:\\MyBlog\\Entity\\Entity.csproj": {
-              "projectPath": "D:\\MyBlog\\Entity\\Entity.csproj"
+            "D:\\Blog\\Entity\\Entity.csproj": {
+              "projectPath": "D:\\Blog\\Entity\\Entity.csproj"
             }
           }
         }

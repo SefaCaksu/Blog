@@ -3083,11 +3083,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\MyBlog\\Entity\\Entity.csproj",
+      "projectUniqueName": "d:\\Blog\\Entity\\Entity.csproj",
       "projectName": "Entity",
-      "projectPath": "d:\\MyBlog\\Entity\\Entity.csproj",
+      "projectPath": "d:\\Blog\\Entity\\Entity.csproj",
       "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
-      "outputPath": "d:\\MyBlog\\Entity\\obj\\",
+      "outputPath": "d:\\Blog\\Entity\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

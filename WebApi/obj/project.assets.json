@@ -12253,11 +12253,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MyBlog\\WebApi\\WebApi.csproj",
+      "projectUniqueName": "D:\\Blog\\WebApi\\WebApi.csproj",
       "projectName": "WebApi",
-      "projectPath": "D:\\MyBlog\\WebApi\\WebApi.csproj",
+      "projectPath": "D:\\Blog\\WebApi\\WebApi.csproj",
       "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
-      "outputPath": "D:\\MyBlog\\WebApi\\obj\\",
+      "outputPath": "D:\\Blog\\WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12277,14 +12277,14 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "D:\\MyBlog\\Business\\Business.csproj": {
-              "projectPath": "D:\\MyBlog\\Business\\Business.csproj"
+            "D:\\Blog\\Business\\Business.csproj": {
+              "projectPath": "D:\\Blog\\Business\\Business.csproj"
             },
-            "D:\\MyBlog\\Dto\\Dto.csproj": {
-              "projectPath": "D:\\MyBlog\\Dto\\Dto.csproj"
+            "D:\\Blog\\Dto\\Dto.csproj": {
+              "projectPath": "D:\\Blog\\Dto\\Dto.csproj"
             },
-            "D:\\MyBlog\\Entity\\Entity.csproj": {
-              "projectPath": "D:\\MyBlog\\Entity\\Entity.csproj"
+            "D:\\Blog\\Entity\\Entity.csproj": {
+              "projectPath": "D:\\Blog\\Entity\\Entity.csproj"
             }
           }
         }
