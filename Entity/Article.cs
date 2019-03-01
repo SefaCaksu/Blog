@@ -22,9 +22,12 @@ namespace Entity
         [Required(ErrorMessage = "Article title is invalid.")]
         public string Title { get; set; }
 
-        [Column("CONTENT")]
+        [Column("BODY")]
         [Required(ErrorMessage = "Article content is invalid.")]
-        public string Content { get; set; }
+        public string Body { get; set; }
+
+        [Column("IMG")]
+        public byte[] Img {get;set;}
 
         [Column("CREATED_DATE")]
         [Required]
