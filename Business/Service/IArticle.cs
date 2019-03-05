@@ -9,6 +9,7 @@ namespace Business.Service
         void Update(DtoArticleParams param);
         void Delete(int id);
         DtoArticle GetById(int id);
-        List<DtoArticleShort> List(string name, int? categoryId, int tagId);
+        List<DtoArticleShort> List(string title, int? categoryId, int? tagId, int page, int rowCount);
+        int Count(string title, int? categoryId, int? tagId);
     }
 }
