@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Business;
+using Business.Service;
 using Entity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,17 +27,22 @@ namespace WebApi
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             //SEFA-PC\SQLEXPRESS01
+            //Add Entity Context
             var connection = @"Server=.;Database=Blog;Trusted_Connection=True;MultipleActiveResultSets=true";//Configuration.GetConnectionString("DatabaseConnection");
-            services.AddDbContext<BgContext>(options =>
-               options.UseSqlServer(connection,
-               b => b.MigrationsAssembly("WebApi")));
+            services.AddDbContext<BgContext>(options => options.UseSqlServer(connection,b => b.MigrationsAssembly("WebApi")));
 
+            //Inject Service
+            services.AddSingleton<IArticle, ArticleService>();
+            services.AddSingleton<ICategory, CategoryService>();
+            services.AddSingleton<ITag, TagService>();
+            services.AddSingleton<IProfile, ProfileService>();
+
+            //Add Swagger
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("CoreSwagger", new Info
@@ -53,7 +59,6 @@ namespace WebApi
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -62,7 +67,6 @@ namespace WebApi
             }
             else
             {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
