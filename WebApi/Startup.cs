@@ -37,10 +37,10 @@ namespace WebApi
             services.AddDbContext<BgContext>(options => options.UseSqlServer(connection,b => b.MigrationsAssembly("WebApi")));
 
             //Inject Service
-            services.AddSingleton<IArticle, ArticleService>();
-            services.AddSingleton<ICategory, CategoryService>();
-            services.AddSingleton<ITag, TagService>();
-            services.AddSingleton<IProfile, ProfileService>();
+            services.AddScoped<IArticle, ArticleService>();
+            services.AddScoped<ICategory, CategoryService>();
+            services.AddScoped<ITag, TagService>();
+            services.AddScoped<IProfile, ProfileService>();
 
             //Add Swagger
             services.AddSwaggerGen(c =>
