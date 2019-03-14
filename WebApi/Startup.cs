@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
+using WebApi.MiddlewareApiResult;
 
 namespace WebApi
 {
@@ -70,6 +71,7 @@ namespace WebApi
                 app.UseHsts();
             }
 
+            app.UseApiResultMiddleware();
             app.UseHttpsRedirection();
             app.UseMvc();
             app.UseSwagger().UseSwaggerUI(c =>

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
-    [Route("api/[Controller]/[Action]")]
+    [Route("[Controller]/[Action]")]
     [ApiController]
     public class AdminController : ControllerBase
     {
@@ -20,23 +20,16 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Category([FromBody]string name)
+        public string Category([FromBody]string name)
         {
-                _Category.Add(name);
-                return Ok();
+            _Category.Add(name);
+            return name;
         }
 
         [HttpGet]
-        public IActionResult Category()
+        public object Category()
         {
-            try
-            {
-                return Ok(_Category.List(null, true));
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
+           return _Category.List(null, true);
         }
     }
 }

@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace WebApi.MidResponseResult
+namespace WebApi.MiddlewareApiResult
 {
     public class ValidationError
     {

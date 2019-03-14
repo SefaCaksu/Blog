@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace WebApi.MidResponseResult
+namespace WebApi.MiddlewareApiResult
 {
     public class ApiException : System.Exception
     {
@@ -11,12 +11,7 @@ namespace WebApi.MidResponseResult
         public string ReferenceErrorCode { get; set; }
         public string ReferenceDocumentLink { get; set; }
 
-        public ApiException(string message,
-                            int statusCode = 500,
-                            IEnumerable<ValidationError> errors = null,
-                            string errorCode = "",
-                            string refLink = "") :
-            base(message)
+        public ApiException(string message, int statusCode = 500, IEnumerable<ValidationError> errors = null, string errorCode = "", string refLink = "") :base(message)
         {
             this.StatusCode = statusCode;
             this.Errors = errors;

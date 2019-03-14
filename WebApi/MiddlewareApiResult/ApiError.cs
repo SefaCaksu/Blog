@@ -2,11 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace WebApi.MidResponseResult{
+namespace WebApi.MiddlewareApiResult{
     public class ApiError  
     {  
-        public bool IsError { get; set; }  
-        public string ExceptionMessage { get; set; }  
+        public string Message { get; set; }  
         public string Details { get; set; }  
         public string ReferenceErrorCode { get; set; }  
         public string ReferenceDocumentLink { get; set; }  
@@ -14,20 +13,17 @@ namespace WebApi.MidResponseResult{
   
         public ApiError(string message)  
         {  
-            this.ExceptionMessage = message;  
-            this.IsError = true;  
+            this.Message = message;  
         }  
   
         public ApiError(ModelStateDictionary modelState)  
         {  
-            this.IsError = true;  
             if (modelState != null && modelState.Any(m => m.Value.Errors.Count > 0))  
             {  
-                this.ExceptionMessage = "Please correct the specified validation errors and try again.";  
+                this.Message = "Lütfen doğrulama alanlarını düzeltip. Tekrar deneyin.";  
                 this.ValidationErrors = modelState.Keys  
                 .SelectMany(key => modelState[key].Errors.Select(x => new ValidationError(key, x.ErrorMessage)))  
                 .ToList();  
-  
             }  
         }  
     }  

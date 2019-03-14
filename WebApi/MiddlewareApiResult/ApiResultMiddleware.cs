@@ -8,34 +8,54 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace WebApi.MidResponseResult
+namespace WebApi.MiddlewareApiResult
 {
-    public class ResponseResultMiddleware
+    public class ApiResultMiddleware
     {
         private readonly RequestDelegate _next;
 
-        public ResponseResultMiddleware(RequestDelegate next)
+        public ApiResultMiddleware(RequestDelegate next)
         {
             _next = next;
         }
 
         public async Task Invoke(HttpContext context)
         {
-            using (var resBody = new MemoryStream())
+            if (context.Request.Path.StartsWithSegments("/swagger"))
             {
-                context.Request.Body = resBody;
+                await this._next(context);
+            }
+            else
+            {
+                var originalBodyStream = context.Response.Body;
 
-                try
+                using (var responseBody = new MemoryStream())
                 {
-                    await _next.Invoke(context);
-                }
-                catch (Exception ex)
-                {
+                    context.Response.Body = responseBody;
 
-                }
-                finally
-                {
+                    try
+                    {
+                        await _next.Invoke(context);
 
+                        if (context.Response.StatusCode == (int)HttpStatusCode.OK)
+                        {
+                            var body = await FormatResponse(context.Response);
+                            await SuccessRequest(context, body, context.Response.StatusCode);
+                        }
+                        else
+                        {
+                            await NotSuccessRequest(context, context.Response.StatusCode);
+                        }
+                    }
+                    catch (System.Exception ex)
+                    {
+                        await ExceptionRequest(context, ex);
+                    }
+                    finally
+                    {
+                        responseBody.Seek(0, SeekOrigin.Begin);
+                        await responseBody.CopyToAsync(originalBodyStream);
+                    }
                 }
             }
         }
@@ -64,13 +84,13 @@ namespace WebApi.MidResponseResult
             }
             else
             {
-#if !DEBUG  
-                var msg = "An unhandled error occurred.";  
+                #if !DEBUG  
+                var msg = "İstenmeyen hata oluştu.;  
                 string stack = null;  
-#else  
+                #else  
                 var msg = exception.GetBaseException().Message;
                 string stack = exception.StackTrace;
-#endif
+                #endif
 
                 apiError = new ApiError(msg);
                 apiError.Details = stack;
@@ -78,11 +98,11 @@ namespace WebApi.MidResponseResult
                 context.Response.StatusCode = statusCode;
             }
 
-               context.Response.ContentType = "application/json";  
-  
-            apiResponse = new APIResponse(statusCode, MessageEnum.Exception.GetDescription(), null, apiError);  
-  
-            var json = JsonConvert.SerializeObject(apiResponse);  
+            context.Response.ContentType = "application/json";
+
+            apiResponse = new APIResponse(false, statusCode, null, apiError);
+
+            var json = JsonConvert.SerializeObject(apiResponse);
             return context.Response.WriteAsync(json);
         }
 
@@ -105,7 +125,7 @@ namespace WebApi.MidResponseResult
                 apiError = new ApiError("İstek eşleşmiyor. Lütfen yetkili ile iletişime geçin.");
             }
 
-            apiResponse = new APIResponse(statusCode, MessageEnum.Failure.GetDescription(), null, apiError);
+            apiResponse = new APIResponse(false, statusCode, null, apiError);
             context.Response.StatusCode = statusCode;
             var json = JsonConvert.SerializeObject(apiResponse);
             return context.Response.WriteAsync(json);
@@ -118,7 +138,29 @@ namespace WebApi.MidResponseResult
             string bodyText = String.Empty;
             APIResponse apiResponse = null;
 
-            if (!body.ToString().IsJson())
+            bool isJson = false;
+            if ((body.ToString().Trim().StartsWith("{") && body.ToString().Trim().EndsWith("}")) || (body.ToString().Trim().StartsWith("[") && body.ToString().Trim().EndsWith("]")))
+            {
+                try
+                {
+                    var obj = JToken.Parse(body.ToString());
+                    isJson = true;
+                }
+                catch (JsonReaderException)
+                {
+                    isJson = false;
+                }
+                catch (Exception)
+                {
+                    isJson = false;
+                }
+            }
+            else
+            {
+                isJson = false;
+            }
+
+            if (!isJson)
             {
                 bodyText = JsonConvert.SerializeObject(body);
             }
@@ -143,74 +185,26 @@ namespace WebApi.MidResponseResult
                 }
                 else
                 {
-                    apiResponse = new APIResponse(statusCode, MessageEnum.Success.GetDescription(), content, null);
+                    apiResponse = new APIResponse(true, statusCode, content, null);
                     json = JsonConvert.SerializeObject(apiResponse);
                 }
             }
             else
             {
-                apiResponse = new APIResponse(statusCode, MessageEnum.Success.GetDescription(), content, null);
+                apiResponse = new APIResponse(true, statusCode, content, null);
                 json = JsonConvert.SerializeObject(apiResponse);
             }
 
             return context.Response.WriteAsync(json);
         }
-    }
 
-    public static class Helper
-    {
-        public static bool IsJson(this string text)
+        private async Task<string> FormatResponse(HttpResponse response)
         {
-            text = text.Trim();
-            if ((text.StartsWith("{") && text.EndsWith("}")) ||
-                (text.StartsWith("[") && text.EndsWith("]")))
-            {
-                try
-                {
-                    var obj = JToken.Parse(text);
-                    return true;
-                }
-                catch (JsonReaderException jex)
-                {
-                    return false;
-                }
-                catch (Exception ex)
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
-        }
+            response.Body.Seek(0, SeekOrigin.Begin);
+            var plainBodyText = await new StreamReader(response.Body).ReadToEndAsync();
+            response.Body.Seek(0, SeekOrigin.Begin);
 
-        public static string GetDescription<T>(this T e) where T : IConvertible
-        {
-            string description = null;
-
-            if (e is Enum)
-            {
-                Type type = e.GetType();
-                Array values = System.Enum.GetValues(type);
-
-                foreach (int val in values)
-                {
-                    if (val == e.ToInt32(CultureInfo.InvariantCulture))
-                    {
-                        var memInfo = type.GetMember(type.GetEnumName(val));
-                        var descriptionAttributes = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
-                        if (descriptionAttributes.Length > 0)
-                        {
-                            description = ((DescriptionAttribute)descriptionAttributes[0]).Description;
-                        }
-
-                        break;
-                    }
-                }
-            }
-
-            return description;
+            return plainBodyText;
         }
     }
 }
