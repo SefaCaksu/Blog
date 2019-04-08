@@ -11,6 +11,12 @@ import { LeftbarComponent } from './leftbar/leftbar.component';
 import { RightbarComponent } from './rightbar/rightbar.component';
 import { HeaderComponent } from './header/header.component';
 import { ErrorComponent } from './error/error.component';
+import { AdminComponent } from './admin/admin.component';
+import { ProfileComponent } from './admin/profile/profile.component';
+import { ArticleListComponent } from './admin/article-list/article-list.component';
+import { ArticleAddComponent } from './admin/article-add/article-add.component';
+import { CategoryComponent } from './admin/category/category.component';
+import { TagComponent } from './admin/tag/tag.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +28,13 @@ import { ErrorComponent } from './error/error.component';
     LeftbarComponent,
     RightbarComponent,
     HeaderComponent,
-    ErrorComponent
+    ErrorComponent,
+    AdminComponent,
+    ProfileComponent,
+    ArticleListComponent,
+    ArticleAddComponent,
+    CategoryComponent,
+    TagComponent
   ],
   imports: [
     BrowserModule,
