@@ -35,7 +35,7 @@ namespace WebApi
             //SEFA-PC\SQLEXPRESS01
             //Add Entity Context
             var connection = @"Server=.;Database=Blog;Trusted_Connection=True;MultipleActiveResultSets=true";//Configuration.GetConnectionString("DatabaseConnection");
-            services.AddDbContext<BgContext>(options => options.UseSqlServer(connection,b => b.MigrationsAssembly("WebApi")));
+            services.AddDbContext<BgContext>(options => options.UseSqlServer(connection, b => b.MigrationsAssembly("WebApi")));
 
             //Inject Service
             services.AddScoped<IArticle, ArticleService>();
@@ -58,6 +58,7 @@ namespace WebApi
                     },
                 });
             });
+
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -71,6 +72,11 @@ namespace WebApi
                 app.UseHsts();
             }
 
+            app.UseCors(corsPolicyBuilder =>
+                corsPolicyBuilder.WithOrigins("http://localhost:4200")
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+            );
             app.UseApiResultMiddleware();
             app.UseHttpsRedirection();
             app.UseMvc();

@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +19,9 @@ import { ArticleListComponent } from './admin/article-list/article-list.componen
 import { ArticleAddComponent } from './admin/article-add/article-add.component';
 import { CategoryComponent } from './admin/category/category.component';
 import { TagComponent } from './admin/tag/tag.component';
+
+import { ProfileService } from './services/profile.service';
+
 
 @NgModule({
   declarations: [
@@ -38,9 +43,11 @@ import { TagComponent } from './admin/tag/tag.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

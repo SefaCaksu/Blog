@@ -20,16 +20,19 @@ namespace Business
 
             DtoProfile profile = new DtoProfile();
 
-            profile.Id = data.Id;
-            profile.Name = data.Name;
-            profile.Title = data.Title;
-            profile.Description = data.Description;
-            profile.Email = data.Email;
-            profile.Facebook = data.Facebook;
-            profile.Github = data.GitHub;
-            profile.Instegram = data.Instegram;
-            profile.Linkedin = data.LinkEdin;
-            profile.Medium = data.Medium;
+            if (data != null)
+            {
+                profile.Id = data.Id;
+                profile.Name = data.Name;
+                profile.Title = data.Title;
+                profile.Description = data.Description;
+                profile.Email = data.Email;
+                profile.Facebook = data.Facebook;
+                profile.Github = data.GitHub;
+                profile.Instagram = data.Instagram;
+                profile.Linkedin = data.LinkEdin;
+                profile.Medium = data.Medium;
+            }
 
             return profile;
         }
@@ -50,7 +53,7 @@ namespace Business
             data.Email = profile.Email;
             data.Facebook = profile.Facebook;
             data.GitHub = profile.Github;
-            data.Instegram = profile.Instegram;
+            data.Instagram = profile.Instagram;
             data.LinkEdin = profile.Linkedin;
             data.Medium = profile.Medium;
 

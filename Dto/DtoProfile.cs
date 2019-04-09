@@ -10,7 +10,7 @@ namespace Dto
         public string Linkedin {get;set;}
         public string Github {get;set;}
         public string Medium {get;set;}
-        public string Instegram {get;set;}
+        public string Instagram {get;set;}
         public string Facebook {get;set;}
 
     }

@@ -43,9 +43,9 @@ namespace Entity
         [StringLength(300)]
         public string GitHub { get; set; }
 
-        [Column("INSTEGRAM")]
+        [Column("INSTAGRAM")]
         [StringLength(300)]
-        public string Instegram { get; set; }
+        public string Instagram { get; set; }
 
         [Column("FACEBOOK")]
         [StringLength(300)]

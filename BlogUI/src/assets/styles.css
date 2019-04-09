@@ -47467,3 +47467,12 @@ figure {
 .form-control-file:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
+
+form{
+  width: 100%!important;
+}
+
+.is-invalid{
+  border: 1px solid red;
+  border-radius: 5px;
+}

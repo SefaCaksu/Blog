@@ -29,6 +29,9 @@ namespace Entity
         [Column("IMG")]
         public byte[] Img { get; set; }
 
+        [Column("READ_COUNT")]
+        public int? ReadCount { get; set; }
+
         [Column("CREATED_DATE")]
         [Required]
         public DateTime CreatedDate { get; set; }
