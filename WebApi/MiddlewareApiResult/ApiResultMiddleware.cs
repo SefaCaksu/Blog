@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Dynamic;
 using System.Globalization;
 using System.IO;
 using System.Net;
@@ -54,6 +56,7 @@ namespace WebApi.MiddlewareApiResult
                     finally
                     {
                         responseBody.Seek(0, SeekOrigin.Begin);
+
                         await responseBody.CopyToAsync(originalBodyStream);
                     }
                 }
@@ -84,13 +87,13 @@ namespace WebApi.MiddlewareApiResult
             }
             else
             {
-                #if !DEBUG  
+#if !DEBUG
                 var msg = "İstenmeyen hata oluştu.;  
                 string stack = null;  
-                #else  
+#else
                 var msg = exception.GetBaseException().Message;
                 string stack = exception.StackTrace;
-                #endif
+#endif
 
                 apiError = new ApiError(msg);
                 apiError.Details = stack;
@@ -143,7 +146,6 @@ namespace WebApi.MiddlewareApiResult
             {
                 try
                 {
-                    var obj = JToken.Parse(body.ToString());
                     isJson = true;
                 }
                 catch (JsonReaderException)
@@ -170,6 +172,24 @@ namespace WebApi.MiddlewareApiResult
             }
 
             dynamic content = JsonConvert.DeserializeObject<dynamic>(bodyText);
+
+            if (body.ToString().Trim().StartsWith("{") && body.ToString().Trim().EndsWith("}"))
+            {
+                dynamic expando = new ExpandoObject();
+                var expandoDict = (IDictionary<string, object>)expando;
+
+                foreach (dynamic j in content)
+                {
+                    if (expandoDict.ContainsKey(j.Name))
+                        expandoDict[j.Name] = j.Value;
+                    else
+                        expandoDict.Add(j.Name, j.Value);
+                }
+
+                content = expando;
+            }
+
+
             Type type = content?.GetType();
 
             if (type.Equals(typeof(Newtonsoft.Json.Linq.JObject)))

@@ -65,7 +65,8 @@ namespace WebApi.Controllers
         [HttpGet]
         public object ProfileGet()
         {
-            return _Profile.GetById();
+            var profile = _Profile.GetById();
+            return profile;
         }
 
         [Route("Admin/Profile")]

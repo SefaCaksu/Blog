@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 using WebApi.MiddlewareApiResult;
 
@@ -30,7 +31,9 @@ namespace WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
             //SEFA-PC\SQLEXPRESS01
             //Add Entity Context
@@ -72,12 +75,13 @@ namespace WebApi
                 app.UseHsts();
             }
 
+            app.UseApiResultMiddleware();
             app.UseCors(corsPolicyBuilder =>
                 corsPolicyBuilder.WithOrigins("http://localhost:4200")
                 .AllowAnyMethod()
                 .AllowAnyHeader()
             );
-            app.UseApiResultMiddleware();
+
             app.UseHttpsRedirection();
             app.UseMvc();
             app.UseSwagger().UseSwaggerUI(c =>

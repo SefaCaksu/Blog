@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ProfileModel } from '../models/ProfileModel';
 
 
 @Injectable({
@@ -14,5 +15,12 @@ export class ProfileService {
 
   GetProfile() {
     return this.httpclient.get(this.baseUrl + '/Admin/Profile');
+  }
+
+  PostProfile(profile: ProfileModel) {
+    const headerContent = new HttpHeaders()
+            .set('Content-Type', 'application/json')
+            .set('Accept', 'application/json');
+    return this.httpclient.post(this.baseUrl + '/Admin/Profile', profile, { headers: headerContent, observe: 'body' });
   }
 }

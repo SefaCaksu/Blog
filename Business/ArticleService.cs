@@ -77,17 +77,21 @@ namespace Business
             var data = base.Get(id);
 
             DtoArticle article = new DtoArticle();
-            article.Id = data.Id;
-            article.CategoryId = data.CategoryId;
-            article.CategoryName = data.Category.Name;
-            article.Title = data.Title;
-            article.Body = data.Body;
-            article.Img = Convert.ToBase64String(data.Img);
-            article.Tags = dc.Tags.Where(c => data.ArticleTags.Any(t => t.TagId == c.Id)).Select(c => new DtoTag()
+
+            if (data != null)
             {
-                Id = c.Id,
-                Name = c.Name
-            }).ToList();
+                article.Id = data.Id;
+                article.CategoryId = data.CategoryId;
+                article.CategoryName = data.Category.Name;
+                article.Title = data.Title;
+                article.Body = data.Body;
+                article.Img = Convert.ToBase64String(data.Img);
+                article.Tags = dc.Tags.Where(c => data.ArticleTags.Any(t => t.TagId == c.Id)).Select(c => new DtoTag()
+                {
+                    Id = c.Id,
+                    Name = c.Name
+                }).ToList();
+            }
 
             return article;
         }
@@ -124,12 +128,12 @@ namespace Business
                 Title = c.Title,
                 Img = Convert.ToBase64String(c.Img),
                 CreatedDate = c.CreatedDate
-            }).OrderBy(c=> c.CreatedDate).Skip((page - 1) * rowCount).Take(rowCount).ToList();
+            }).OrderBy(c => c.CreatedDate).Skip((page - 1) * rowCount).Take(rowCount).ToList();
         }
 
         public int Count(string title, int? categoryId, int? tagId)
         {
-              var articles = dc.Articles.Where(c => true);
+            var articles = dc.Articles.Where(c => true);
 
             if (!String.IsNullOrEmpty(title))
             {
