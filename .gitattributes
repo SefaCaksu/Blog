@@ -1,5 +1,4 @@
 * linguist-vendored
-*.js linguist-vendored=true
-*.cs linguist-vendored=true
-*.html linguist-vendored=true
-
+*.js linguist-vendored=false
+*.cs linguist-vendored=false
+*.html linguist-vendored=false
