@@ -25,3 +25,12 @@ D:\MyBlog\Dto\obj\Debug\netstandard2.0\Dto.AssemblyInfoInputs.cache
 D:\MyBlog\Dto\obj\Debug\netstandard2.0\Dto.AssemblyInfo.cs
 D:\MyBlog\Dto\obj\Debug\netstandard2.0\Dto.dll
 D:\MyBlog\Dto\obj\Debug\netstandard2.0\Dto.pdb
+N:\Blog\Dto\bin\Debug\netstandard2.0\Dto.deps.json
+N:\Blog\Dto\bin\Debug\netstandard2.0\Dto.dll
+N:\Blog\Dto\bin\Debug\netstandard2.0\Dto.pdb
+N:\Blog\Dto\obj\Debug\netstandard2.0\Dto.csprojAssemblyReference.cache
+N:\Blog\Dto\obj\Debug\netstandard2.0\Dto.csproj.CoreCompileInputs.cache
+N:\Blog\Dto\obj\Debug\netstandard2.0\Dto.AssemblyInfoInputs.cache
+N:\Blog\Dto\obj\Debug\netstandard2.0\Dto.AssemblyInfo.cs
+N:\Blog\Dto\obj\Debug\netstandard2.0\Dto.dll
+N:\Blog\Dto\obj\Debug\netstandard2.0\Dto.pdb

@@ -23,6 +23,7 @@ import { CategoryComponent } from './admin/category/category.component';
 import { TagComponent } from './admin/tag/tag.component';
 
 import { ProfileService } from './services/profile.service';
+import { CategoryService } from './services/category.service';
 
 
 @NgModule({
@@ -51,7 +52,10 @@ import { ProfileService } from './services/profile.service';
     BrowserAnimationsModule,  
     ToastrModule.forRoot() 
   ],
-  providers: [ProfileService],
+  providers: [
+    ProfileService,
+    CategoryService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

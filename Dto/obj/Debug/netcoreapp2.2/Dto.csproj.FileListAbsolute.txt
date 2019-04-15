@@ -1,0 +1,9 @@
+N:\Blog\Dto\bin\Debug\netcoreapp2.2\Dto.deps.json
+N:\Blog\Dto\bin\Debug\netcoreapp2.2\Dto.dll
+N:\Blog\Dto\bin\Debug\netcoreapp2.2\Dto.pdb
+N:\Blog\Dto\obj\Debug\netcoreapp2.2\Dto.csproj.CoreCompileInputs.cache
+N:\Blog\Dto\obj\Debug\netcoreapp2.2\Dto.AssemblyInfoInputs.cache
+N:\Blog\Dto\obj\Debug\netcoreapp2.2\Dto.AssemblyInfo.cs
+N:\Blog\Dto\obj\Debug\netcoreapp2.2\Dto.dll
+N:\Blog\Dto\obj\Debug\netcoreapp2.2\Dto.pdb
+N:\Blog\Dto\obj\Debug\netcoreapp2.2\Dto.csprojAssemblyReference.cache

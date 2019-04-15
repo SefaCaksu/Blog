@@ -1,0 +1,16 @@
+N:\Blog\Business\bin\Debug\netcoreapp2.2\Business.deps.json
+N:\Blog\Business\bin\Debug\netcoreapp2.2\Business.runtimeconfig.json
+N:\Blog\Business\bin\Debug\netcoreapp2.2\Business.runtimeconfig.dev.json
+N:\Blog\Business\bin\Debug\netcoreapp2.2\Business.dll
+N:\Blog\Business\bin\Debug\netcoreapp2.2\Business.pdb
+N:\Blog\Business\bin\Debug\netcoreapp2.2\Dto.dll
+N:\Blog\Business\bin\Debug\netcoreapp2.2\Entity.dll
+N:\Blog\Business\bin\Debug\netcoreapp2.2\Dto.pdb
+N:\Blog\Business\bin\Debug\netcoreapp2.2\Entity.pdb
+N:\Blog\Business\obj\Debug\netcoreapp2.2\Business.csprojAssemblyReference.cache
+N:\Blog\Business\obj\Debug\netcoreapp2.2\Business.csproj.CoreCompileInputs.cache
+N:\Blog\Business\obj\Debug\netcoreapp2.2\Business.AssemblyInfoInputs.cache
+N:\Blog\Business\obj\Debug\netcoreapp2.2\Business.AssemblyInfo.cs
+N:\Blog\Business\obj\Debug\netcoreapp2.2\Business.csproj.CopyComplete
+N:\Blog\Business\obj\Debug\netcoreapp2.2\Business.dll
+N:\Blog\Business\obj\Debug\netcoreapp2.2\Business.pdb

@@ -12,7 +12,6 @@ export class ProfileComponent implements OnInit {
 
   constructor(private profileService: ProfileService, private toastr: ToastrService) { }
 
-
   profile = new ProfileModel();
 
   ngOnInit() {
