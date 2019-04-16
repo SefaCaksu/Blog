@@ -10,19 +10,15 @@ import { CategoryModel } from 'src/app/models/CategoryModel';
 export class CategoryComponent implements OnInit {
 
   constructor(private categoryService: CategoryService) { }
- categories:Array<CategoryModel>;
+  categories:CategoryModel[];
 
   ngOnInit() {
-    this.categoryService.GetCategories().subscribe(
+    this.categoryService.GetCategories(true,"").subscribe(
       (res : any) => {
         if(res.IsSuccess == true){
-          this.categories = res.Result;
+           this.categories = res.Result;
         }
-
-        console.log(this.categories);
-
       }
     )
   }
-
 }

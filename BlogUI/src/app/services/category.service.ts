@@ -5,12 +5,15 @@ import { CategoryModel } from '../models/CategoryModel';
 @Injectable({ providedIn: 'root' })
 export class CategoryService {
     baseUrl: string = "https://localhost:5001";
-    constructor(private httpClient: HttpClient) {
+    constructor(private httpClient: HttpClient) {}
 
-    }
-
-    GetCategories() {
-        return this.httpClient.get(this.baseUrl + '/Admin/Category');
+    GetCategories(active: boolean, name:string ) {
+        let param:any = {
+            "active":active,
+            "name":name
+        }
+        
+        return this.httpClient.get(this.baseUrl + '/Admin/Category',{params:param});
     }
 
     PostCategory(category: CategoryModel) {

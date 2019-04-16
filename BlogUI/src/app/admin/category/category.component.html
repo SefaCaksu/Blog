@@ -6,16 +6,25 @@
 </div>
 <hr class="bd-color-gray">
 <div class="container">
-  <table>
-    <tr>
-      <th>Kategori</th>
-      <th>Düzenle</th>
-      <th>Durum</th>
-    </tr>
-    <tr *ngFor="let category of categories">
-      <td>{{category.Name}}</td>
-      <td></td>
-      <td></td>
-    </tr>
-  </table>
-</div>
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <a routerLink="/admin/categoryadd" class="btn btn-primary">Kategori Ekle</a>
+    </li>
+  </ul>
+  <div class="row">
+    <div class="col-md-12">
+        <table class="table table-dark table-hover">
+            <tr>
+              <td>Kategori</td>
+              <td>Düzenle</td>
+              <td>Durum</td>
+            </tr>
+            <tr *ngFor="let category of categories">
+                <td>{{category.Name}}</td>
+                <td><i class="fa fa-pencil"></i></td>
+                <td><i class="fa fa-toggle-on"></i></td>
+              </tr>
+          </table>
+    </div> 
+  </div>
+ </div>
