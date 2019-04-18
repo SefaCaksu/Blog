@@ -6,7 +6,7 @@
 </div>
 <hr class="bd-color-gray">
 <div class="container">
-  <ul class="nav justify-content-end">
+  <ul class="nav justify-content-end mb-3">
     <li class="nav-item">
       <a routerLink="/admin/categoryadd" class="btn btn-primary">Kategori Ekle</a>
     </li>
@@ -21,8 +21,8 @@
             </tr>
             <tr *ngFor="let category of categories">
                 <td>{{category.Name}}</td>
-                <td><i class="fa fa-pencil"></i></td>
-                <td><i class="fa fa-toggle-on"></i></td>
+                <td><a [routerLink]="['/admin/categoryadd', category.Id]"><i class="fa fa-pencil"></i></a></td>
+                <td><a [routerLink]="['/admin/categoryadd', category.Id]"><i class="fa fa-toggle-on"></i></a></td>
               </tr>
           </table>
     </div> 

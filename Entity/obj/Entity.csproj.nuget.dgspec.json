@@ -10,14 +10,14 @@
         "projectUniqueName": "N:\\Blog\\Entity\\Entity.csproj",
         "projectName": "Entity",
         "projectPath": "N:\\Blog\\Entity\\Entity.csproj",
-        "packagesPath": "C:\\Users\\Exedra\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\NAZ\\.nuget\\packages\\",
         "outputPath": "N:\\Blog\\Entity\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Exedra\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\NAZ\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,7 +25,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "N:\\TTFramework": {},
+          "N:\\THY Teknik Framework": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

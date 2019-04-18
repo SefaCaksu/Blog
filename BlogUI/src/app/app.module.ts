@@ -55,8 +55,7 @@ import { CategoryService } from './services/category.service';
     ToastrModule.forRoot() 
   ],
   providers: [
-    ProfileService,
-    CategoryService
+    ProfileService
   ],
   bootstrap: [AppComponent]
 })

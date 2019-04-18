@@ -49,6 +49,13 @@ namespace WebApi.Controllers
             return _Category.List(name, active);
         }
 
+        [Route("Admin/Category/{id:int}")]
+        [HttpGet]
+        public DtoCategory CategoryGetById(int id)
+        {
+            return _Category.GetById(id);
+        }
+
         [Route("Admin/Category")]
         [HttpDelete]
         public object CategoryDelete(int id)

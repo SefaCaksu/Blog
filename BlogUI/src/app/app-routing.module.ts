@@ -25,6 +25,7 @@ const routes: Routes = [
   { path: 'admin/articleadd', component: ArticleAddComponent },
   { path: 'admin/category', component: CategoryComponent },
   { path: 'admin/categoryadd', component: CategoryAddComponent},
+  { path: 'admin/categoryadd/:Id', component: CategoryAddComponent},
   { path: 'admin/tag', component: TagComponent },
   { path: '404', component: ErrorComponent},
   { path: '**', redirectTo: '/404'}
