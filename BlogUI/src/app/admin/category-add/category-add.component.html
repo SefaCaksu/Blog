@@ -1,0 +1,29 @@
+<div class="pd-25">
+    <div class="d-flex align-items-center justify-content-between">
+        <h6 class="tx-size-12 tx-size-sm-14 tx-white tx-uppercase tx-spacing-2 mg-b-0">{{title}}</h6>
+        <a routerLink="/admin/category" class="tx-gray-light tx-uppercase tx-size-12">KATEGORİ LİSTESİ</a>
+        <a routerLink="/admin" class="tx-gray-light tx-uppercase tx-size-12">ANASAYFAYA DÖN <i class="fa fa-angle-right"></i></a>
+    </div>
+    <hr class="bd-color-gray">
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit(category.Id)" #f="ngForm" novalidate>
+        <div class="row">
+            <div class="col-sm-12 col-md-6 mg-t-20">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" required [(ngModel)]="category.Name" name="name"
+                     placeholder="Kategori ad" #Name="ngModel">
+                </div>
+                <div class="form-group form-check" [hidden]="!category.Id">
+                    <label for="active">
+                        <input type="checkbox" class="form-check-label" id="active" [(ngModel)]="category.Active"
+                         name="active" #Active="ngModel">
+                        Aktif
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <button type="reset" class="btn btn-secondary">Vazgeç</button>
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+            </div>
+        </div>
+    </form>
+</div>

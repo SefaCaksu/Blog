@@ -20,9 +20,11 @@ import { ProfileComponent } from './admin/profile/profile.component';
 import { ArticleListComponent } from './admin/article-list/article-list.component';
 import { ArticleAddComponent } from './admin/article-add/article-add.component';
 import { CategoryComponent } from './admin/category/category.component';
+import { CategoryAddComponent } from './admin/category-add/category-add.component';
 import { TagComponent } from './admin/tag/tag.component';
 
 import { ProfileService } from './services/profile.service';
+import { CategoryService } from './services/category.service';
 
 
 @NgModule({
@@ -41,6 +43,7 @@ import { ProfileService } from './services/profile.service';
     ArticleListComponent,
     ArticleAddComponent,
     CategoryComponent,
+    CategoryAddComponent,
     TagComponent
   ],
   imports: [
@@ -51,7 +54,9 @@ import { ProfileService } from './services/profile.service';
     BrowserAnimationsModule,  
     ToastrModule.forRoot() 
   ],
-  providers: [ProfileService],
+  providers: [
+    ProfileService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

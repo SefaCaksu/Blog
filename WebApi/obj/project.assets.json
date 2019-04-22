@@ -4498,11 +4498,11 @@
       },
       "Business/1.0.0": {
         "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
+        "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
           "Dto": "1.0.0",
           "Entity": "1.0.0",
-          "Microsoft.EntityFrameworkCore.SqlServer": "2.0.0"
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.0"
         },
         "compile": {
           "bin/placeholder/Business.dll": {}
@@ -4513,7 +4513,7 @@
       },
       "Dto/1.0.0": {
         "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
+        "framework": ".NETCoreApp,Version=v2.2",
         "compile": {
           "bin/placeholder/Dto.dll": {}
         },
@@ -4523,9 +4523,9 @@
       },
       "Entity/1.0.0": {
         "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
+        "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.SqlServer": "2.0.0"
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.0"
         },
         "compile": {
           "bin/placeholder/Entity.dll": {}

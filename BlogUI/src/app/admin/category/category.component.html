@@ -5,3 +5,26 @@
       </div>
 </div>
 <hr class="bd-color-gray">
+<div class="container">
+  <ul class="nav justify-content-end mb-3">
+    <li class="nav-item">
+      <a routerLink="/admin/categoryadd" class="btn btn-primary">Kategori Ekle</a>
+    </li>
+  </ul>
+  <div class="row">
+    <div class="col-md-12">
+        <table class="table table-dark table-hover">
+            <tr>
+              <td>Kategori</td>
+              <td>Düzenle</td>
+              <td>Durum</td>
+            </tr>
+            <tr *ngFor="let category of categories">
+                <td>{{category.Name}}</td>
+                <td><a [routerLink]="['/admin/categoryadd', category.Id]"><i class="fa fa-pencil"></i></a></td>
+                <td><a [routerLink]="['/admin/categoryadd', category.Id]"><i class="fa fa-toggle-on"></i></a></td>
+              </tr>
+          </table>
+    </div> 
+  </div>
+ </div>

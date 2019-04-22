@@ -25,3 +25,12 @@ D:\MyBlog\Entity\obj\Debug\netstandard2.0\Entity.AssemblyInfoInputs.cache
 D:\MyBlog\Entity\obj\Debug\netstandard2.0\Entity.AssemblyInfo.cs
 D:\MyBlog\Entity\obj\Debug\netstandard2.0\Entity.dll
 D:\MyBlog\Entity\obj\Debug\netstandard2.0\Entity.pdb
+N:\Blog\Entity\bin\Debug\netstandard2.0\Entity.deps.json
+N:\Blog\Entity\bin\Debug\netstandard2.0\Entity.dll
+N:\Blog\Entity\bin\Debug\netstandard2.0\Entity.pdb
+N:\Blog\Entity\obj\Debug\netstandard2.0\Entity.csprojAssemblyReference.cache
+N:\Blog\Entity\obj\Debug\netstandard2.0\Entity.csproj.CoreCompileInputs.cache
+N:\Blog\Entity\obj\Debug\netstandard2.0\Entity.AssemblyInfoInputs.cache
+N:\Blog\Entity\obj\Debug\netstandard2.0\Entity.AssemblyInfo.cs
+N:\Blog\Entity\obj\Debug\netstandard2.0\Entity.dll
+N:\Blog\Entity\obj\Debug\netstandard2.0\Entity.pdb
