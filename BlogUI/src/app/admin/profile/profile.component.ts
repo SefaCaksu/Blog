@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.profileService.GetProfile().subscribe(
-      (res: any) => {
+      (res:any) => {
         if (res.IsSuccess == true) {
           this.profile = res.Result;
         } else {
