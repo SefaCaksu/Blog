@@ -10,7 +10,6 @@ import { ProfileComponent} from './admin/profile/profile.component';
 import { ArticleListComponent} from './admin/article-list/article-list.component';
 import { ArticleAddComponent} from './admin/article-add/article-add.component';
 import { CategoryComponent} from './admin/category/category.component';
-import { CategoryAddComponent } from './admin/category-add/category-add.component';
 import { TagComponent} from './admin/tag/tag.component';
 
 const routes: Routes = [
@@ -24,8 +23,6 @@ const routes: Routes = [
   { path: 'admin/articlelist', component: ArticleListComponent },
   { path: 'admin/articleadd', component: ArticleAddComponent },
   { path: 'admin/category', component: CategoryComponent },
-  { path: 'admin/categoryadd', component: CategoryAddComponent},
-  { path: 'admin/categoryadd/:Id', component: CategoryAddComponent},
   { path: 'admin/tag', component: TagComponent },
   { path: '404', component: ErrorComponent},
   { path: '**', redirectTo: '/404'}

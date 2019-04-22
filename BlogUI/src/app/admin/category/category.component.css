@@ -1,0 +1,12 @@
+.card-body{
+    padding: 0.50rem!important;
+}
+
+.badg{
+    font-size: 100%!important;
+    font-weight: 500!important;
+    line-height: 1.4!important;
+    margin: 10px!important;
+    color: #fff;
+    background-color: rgba(25, 135, 222, 0.44);
+}

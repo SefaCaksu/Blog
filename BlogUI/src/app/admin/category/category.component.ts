@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category.service';
 import { CategoryModel } from 'src/app/models/CategoryModel';
 import { ActivatedRoute } from '@angular/router';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-category',
@@ -11,7 +10,7 @@ import { ThrowStmt } from '@angular/compiler';
 })
 export class CategoryComponent implements OnInit {
 
-  constructor(private categoryService: CategoryService, private activatedRouter: ActivatedRoute) { }
+  constructor(private categoryService: CategoryService) { }
   categories: CategoryModel[];
 
   ngOnInit() {

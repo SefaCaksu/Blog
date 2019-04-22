@@ -1,30 +1,62 @@
 <div class="pd-25">
-    <div class="d-flex align-items-center justify-content-between">
-        <h6 class="tx-size-12 tx-size-sm-14 tx-white tx-uppercase tx-spacing-2 mg-b-0">KATEGORİLER</h6>
-        <a routerLink="/admin" class="tx-gray-light tx-uppercase tx-size-12">ANASAYFAYA DÖN <i class="fa fa-angle-right"></i></a>
-      </div>
-</div>
-<hr class="bd-color-gray">
-<div class="container">
-  <ul class="nav justify-content-end mb-3">
-    <li class="nav-item">
-      <a routerLink="/admin/categoryadd" class="btn btn-primary">Kategori Ekle</a>
-    </li>
-  </ul>
-  <div class="row">
-    <div class="col-md-12">
-        <table class="table table-dark table-hover">
-            <tr>
-              <td>Kategori</td>
-              <td>Düzenle</td>
-              <td>Durum</td>
-            </tr>
-            <tr *ngFor="let category of categories">
-                <td>{{category.Name}}</td>
-                <td><a [routerLink]="['/admin/categoryadd', category.Id]"><i class="fa fa-pencil"></i></a></td>
-                <td><a [routerLink]="['/admin/categoryadd', category.Id]"><i class="fa fa-toggle-on"></i></a></td>
-              </tr>
-          </table>
-    </div> 
+  <div class="d-flex align-items-center justify-content-between">
+    <h6 class="tx-size-12 tx-size-sm-14 tx-white tx-uppercase tx-spacing-2 mg-b-0">KATEGORİLER</h6>
+    <a routerLink="/admin" class="tx-gray-light tx-uppercase tx-size-12">ANASAYFAYA DÖN <i
+        class="fa fa-angle-right"></i></a>
   </div>
- </div>
+  <hr class="bd-color-gray">
+
+  <div class="row">
+    <div class="col-4">
+        <div class="card">
+            <h6 class="card-header">Kategori Ekle</h6>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                      <label for="name">Kategori</label>
+                      <input type="text" class="form-control" id="name">
+                    </div>
+                    <div class="form-group">
+                      <label for="starus">Durum</label>
+                      <select type="text" class="form-control" id="status">
+                          <option value="1">Aktif</option>
+                          <option value="0">Pasif</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right btn-sm">Add Category</button>
+                  </form>
+            </div>
+          </div>
+    </div>
+    <div class="col-8">
+      <form>
+        <div class="card">
+          <div class="card-body">
+            <div class="form-inline">
+              <label class="my-1 ml-2" for="filter-name">Name</label>
+              <input type="text" class="form-control  ml-2" name="filter-name">
+
+              <label class="my-1 ml-2" for="filter-status">Durum</label>
+              <select type="text" class="form-control  ml-2" name="filter-status">
+                <option value="1">Aktif</option>
+                <option value="0">Pasif</option>
+              </select>
+
+              <button type="submit" class="btn btn-success my-1  ml-2"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <span class="badge badge-pill badge-light badg" *ngFor="let category of categories">
+        {{category.Name}}
+        <a href="" class="text-success ml-1"><i class="fa fa-edit fa-lg"></i></a>
+        <a href="" class="text-danger ml-1"><i class="fa fa-trash fa-lg "></i></a>
+      </span>
+      
+
+
+    </div>
+  </div>
+
+</div>
