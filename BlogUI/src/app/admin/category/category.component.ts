@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category.service';
 import { CategoryModel } from 'src/app/models/CategoryModel';
-import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-category',
@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CategoryComponent implements OnInit {
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(private categoryService: CategoryService, private toastr: ToastrService) { }
   categories: CategoryModel[];
 
   ngOnInit() {
@@ -19,6 +19,17 @@ export class CategoryComponent implements OnInit {
         if (res.IsSuccess == true) {
           this.categories = res.Result;
         }
+      },
+      e=>{
+        var er = e.error.Error;
+
+        if (er.ValidationErrors != null) {
+          er.ValidationErrors.forEach(function (value) {
+            this.toastr.error(value.Field, value.Message);
+          });
+        }
+
+        this.toastr.error(er.Message, er.Details);
       }
     )
   }

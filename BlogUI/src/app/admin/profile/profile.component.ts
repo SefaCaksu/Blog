@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileModel } from 'src/app/models/ProfileModel';
 import { ProfileService } from 'src/app/services/profile.service';
-import { ToastrService } from 'ngx-toastr'; 
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -16,32 +16,48 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.profileService.GetProfile().subscribe(
-      (res:any) => {
+      (res: any) => {
         if (res.IsSuccess == true) {
           this.profile = res.Result;
         } else {
-          console.log('sucFalse ' + res)
+          console.log(res)
         }
       },
       (e) => {
-        console.log('err ' + e)
+        var er = e.error.Error;
+
+        if (er.ValidationErrors != null) {
+          er.ValidationErrors.forEach(function (value) {
+            this.toastr.error(value.Field, value.Message);
+          });
+        }
+
+        this.toastr.error(er.Message, er.Details);
       }
     );
   }
 
   onSubmit() {
     this.profileService.PostProfile(this.profile).subscribe(
-    
+
       (res: any) => {
         if (res.IsSuccess == true) {
-          this.toastr.success("Profil başarıyla düzenlendi.",'Başarılı') ;
+          this.toastr.success("Profil başarıyla düzenlendi.", 'Başarılı');
           console.log(res)
         } else {
-          console.log('sucFalse ' + JSON.stringify(res))
+
         }
       },
       (e) => {
-        console.log("e " + e);
+        var er = e.error.Error;
+
+        if (er.ValidationErrors != null) {
+          er.ValidationErrors.forEach(function (value) {
+            this.toastr.error(value.Field, value.Message);
+          });
+        }
+
+        this.toastr.error(er.Message, er.Details);
       });
   }
 }
