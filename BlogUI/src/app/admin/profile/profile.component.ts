@@ -25,13 +25,11 @@ export class ProfileComponent implements OnInit {
       },
       (e) => {
         var er = e.error.Error;
-
         if (er.ValidationErrors != null) {
           er.ValidationErrors.forEach(function (value) {
             this.toastr.error(value.Field, value.Message);
           });
         }
-
         this.toastr.error(er.Message, er.Details);
       }
     );

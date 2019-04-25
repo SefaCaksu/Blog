@@ -12,6 +12,7 @@ export class CategoryComponent implements OnInit {
 
   constructor(private categoryService: CategoryService, private toastr: ToastrService) { }
   categories: CategoryModel[];
+  category : CategoryModel;
 
   ngOnInit() {
     this.categoryService.GetCategories(true, "").subscribe(
@@ -22,13 +23,11 @@ export class CategoryComponent implements OnInit {
       },
       e=>{
         var er = e.error.Error;
-
         if (er.ValidationErrors != null) {
           er.ValidationErrors.forEach(function (value) {
             this.toastr.error(value.Field, value.Message);
           });
         }
-
         this.toastr.error(er.Message, er.Details);
       }
     )
