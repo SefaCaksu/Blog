@@ -30,7 +30,10 @@ N:/Blog/Business/obj/Debug/netcoreapp2.2/Business.pdb
 /Users/tsafa/Desktop/Workspace_2/Blog/Business/obj/Debug/netcoreapp2.2/Business.csproj.CopyComplete
 /Users/tsafa/Desktop/Workspace_2/Blog/Business/obj/Debug/netcoreapp2.2/Business.dll
 /Users/tsafa/Desktop/Workspace_2/Blog/Business/obj/Debug/netcoreapp2.2/Business.pdb
+<<<<<<< HEAD
 D:\Blog\Business\obj\Debug\netcoreapp2.2\Business.csprojAssemblyReference.cache
+=======
+>>>>>>> git edit
 D:\Blog\Business\obj\Debug\netcoreapp2.2\Business.csproj.CoreCompileInputs.cache
 D:\Blog\Business\obj\Debug\netcoreapp2.2\Business.AssemblyInfoInputs.cache
 D:\Blog\Business\obj\Debug\netcoreapp2.2\Business.AssemblyInfo.cs

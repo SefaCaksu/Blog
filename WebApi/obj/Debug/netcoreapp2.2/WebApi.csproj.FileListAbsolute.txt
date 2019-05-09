@@ -19,6 +19,7 @@ D:/Projects/Blog/WebApi/obj/Debug/netcoreapp2.2/WebApi.RazorTargetAssemblyInfo.c
 D:/Projects/Blog/WebApi/obj/Debug/netcoreapp2.2/WebApi.csproj.CopyComplete
 D:/Projects/Blog/WebApi/obj/Debug/netcoreapp2.2/WebApi.dll
 D:/Projects/Blog/WebApi/obj/Debug/netcoreapp2.2/WebApi.pdb
+<<<<<<< HEAD
 D:/Blog/WebApi/bin/Debug/netcoreapp2.2/WebApi.deps.json
 D:/Blog/WebApi/bin/Debug/netcoreapp2.2/WebApi.runtimeconfig.json
 D:/Blog/WebApi/bin/Debug/netcoreapp2.2/WebApi.runtimeconfig.dev.json
@@ -40,6 +41,8 @@ D:/Blog/WebApi/obj/Debug/netcoreapp2.2/WebApi.RazorTargetAssemblyInfo.cache
 D:/Blog/WebApi/obj/Debug/netcoreapp2.2/WebApi.csproj.CopyComplete
 D:/Blog/WebApi/obj/Debug/netcoreapp2.2/WebApi.dll
 D:/Blog/WebApi/obj/Debug/netcoreapp2.2/WebApi.pdb
+=======
+>>>>>>> git edit
 D:/MyBlog/WebApi/bin/Debug/netcoreapp2.2/WebApi.deps.json
 D:/MyBlog/WebApi/bin/Debug/netcoreapp2.2/WebApi.runtimeconfig.json
 D:/MyBlog/WebApi/bin/Debug/netcoreapp2.2/WebApi.runtimeconfig.dev.json
@@ -103,5 +106,29 @@ N:/Blog/WebApi/obj/Debug/netcoreapp2.2/WebApi.pdb
 /Users/tsafa/Desktop/Workspace_2/Blog/WebApi/obj/Debug/netcoreapp2.2/WebApi.csproj.CopyComplete
 /Users/tsafa/Desktop/Workspace_2/Blog/WebApi/obj/Debug/netcoreapp2.2/WebApi.dll
 /Users/tsafa/Desktop/Workspace_2/Blog/WebApi/obj/Debug/netcoreapp2.2/WebApi.pdb
+<<<<<<< HEAD
 D:\Blog\WebApi\obj\Debug\netcoreapp2.2\WebApi.dll
 D:\Blog\WebApi\obj\Debug\netcoreapp2.2\WebApi.pdb
+=======
+D:\Blog\WebApi\bin\Debug\netcoreapp2.2\Business.dll
+D:\Blog\WebApi\bin\Debug\netcoreapp2.2\Dto.dll
+D:\Blog\WebApi\bin\Debug\netcoreapp2.2\Entity.dll
+D:\Blog\WebApi\bin\Debug\netcoreapp2.2\Dto.pdb
+D:\Blog\WebApi\bin\Debug\netcoreapp2.2\Business.pdb
+D:\Blog\WebApi\bin\Debug\netcoreapp2.2\Entity.pdb
+D:\Blog\WebApi\obj\Debug\netcoreapp2.2\WebApi.csprojAssemblyReference.cache
+D:\Blog\WebApi\obj\Debug\netcoreapp2.2\WebApi.csproj.CoreCompileInputs.cache
+D:\Blog\WebApi\obj\Debug\netcoreapp2.2\WebApi.RazorAssemblyInfo.cache
+D:\Blog\WebApi\obj\Debug\netcoreapp2.2\WebApi.RazorAssemblyInfo.cs
+D:\Blog\WebApi\obj\Debug\netcoreapp2.2\WebApi.AssemblyInfoInputs.cache
+D:\Blog\WebApi\obj\Debug\netcoreapp2.2\WebApi.AssemblyInfo.cs
+D:\Blog\WebApi\obj\Debug\netcoreapp2.2\WebApi.RazorTargetAssemblyInfo.cache
+D:\Blog\WebApi\obj\Debug\netcoreapp2.2\WebApi.dll
+D:\Blog\WebApi\obj\Debug\netcoreapp2.2\WebApi.pdb
+D:\Blog\WebApi\bin\Debug\netcoreapp2.2\WebApi.deps.json
+D:\Blog\WebApi\bin\Debug\netcoreapp2.2\WebApi.runtimeconfig.json
+D:\Blog\WebApi\bin\Debug\netcoreapp2.2\WebApi.runtimeconfig.dev.json
+D:\Blog\WebApi\bin\Debug\netcoreapp2.2\WebApi.dll
+D:\Blog\WebApi\bin\Debug\netcoreapp2.2\WebApi.pdb
+D:\Blog\WebApi\obj\Debug\netcoreapp2.2\WebApi.csproj.CopyComplete
+>>>>>>> git edit
