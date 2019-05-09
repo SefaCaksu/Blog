@@ -1,0 +1,125 @@
+<div class="pd-25">
+  <div class="d-flex align-items-center justify-content-between">
+    <h6 class="tx-size-12 tx-size-sm-14 tx-white tx-uppercase tx-spacing-2 mg-b-0">PROFİL</h6>
+    <a routerLink="/admin" class="tx-gray-light tx-uppercase tx-size-12">ANASAYFAYA DÖN <i
+        class="fa fa-angle-right"></i></a>
+  </div>
+
+  <hr class="bd-color-gray">
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <div class="row">
+
+      <div class="col-sm-12 col-md-6 mg-t-20">
+
+        <div class="form-group">
+          <div class="input-group mb-2" [ngClass]="{ 'is-invalid': f.submitted && Name.invalid }">
+            <span class="input-group-btn">
+              <button class="btn btn-inverse tx-white pd-x-15 bd-color-gray-dark-light bd-l-0-force disabled"
+                type="button"><i class="fa fa-user-o"></i></button>
+            </span>
+            <input type="text" class="form-control bd-color-gray-dark-light" id="name" name="name"
+              placeholder="Ad Soyad" [(ngModel)]="profile.Name" #Name="ngModel" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group mb-2" [ngClass]="{ 'is-invalid': f.submitted && Email.invalid }">
+            <span class="input-group-btn">
+              <button class="btn btn-inverse tx-white pd-x-15 bd-color-gray-dark-light bd-l-0-force disabled"
+                type="button"><i class="fa fa-envelope"></i></button>
+            </span>
+            <input type="email" class="form-control bd-color-gray-dark-light" id="email" name="email" placeholder="Email"
+            [(ngModel)]="profile.Email" #Email="ngModel" required email>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group mb-2" [ngClass]="{ 'is-invalid': f.submitted && Title.invalid }">
+            <span class="input-group-btn">
+              <button class="btn btn-inverse tx-white pd-x-15 bd-color-gray-dark-light bd-l-0-force disabled"
+                type="button"><i class="fa fa-flag"></i></button>
+            </span>
+            <input type="text" class="form-control bd-color-gray-dark-light" id="title" name="title" placeholder="Ünvan"
+            [(ngModel)]="profile.Title" #Title="ngModel" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group mb-2" [ngClass]="{ 'is-invalid': f.submitted && Description.invalid }">
+            <span class="input-group-btn">
+              <button class="btn btn-inverse tx-white pd-x-15 bd-color-gray-dark-light bd-l-0-force disabled"
+                type="button" style="height:93px;"><i class="fa fa-comment"></i></button>
+            </span>
+            <textarea class="form-control bd-color-gray-dark-light" id="description" name="description"
+              placeholder="Açıklama"  [(ngModel)]="profile.Description" #Description="ngModel" required></textarea>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-sm-12 col-md-6 mg-t-20">
+
+        <div class="form-group">
+          <div class="input-group mb-2">
+            <span class="input-group-btn">
+              <button class="btn btn-inverse tx-white pd-x-15 bd-color-gray-dark-light bd-l-0-force disabled"
+                type="button"><i class="fa fa-linkedin"></i></button>
+            </span>
+            <input type="text" class="form-control bd-color-gray-dark-light" id="linkedin" name="linkedin"  [(ngModel)]="profile.Linkedin" #Linkedin="ngModel"
+              placeholder="Linkedin">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group mb-2">
+            <span class="input-group-btn">
+              <button class="btn btn-inverse tx-white pd-x-15 bd-color-gray-dark-light bd-l-0-force disabled"
+                type="button"><i class="fa fa-github"></i></button>
+            </span>
+            <input type="text" class="form-control bd-color-gray-dark-light" id="github" name="github" [(ngModel)]="profile.Github" #Github="ngModel"
+              placeholder="Github">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group mb-2">
+            <span class="input-group-btn">
+              <button class="btn btn-inverse tx-white pd-x-15 bd-color-gray-dark-light bd-l-0-force disabled"
+                type="button"><i class="fa fa-medium"></i></button>
+            </span>
+            <input type="text" class="form-control bd-color-gray-dark-light" id="medium" name="medium" [(ngModel)]="profile.Medium" #Medium="ngModel"
+              placeholder="Medium">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group mb-2">
+            <span class="input-group-btn">
+              <button class="btn btn-inverse tx-white pd-x-15 bd-color-gray-dark-light bd-l-0-force disabled"
+                type="button"><i class="fa fa-instagram"></i></button>
+            </span>
+            <input type="text" class="form-control bd-color-gray-dark-light" id="instagram" name="instagram" [(ngModel)]="profile.Instagram" #Instagram="ngModel"
+              placeholder="Instagram">
+          </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group mb-2">
+              <span class="input-group-btn">
+                <button class="btn btn-inverse tx-white pd-x-15 bd-color-gray-dark-light bd-l-0-force disabled"
+                  type="button"><i class="fa fa-facebook"></i></button>
+              </span>
+              <input type="text" class="form-control bd-color-gray-dark-light" id="facebook" name="facebook" [(ngModel)]="profile.Facebook" #Facebook="ngModel"
+                placeholder="Facebook">
+            </div>
+          </div>
+
+      </div>
+
+      <div class="col-sm-12 text-right">
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+      </div>
+    </div>
+  </form>
+</div>
+

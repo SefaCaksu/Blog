@@ -1,0 +1,81 @@
+<div class="pd-25">
+  <div class="d-flex align-items-center justify-content-between">
+    <h6 class="tx-size-12 tx-size-sm-14 tx-white tx-uppercase tx-spacing-2 mg-b-0">KATEGORİLER</h6>
+    <a routerLink="/admin" class="tx-gray-light tx-uppercase tx-size-12">ANASAYFAYA DÖN <i
+        class="fa fa-angle-right"></i></a>
+  </div>
+  <hr class="bd-color-gray">
+
+  <div class="row">
+    <div class="col-4">
+      <div class="card">
+        <h6 class="card-header">{{submitButton}}</h6>
+        <div class="card-body">
+          <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="form-group">
+              <label for="name">Kategori</label>
+              <input type="text" class="form-control" name="name" id="name" [(ngModel)]="category.Name" #Name="ngModel"
+                required [ngClass]="{ 'is-invalid': f.submitted && Name.invalid }">
+            </div>
+            <div class="form-group" *ngIf="category.Id > 0">
+              <label for="starus">Durum</label>
+              <select type="text" class="form-control" id="active" name="active" [(ngModel)]="category.Active"
+                #Active="ngModel">
+                <option value="true">Aktif</option>
+                <option value="false">Pasif</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary float-right btn-sm">{{submitButton}}</button>
+            <button type="button" class="btn btn-default float-right btn-sm mr-2" *ngIf="category.Id > 0" (click)="onCancel()">İptal Et</button>        
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="card">
+        <div class="card-body">
+          <div class="form-inline">
+            <label class="my-1 ml-2" for="filterName">Name</label>
+            <input type="text" class="form-control  ml-2" name="filterName" id="filterName"
+              [(ngModel)]="filter.filterName" #filterName="ngModel">
+
+            <label class="my-1 ml-2" for="filterStatus">Durum</label>
+            <select type="text" class="form-control  ml-2" name="filterStatus" id="filterStatus"
+              [(ngModel)]="filter.filterStatus" #filterStatus="ngModel">
+              <option [ngValue]="1" selected>Aktif</option>
+              <option [ngValue]="0">Pasif</option>
+            </select>
+
+            <button type="button" class="btn btn-success my-1  ml-2" (click)="onFilter()"><i
+                class="fa fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <span class="badge badge-pill badge-light badg" *ngFor="let category of categories">
+        {{category.Name}}
+        <a class="text-success ml-1" (click)="onEdit(category.Id)" style="cursor:pointer"><i class="fa fa-edit fa-lg"></i></a>
+        <a class="text-danger ml-1"><i class="fa fa-trash fa-lg "></i></a>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="categoryDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Uyarı</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Bu kategoriyi silmek istediğinizden emin misiniz?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">İptal Et</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
