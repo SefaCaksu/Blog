@@ -12263,11 +12263,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\Blog\\WebApi\\WebApi.csproj",
+      "projectUniqueName": "D:\\Blog\\WebApi\\WebApi.csproj",
       "projectName": "WebApi",
-      "projectPath": "d:\\Blog\\WebApi\\WebApi.csproj",
+      "projectPath": "D:\\Blog\\WebApi\\WebApi.csproj",
       "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
-      "outputPath": "d:\\Blog\\WebApi\\obj\\",
+      "outputPath": "D:\\Blog\\WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12290,8 +12290,8 @@
             "d:\\Blog\\Business\\Business.csproj": {
               "projectPath": "d:\\Blog\\Business\\Business.csproj"
             },
-            "d:\\Blog\\Dto\\Dto.csproj": {
-              "projectPath": "d:\\Blog\\Dto\\Dto.csproj"
+            "D:\\Blog\\Dto\\Dto.csproj": {
+              "projectPath": "D:\\Blog\\Dto\\Dto.csproj"
             },
             "d:\\Blog\\Entity\\Entity.csproj": {
               "projectPath": "d:\\Blog\\Entity\\Entity.csproj"

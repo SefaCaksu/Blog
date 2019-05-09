@@ -103,3 +103,5 @@ N:/Blog/WebApi/obj/Debug/netcoreapp2.2/WebApi.pdb
 /Users/tsafa/Desktop/Workspace_2/Blog/WebApi/obj/Debug/netcoreapp2.2/WebApi.csproj.CopyComplete
 /Users/tsafa/Desktop/Workspace_2/Blog/WebApi/obj/Debug/netcoreapp2.2/WebApi.dll
 /Users/tsafa/Desktop/Workspace_2/Blog/WebApi/obj/Debug/netcoreapp2.2/WebApi.pdb
+D:\Blog\WebApi\obj\Debug\netcoreapp2.2\WebApi.dll
+D:\Blog\WebApi\obj\Debug\netcoreapp2.2\WebApi.pdb
