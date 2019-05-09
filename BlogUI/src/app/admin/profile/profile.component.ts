@@ -37,11 +37,9 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
     this.profileService.PostProfile(this.profile).subscribe(
-
       (res: any) => {
         if (res.IsSuccess == true) {
           this.toastr.success("Profil başarıyla düzenlendi.", 'Başarılı');
-          console.log(res)
         } else {
 
         }
@@ -54,7 +52,6 @@ export class ProfileComponent implements OnInit {
             this.toastr.error(value.Field, value.Message);
           });
         }
-
         this.toastr.error(er.Message, er.Details);
       });
   }
