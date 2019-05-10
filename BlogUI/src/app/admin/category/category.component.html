@@ -55,7 +55,7 @@
       <span class="badge badge-pill badge-light badg" *ngFor="let category of categories">
         {{category.Name}}
         <a class="text-success ml-1" (click)="onEdit(category.Id)" style="cursor:pointer"><i class="fa fa-edit fa-lg"></i></a>
-        <a class="text-danger ml-1"><i class="fa fa-trash fa-lg "></i></a>
+        <a class="text-danger ml-1" (click)="onDeleteConfirm(category.Id)"><i class="fa fa-trash fa-lg "></i></a>
       </span>
     </div>
   </div>
@@ -74,7 +74,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">İptal Et</button>
-        <button type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-danger" (click)="onDelete()">Delete</button>
       </div>
     </div>
   </div>

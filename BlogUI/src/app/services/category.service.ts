@@ -31,6 +31,14 @@ export class CategoryService {
         return this.httpClient.put(this.baseUrl + '/Admin/Category', category, { headers: headerContent, observe: 'body' });
     }
 
+    DeleteCategory(id:number) {
+        const headerContent = new HttpHeaders()
+            .set('Content-Type', 'application/json')
+            .set('Accept', 'application/json');
+
+        return this.httpClient.delete(this.baseUrl + '/Admin/Category/' + id, { headers: headerContent, observe: 'body' });
+    }
+
     GetCategory(categoryId: number) {
         const headerContent = new HttpHeaders()
             .set('Content-Type', 'applicaiton/json')

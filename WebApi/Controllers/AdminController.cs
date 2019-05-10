@@ -56,7 +56,7 @@ namespace WebApi.Controllers
             return _Category.GetById(id);
         }
 
-        [Route("Admin/Category")]
+        [Route("Admin/Category/{id:int}")]
         [HttpDelete]
         public object CategoryDelete(int id)
         {

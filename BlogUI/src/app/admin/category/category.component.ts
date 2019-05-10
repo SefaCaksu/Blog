@@ -17,18 +17,23 @@ export class CategoryComponent implements OnInit {
   category = new CategoryModel();
   filter = new CategoryFilterModel();
   submitButton: string;
+  deleteId :number;
 
 
 
   ngOnInit() {
     this.submitButton = "Kategori Ekle";
+    this.filter.filterStatus = 1
     this.List("", true);
   }
 
   onFilter() {
     if (this.filter != null && this.filter != undefined) {
-      let statu = this.filter.filterStatus == "1";
-      this.List(this.filter.filterName, statu);
+      if(this.filter.filterName == "undefined" || this.filter.filterName == undefined){
+        this.filter.filterName = "";
+      }
+
+      this.List(this.filter.filterName, this.filter.filterStatus == 1);
     }
   }
 
@@ -38,7 +43,7 @@ export class CategoryComponent implements OnInit {
         (res: any) => {
           if (res.IsSuccess == true) {
             this.toastr.success("Kategori başarıyla düzenlendi.", 'Başarılı');
-            this.List("", true);
+            this.List("", this.filter.filterStatus == 1);
           } else {
 
           }
@@ -57,7 +62,8 @@ export class CategoryComponent implements OnInit {
         (res: any) => {
           if (res.IsSuccess == true) {
             this.toastr.success("Kategori başarıyla eklendi.", 'Başarılı');
-            this.List("", true);
+            
+            this.List("", this.filter.filterStatus == 1);
           } else {
 
           }
@@ -75,12 +81,38 @@ export class CategoryComponent implements OnInit {
   }
 
   onEdit(id: number) {
-    $('#categoryDeleteModal').modal('show');
     this.categoryService.GetCategory(id).subscribe(
       (res: any) => {
         if (res.IsSuccess == true) {
           this.submitButton = "Kategori Düzenle";
           this.category = res.Result;
+        } else { };
+      },
+      (e) => {
+        var er = e.error.Error;
+        if (er.ValidationErrors != null) {
+          er.ValidationErrors.forEach(function (value) {
+            this.toastr.error(value.Field, value.Message);
+          });
+        }
+        this.toastr.error(er.Message, er.Details);
+      }
+    );
+  }
+
+  onDeleteConfirm(id){
+    $('#categoryDeleteModal').modal('show');
+    $(".modal-backdrop").css("z-index", "1");
+    this.deleteId = id;
+  }
+
+  onDelete(){
+    this.categoryService.DeleteCategory(this.deleteId).subscribe(
+      (res: any) => {
+        if (res.IsSuccess == true) {
+          this.toastr.success("Kategori başarıyla silindi.", 'Başarılı');
+          $('#categoryDeleteModal').modal('hide');
+          this.List("", this.filter.filterStatus == 1);
         } else { };
       },
       (e) => {
@@ -111,7 +143,7 @@ export class CategoryComponent implements OnInit {
       },
       e => {
         var er = e.error.Error;
-        if (er.ValidationErrors != null) {
+        if (er.ValidationErrors != undefined && er.ValidationErrors != null) {
           er.ValidationErrors.forEach(function (value) {
             this.toastr.error(value.Field, value.Message);
           });
