@@ -144,6 +144,14 @@ namespace WebApi.Controllers
             return _Tag.List(name, active);
         }
 
+        [Route("Admin/Tag/{id:int}")]
+        [HttpGet]
+        public DtoTag TagGetById(int id)
+        {
+            return _Tag.GetById(id);
+        }
+
+
         [Route("Admin/Tag")]
         [HttpPost]
         public object TagAdd([FromBody]string name)
@@ -161,7 +169,7 @@ namespace WebApi.Controllers
             return tag.Id;
         }
 
-        [Route("Admin/Tag")]
+        [Route("Admin/Tag/{id:int}")]
         [HttpDelete]
         public object TagDelete(int id)
         {

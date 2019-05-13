@@ -24,6 +24,7 @@ import { TagComponent } from './admin/tag/tag.component';
 
 import { ProfileService } from './services/profile.service';
 import { CategoryService } from './services/category.service';
+import { TagService } from './services/tag.service';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { CategoryService } from './services/category.service';
   ],
   providers: [
     ProfileService,
-    CategoryService
+    CategoryService,
+    TagService
   ],
   bootstrap: [AppComponent]
 })

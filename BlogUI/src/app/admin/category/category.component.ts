@@ -19,8 +19,6 @@ export class CategoryComponent implements OnInit {
   submitButton: string;
   deleteId :number;
 
-
-
   ngOnInit() {
     this.submitButton = "Kategori Ekle";
     this.filter.filterStatus = 1

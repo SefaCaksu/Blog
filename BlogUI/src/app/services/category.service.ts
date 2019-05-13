@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { CategoryModel } from '../models/CategoryModel';
 
-@Injectable({ providedIn: 'root' }) // burada root yazılırsa app.module.ts içinde  providers: kısmına bu servisin adının yazılmasına gerek yok (Angular 6)
+@Injectable({ providedIn: 'root' })
 export class CategoryService {
     baseUrl: string = "https://localhost:5001";
     constructor(private httpClient: HttpClient) { }
