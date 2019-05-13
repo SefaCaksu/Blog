@@ -16,6 +16,7 @@ namespace Entity
         public DbSet<Article> Articles { get; set; }
         public DbSet<ArticleTag> ArticleTags { get; set; }
         public DbSet<News> News { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
