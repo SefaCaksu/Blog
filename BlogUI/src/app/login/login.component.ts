@@ -16,7 +16,9 @@ export class LoginComponent implements OnInit {
   user = new UserModel();
 
   ngOnInit() {
-  
+    if(this.jwt.TokenControl === true){
+      this.router.navigate(['admin']);
+    }
   }
 
   onLogin() {
@@ -29,7 +31,6 @@ export class LoginComponent implements OnInit {
           } else {
             let token = res.Result.substring(0, res.Result.length - 1).substring(1, res.Result.length);
             localStorage.setItem("blogToken", token);
-            console.log(token);
             this.router.navigate(['admin']);
           }
         } else {
