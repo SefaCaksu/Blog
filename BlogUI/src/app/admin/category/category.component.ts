@@ -3,6 +3,8 @@ import { CategoryService } from 'src/app/services/category.service';
 import { CategoryModel } from 'src/app/models/CategoryModel';
 import { ToastrService } from 'ngx-toastr';
 import { CategoryFilterModel } from 'src/app/models/CategoryFilterModel';
+import { JwtService } from 'src/app/services/jwt.service.';
+import { Router } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -12,22 +14,26 @@ declare var $: any;
 })
 export class CategoryComponent implements OnInit {
 
-  constructor(private categoryService: CategoryService, private toastr: ToastrService) { }
+  constructor(private categoryService: CategoryService, private toastr: ToastrService, private jwt: JwtService, private router: Router) { }
   categories: CategoryModel[];
   category = new CategoryModel();
   filter = new CategoryFilterModel();
   submitButton: string;
-  deleteId :number;
+  deleteId: number;
 
   ngOnInit() {
-    this.submitButton = "Kategori Ekle";
-    this.filter.filterStatus = 1
-    this.List("", true);
+    if (this.jwt.TokenControl === false) {
+      this.router.navigate(['login']);
+    } else {
+      this.submitButton = "Kategori Ekle";
+      this.filter.filterStatus = 1
+      this.List("", true);
+    }
   }
 
   onFilter() {
     if (this.filter != null && this.filter != undefined) {
-      if(this.filter.filterName == "undefined" || this.filter.filterName == undefined){
+      if (this.filter.filterName == "undefined" || this.filter.filterName == undefined) {
         this.filter.filterName = "";
       }
 
@@ -60,7 +66,7 @@ export class CategoryComponent implements OnInit {
         (res: any) => {
           if (res.IsSuccess == true) {
             this.toastr.success("Kategori başarıyla eklendi.", 'Başarılı');
-            
+
             this.List("", this.filter.filterStatus == 1);
           } else {
 
@@ -98,13 +104,13 @@ export class CategoryComponent implements OnInit {
     );
   }
 
-  onDeleteConfirm(id){
+  onDeleteConfirm(id) {
     $('#categoryDeleteModal').modal('show');
     $(".modal-backdrop").css("z-index", "1");
     this.deleteId = id;
   }
 
-  onDelete(){
+  onDelete() {
     this.categoryService.DeleteCategory(this.deleteId).subscribe(
       (res: any) => {
         if (res.IsSuccess == true) {

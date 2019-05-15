@@ -3,6 +3,8 @@ import { TagService } from 'src/app/services/tag.service';
 import { TagModel } from 'src/app/models/TagModel';
 import { ToastrService } from 'ngx-toastr';
 import { TagFilterModel } from 'src/app/models/TagFilterModel';
+import { JwtService } from 'src/app/services/jwt.service.';
+import { Router } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -12,23 +14,27 @@ declare var $: any;
 })
 export class TagComponent implements OnInit {
 
-  constructor(private tagService: TagService, private toastr: ToastrService) { }
+  constructor(private tagService: TagService, private toastr: ToastrService, private jwt: JwtService, private router: Router) { }
 
   tags: TagModel[];
   tag = new TagModel();
   filter = new TagFilterModel();
   submitButton: string;
-  deleteId :number;
+  deleteId: number;
 
   ngOnInit() {
-    this.submitButton = "Tag Ekle";
-    this.filter.filterStatus = 1
-    this.List("", true);
+    if (this.jwt.TokenControl === false) {
+      this.router.navigate(['login']);
+    } else {
+      this.submitButton = "Tag Ekle";
+      this.filter.filterStatus = 1
+      this.List("", true);
+    }
   }
 
   onFilter() {
     if (this.filter != null && this.filter != undefined) {
-      if(this.filter.filterName == "undefined" || this.filter.filterName == undefined){
+      if (this.filter.filterName == "undefined" || this.filter.filterName == undefined) {
         this.filter.filterName = "";
       }
 
@@ -61,7 +67,7 @@ export class TagComponent implements OnInit {
         (res: any) => {
           if (res.IsSuccess == true) {
             this.toastr.success("Tag başarıyla eklendi.", 'Başarılı');
-            
+
             this.List("", this.filter.filterStatus == 1);
           } else {
 
@@ -99,13 +105,13 @@ export class TagComponent implements OnInit {
     );
   }
 
-  onDeleteConfirm(id){
+  onDeleteConfirm(id) {
     $('#tagDeleteModal').modal('show');
     $(".modal-backdrop").css("z-index", "1");
     this.deleteId = id;
   }
 
-  onDelete(){
+  onDelete() {
     this.tagService.DeleteTag(this.deleteId).subscribe(
       (res: any) => {
         if (res.IsSuccess == true) {

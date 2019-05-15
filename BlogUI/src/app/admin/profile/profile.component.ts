@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileModel } from 'src/app/models/ProfileModel';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { JwtService } from 'src/app/services/jwt.service.';
 
 @Component({
   selector: 'app-profile',
@@ -10,29 +12,36 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private profileService: ProfileService, private toastr: ToastrService) { }
+  constructor(private profileService: ProfileService, private toastr: ToastrService, private router: Router, private jwt: JwtService) { }
 
   profile = new ProfileModel();
 
   ngOnInit() {
-    this.profileService.GetProfile().subscribe(
-      (res: any) => {
-        if (res.IsSuccess == true) {
-          this.profile = res.Result;
-        } else {
-          console.log(res)
+    if (this.jwt.TokenControl === false) {
+      this.router.navigate(['login']);
+    } else {
+      this.profileService.GetProfile().subscribe(
+        (res: any) => {
+          if (res.IsSuccess == true) {
+            this.profile = res.Result;
+          } else {
+            console.log(res)
+          }
+        },
+        (e) => {
+          if (e.error.StatusCode == 401) {
+            this.router.navigate(['login']);
+          }
+          var er = e.error.Error;
+          if (er.ValidationErrors != null) {
+            er.ValidationErrors.forEach(function (value) {
+              this.toastr.error(value.Field, value.Message);
+            });
+          }
+          this.toastr.error(er.Message, er.Details);
         }
-      },
-      (e) => {
-        var er = e.error.Error;
-        if (er.ValidationErrors != null) {
-          er.ValidationErrors.forEach(function (value) {
-            this.toastr.error(value.Field, value.Message);
-          });
-        }
-        this.toastr.error(er.Message, er.Details);
-      }
-    );
+      );
+    }
   }
 
   onSubmit() {

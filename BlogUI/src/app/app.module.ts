@@ -21,10 +21,12 @@ import { ArticleListComponent } from './admin/article-list/article-list.componen
 import { ArticleAddComponent } from './admin/article-add/article-add.component';
 import { CategoryComponent } from './admin/category/category.component';
 import { TagComponent } from './admin/tag/tag.component';
+import { LoginComponent } from './login/login.component';
 
 import { ProfileService } from './services/profile.service';
 import { CategoryService } from './services/category.service';
 import { TagService } from './services/tag.service';
+
 
 
 @NgModule({
@@ -43,7 +45,8 @@ import { TagService } from './services/tag.service';
     ArticleListComponent,
     ArticleAddComponent,
     CategoryComponent,
-    TagComponent
+    TagComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,7 @@ import { TagService } from './services/tag.service';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,  
-    ToastrModule.forRoot() 
+    ToastrModule.forRoot()
   ],
   providers: [
     ProfileService,

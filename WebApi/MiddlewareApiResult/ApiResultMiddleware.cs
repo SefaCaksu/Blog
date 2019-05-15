@@ -123,6 +123,10 @@ namespace WebApi.MiddlewareApiResult
             {
                 apiError = new ApiError("Belirtilen URI bir içerik taşımıyor.");
             }
+            else if (statusCode == (int)HttpStatusCode.Unauthorized)
+            {
+                apiError = new ApiError("Oturum bilgilerini kontrol ediniz.");
+            }
             else
             {
                 apiError = new ApiError("İstek eşleşmiyor. Lütfen yetkili ile iletişime geçin.");

@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Dto;
 using Business.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controllers
 {
+    [Authorize()]
     [ApiController]
     public class AdminController : ControllerBase
     {

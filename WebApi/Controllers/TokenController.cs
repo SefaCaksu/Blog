@@ -26,9 +26,9 @@ namespace WebApi.Controllers
             if (userId > 0)
                 return new ObjectResult(GenerateToken(userId.ToString()));
 
-            return Unauthorized();
+            return new ObjectResult(0);
         }
-        private string GenerateToken(string id)
+        private object GenerateToken(string id)
         {
             var userClaims = new Claim[]{
                 new Claim(JwtRegisteredClaimNames.NameId ,id),

@@ -1,0 +1,21 @@
+<div class="pd-25">
+  <div class="login-form">
+    <div class="main-div">
+      <div class="panel">
+        <h2>Admin Girişi</h2>
+        <p>Lütfen kullanıcı adınızı ve şifrenizi giriniz.</p>
+      </div>
+      <form name="form" (ngSubmit)="f.form.valid && onLogin()" #f="ngForm" novalidate>
+        <div class="form-group">
+          <input type="text" class="form-control" name="name" id="name" placeholder="Kullanıcı Adı" [(ngModel)]="user.Name" #Name="ngModel"
+          required [ngClass]="{ 'is-invalid': f.submitted && Name.invalid }">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" name="password" id="password" placeholder="Şifre" [(ngModel)]="user.Password" #Password="ngModel"
+          required [ngClass]="{ 'is-invalid': f.submitted && Password.invalid }">
+        </div>
+        <button type="submit" class="btn btn-primary">Giriş Yap</button>
+      </form>
+    </div>
+  </div>
+</div>
