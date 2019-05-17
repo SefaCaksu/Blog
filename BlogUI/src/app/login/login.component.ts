@@ -16,9 +16,6 @@ export class LoginComponent implements OnInit {
   user = new UserModel();
 
   ngOnInit() {
-    if(this.jwt.TokenControl === true){
-      this.router.navigate(['admin']);
-    }
   }
 
   onLogin() {

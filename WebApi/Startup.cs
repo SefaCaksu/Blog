@@ -87,13 +87,13 @@ namespace WebApi
             {
                 c.SwaggerDoc("CoreSwagger", new Info
                 {
-                    Title = "Sefa Çaksu Blog",
-                    Version = "1.0.0",
+                    Title = Configuration.GetValue<string>("Swagger:Title"),
+                    Version = Configuration.GetValue<string>("Swagger:Version"),
                     Contact = new Contact()
                     {
-                        Name = "Sefa Çaksu",
-                        Url = "http://sefacaksu.com",
-                        Email = "sefacaksu@gmail.com"
+                        Name = Configuration.GetValue<string>("Swagger:Contact:Name"),
+                        Url = Configuration.GetValue<string>("Swagger:Contact:Url"),
+                        Email = Configuration.GetValue<string>("Swagger:Contact:Email")
                     },
                 });
             });
@@ -112,7 +112,7 @@ namespace WebApi
 
             app.UseApiResultMiddleware();
             app.UseCors(corsPolicyBuilder =>
-                corsPolicyBuilder.WithOrigins("http://localhost:4200")
+                corsPolicyBuilder.WithOrigins(Configuration.GetValue<string>("UIUrl"))
                 .AllowAnyMethod()
                 .AllowAnyHeader()
             );
@@ -121,7 +121,7 @@ namespace WebApi
             app.UseMvc();
             app.UseSwagger().UseSwaggerUI(c =>
                {
-                   c.SwaggerEndpoint("/swagger/CoreSwagger/swagger.json", "sefacaksu");
+                   c.SwaggerEndpoint("/swagger/CoreSwagger/swagger.json", "SpecBlog");
                });
         }
     }
