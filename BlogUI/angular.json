@@ -25,6 +25,8 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/quill/dist/quill.snow.css",
+              "node_modules/quill/dist/quill.core.css",
               "src/assets/lib/perfect-scrollbar/css/perfect-scrollbar.css",
               "src/assets/styles.css"
             ],
@@ -33,6 +35,7 @@
               "src/assets/lib/popper/popper.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js",
+              "node_modules/quill/dist/quill.min.js",
               "src/assets/lib/modernizr/modernizr.js",
               "src/assets/default.js"
             ],

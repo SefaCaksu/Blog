@@ -5,6 +5,7 @@ using System.Text;
 using Business.Service;
 using Dto;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 namespace WebApi.Controllers
@@ -13,10 +14,12 @@ namespace WebApi.Controllers
     public class TokenController : ControllerBase
     {
         readonly IUser _User;
+        readonly IConfiguration _Configuration;
 
-        public TokenController(IUser user)
+        public TokenController(IUser user, IConfiguration configuration)
         {
             _User = user;
+            _Configuration = configuration;
         }
 
         [HttpPost("token")]
@@ -28,17 +31,17 @@ namespace WebApi.Controllers
 
             return new ObjectResult(0);
         }
+
         private object GenerateToken(string id)
         {
             var userClaims = new Claim[]{
                 new Claim(JwtRegisteredClaimNames.NameId ,id),
             };
 
-            SecurityKey securityKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes("key_dedigin_portekiz_somurge_devleti_olmadan_once_portekiz_portokal_bahcelerinde_bulunurdu."));
+            SecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_Configuration.GetValue<string>("Auth:IssuerSigningKey")));
             var token = new JwtSecurityToken(
-                issuer: "sefa-caksu.blog.com",
-                audience: "sefacaksu.blog.com",
+                issuer: _Configuration.GetValue<string>("Auth:ValidIssuer"),
+                audience: _Configuration.GetValue<string>("Auth:ValidAudience"),
                 claims: userClaims,
                 expires: DateTime.Now.AddMinutes(3),
                 signingCredentials: new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256)

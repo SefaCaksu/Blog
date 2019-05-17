@@ -38,9 +38,8 @@ namespace WebApi
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
             .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
-            //SEFA-PC\SQLEXPRESS01
             //Add Entity Context
-            var connection = @"Server=.;Database=Blog;Trusted_Connection=True;MultipleActiveResultSets=true";//Configuration.GetConnectionString("DatabaseConnection");
+            var connection = Configuration.GetConnectionString("DatabaseConnection");
             services.AddDbContext<BgContext>(options => options.UseSqlServer(connection, b => b.MigrationsAssembly("WebApi")));
 
             //Inject Service
@@ -49,6 +48,7 @@ namespace WebApi
             services.AddScoped<ITag, TagService>();
             services.AddScoped<IProfile, ProfileService>();
             services.AddScoped<IUser, UserService>();
+            services.AddSingleton<IConfiguration>(Configuration);
 
             //JWT
             services.AddAuthentication(options =>
@@ -60,13 +60,12 @@ namespace WebApi
                    options.TokenValidationParameters = new TokenValidationParameters
                    {
                        ValidateAudience = true,
-                       ValidAudience = "sefacaksu.blog.com",
+                       ValidAudience = Configuration.GetValue<string>("Auth:ValidAudience"),
                        ValidateIssuer = true,
-                       ValidIssuer = "sefa-caksu.blog.com",
+                       ValidIssuer = Configuration.GetValue<string>("Auth:ValidIssuer"),
                        ValidateLifetime = true,
                        ValidateIssuerSigningKey = true,
-                       IssuerSigningKey = new SymmetricSecurityKey(
-                           Encoding.UTF8.GetBytes("key_dedigin_portekiz_somurge_devleti_olmadan_once_portekiz_portokal_bahcelerinde_bulunurdu."))
+                       IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetValue<string>("Auth:IssuerSigningKey")))
                    };
 
                    options.Events = new JwtBearerEvents
