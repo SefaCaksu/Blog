@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';    
 import { ToastrModule } from 'ngx-toastr'; 
+import { QuillModule } from 'ngx-quill'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -54,7 +55,8 @@ import { TagService } from './services/tag.service';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,  
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    QuillModule
   ],
   providers: [
     ProfileService,
