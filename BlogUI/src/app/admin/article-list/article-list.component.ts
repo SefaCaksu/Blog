@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class ArticleListComponent implements OnInit {
 
+  articleText = "<p>Makale içeriği</p>";
+
   constructor(private jwt : JwtService, private router: Router) {
     if (this.jwt.TokenControl === false) {
       this.router.navigate(['login']);

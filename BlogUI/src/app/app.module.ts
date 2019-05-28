@@ -28,6 +28,28 @@ import { ProfileService } from './services/profile.service';
 import { CategoryService } from './services/category.service';
 import { TagService } from './services/tag.service';
 
+const toolbarOptions = [
+  { size: [ 'small', false, 'large', 'huge' ]},
+  {},
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'link',
+  'image',
+  {},
+  { 'color': [] },
+  { 'background': [] },
+  {},
+  { 'indent': '-1'},
+  { 'indent': '+1' },
+  { 'list': 'ordered'},
+  { 'list': 'bullet' },
+  { 'align': [] },
+  {},
+  'code-block',
+  'clean'
+];
 
 
 @NgModule({
@@ -56,7 +78,13 @@ import { TagService } from './services/tag.service';
     HttpClientModule,
     BrowserAnimationsModule,  
     ToastrModule.forRoot(),
-    QuillModule
+    QuillModule.forRoot({
+      modules:{
+        syntax: true,
+        toolbar: [toolbarOptions]
+      }
+    }
+    ),
   ],
   providers: [
     ProfileService,
