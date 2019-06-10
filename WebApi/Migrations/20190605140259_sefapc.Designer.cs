@@ -4,14 +4,16 @@ using Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace WebApi.Migrations
 {
     [DbContext(typeof(BgContext))]
-    partial class BgContextModelSnapshot : ModelSnapshot
+    [Migration("20190605140259_sefapc")]
+    partial class sefapc
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,11 +40,6 @@ namespace WebApi.Migrations
 
                     b.Property<byte[]>("Img")
                         .HasColumnName("IMG");
-
-                    b.Property<string>("Introduction")
-                        .IsRequired()
-                        .HasColumnName("INTRODUCTION")
-                        .HasMaxLength(200);
 
                     b.Property<int?>("ReadCount")
                         .HasColumnName("READ_COUNT");

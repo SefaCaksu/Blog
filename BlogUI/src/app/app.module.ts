@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';    
 import { ToastrModule } from 'ngx-toastr'; 
-import { QuillModule } from 'ngx-quill'
+import { QuillModule } from 'ngx-quill';
+import { Select2Module } from 'ng2-select2';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileService } from './services/profile.service';
 import { CategoryService } from './services/category.service';
 import { TagService } from './services/tag.service';
+
 
 const toolbarOptions = [
   { size: [ 'small', false, 'large', 'huge' ]},
@@ -81,10 +83,11 @@ const toolbarOptions = [
     QuillModule.forRoot({
       modules:{
         syntax: true,
-        toolbar: [toolbarOptions]
+        toolbar: [toolbarOptions],
       }
     }
     ),
+    Select2Module
   ],
   providers: [
     ProfileService,

@@ -126,6 +126,7 @@ namespace Business
                 CategoryId = c.CategoryId,
                 CategoryName = c.Category.Name,
                 Title = c.Title,
+                Introduction = c.Introduction,
                 Img = Convert.ToBase64String(c.Img),
                 CreatedDate = c.CreatedDate
             }).OrderBy(c => c.CreatedDate).Skip((page - 1) * rowCount).Take(rowCount).ToList();

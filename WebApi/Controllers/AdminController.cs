@@ -106,10 +106,10 @@ namespace WebApi.Controllers
 
         [Route("Admin/Article")]
         [HttpPost]
-        public object ArticleAdd([FromBody]DtoArticleParams article)
+        public object ArticleAdd()
         {
-            _Article.Add(article);
-            return article.Title;
+            //_Article.Add(article);
+            return "";
         }
 
         [Route("Admin/Article")]

@@ -22,6 +22,11 @@ namespace Entity
         [Required(ErrorMessage = "Article title is invalid.")]
         public string Title { get; set; }
 
+         [Column("INTRODUCTION")]
+        [StringLength(200)]
+        [Required(ErrorMessage = "Article introduction is invalid.")]
+        public string Introduction { get; set; }
+
         [Column("BODY")]
         [Required(ErrorMessage = "Article content is invalid.")]
         public string Body { get; set; }
