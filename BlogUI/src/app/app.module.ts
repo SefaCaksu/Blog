@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';    
 import { ToastrModule } from 'ngx-toastr'; 
 import { QuillModule } from 'ngx-quill';
-import { Select2Module } from 'ng2-select2';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -87,7 +87,7 @@ const toolbarOptions = [
       }
     }
     ),
-    Select2Module
+    NgMultiSelectDropDownModule.forRoot(),
   ],
   providers: [
     ProfileService,

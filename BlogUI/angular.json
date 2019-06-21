@@ -27,14 +27,12 @@
               "node_modules/font-awesome/css/font-awesome.css",
               "src/assets/lib/perfect-scrollbar/css/perfect-scrollbar.css",
               "node_modules/quill/dist/quill.snow.css",
-              "node_modules/select2/dist/css/select2.min.css",
               "src/assets/styles.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "src/assets/lib/popper/popper.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/select2/dist/js/select2.min.js",
               "src/assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js",
               "node_modules/ngx-quill/bundles/ngx-quill.umd.js",
               "node_modules/quill/dist/quill.js",

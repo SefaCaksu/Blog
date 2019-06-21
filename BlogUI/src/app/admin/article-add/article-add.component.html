@@ -2,60 +2,77 @@
     <div class="d-flex align-items-center justify-content-between">
         <h6 class="tx-size-12 tx-size-sm-14 tx-white tx-uppercase tx-spacing-2 mg-b-0">MAKALE YÖNET</h6>
         <a routerLink="/admin" class="tx-gray-light tx-uppercase tx-size-12">ANASAYFAYA DÖN <i
-        class="fa fa-angle-right"></i></a>
+                class="fa fa-angle-right"></i></a>
     </div>
     <hr class="bd-color-gray">
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
-                    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                    <form name="form" (ngSubmit)="f.form.valid && onSubmit(file.files)" #f="ngForm" novalidate>
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="name">Başlık</label>
-                                    <input type="text" class="form-control" name="title" id="title" [(ngModel)]="article.Title" #Title="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && Title.invalid }">
+                                    <input type="text" class="form-control" name="title" id="title"
+                                        [(ngModel)]="article.Title" #Title="ngModel" required>
+                                        <small class="form-text text-danger" [hidden]="!Title.invalid ">Makale başlığını giriniz.</small>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="name">Kategori</label>
-                                    <select type="text" class="form-control" name="category" id="category" [(ngModel)]="article.CategoryId" #CategoryId="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && CategoryId.invalid }">
-                                        <option  *ngFor="let category of categories;" [value]="category.Id">
+                                    <select type="text" class="form-control" name="category" id="category"
+                                        [(ngModel)]="article.CategoryId" #CategoryId="ngModel" required
+                                        >
+                                        <option *ngFor="let category of categories;" [value]="category.Id">
                                             {{category.Name}}
                                         </option>
                                     </select>
+                                    <small class="form-text text-danger" [hidden]="!CategoryId.invalid ">Makalenin bağlı olduğu kategoriyi seçiniz.</small>
+
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="name">Tag</label>
-                                    <select2 class="form-control select-form" [width]="400" [options]="options" [data]="tags"></select2>
+                                    <ng-multiselect-dropdown name="test" [placeholder]="'Tagları seçiniz.'" [data]="tags"
+                                        [(ngModel)]="selectedItems" [settings]="dropdownSettings"
+                                        >
+                                    </ng-multiselect-dropdown>
+                                    <small class="form-text text-danger" [hidden]="selectedItems != undefined">Makalenin bağlı olduğu kategoriyi seçiniz.</small>
                                 </div>
                             </div>
                             <div class="col-sm-8">
                                 <div class="form-group">
                                     <label for="name">Tanıtım</label>
-                                    <textarea type="text" class="form-control" name="introduction" id="introduction" required [ngClass]="{ 'is-invalid': f.submitted && Introduction.invalid }"></textarea>
+                                    <textarea type="text" class="form-control" name="introduction" id="introduction"
+                                        [(ngModel)]="article.Introduction" #Introduction="ngModel" required></textarea>
                                 </div>
+                                <small class="form-text text-danger" [hidden]="!Introduction.invalid ">Makale tanıtımını giriniz.</small>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="name">File</label>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                                        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                        <input type="file" #file class="custom-file-input" id="file" name="file" required>
+                                        <label class="custom-file-label" for="validatedCustomFile">Choose
+                                            file...</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-12">
-                                <quill-editor></quill-editor>
+                                <quill-editor name="content" id="content"
+                                [(ngModel)]="article.Content" #Content="ngModel" required
+                                [ngClass]="{ 'is-invalid': f.submitted && Content.invalid }"></quill-editor>
+                                <small class="form-text text-danger" [hidden]="!Content.invalid ">Makale içeriğini giriniz.</small>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col-sm-12 text-right">
-                                <button type="submit" class="btn btn-primary mt-2">Kaydet</button>
+                                <br style="clear: both;">
+                                <br><br>
+                                <button type="submit" class="btn btn-primary">Kaydet</button>
                             </div>
                         </div>
                     </form>

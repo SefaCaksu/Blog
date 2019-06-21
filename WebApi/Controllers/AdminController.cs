@@ -6,6 +6,7 @@ using Dto;
 using Business.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json.Linq;
 
 namespace WebApi.Controllers
 {
@@ -108,8 +109,10 @@ namespace WebApi.Controllers
         [HttpPost]
         public object ArticleAdd()
         {
-            //_Article.Add(article);
-            return "";
+            var a = Request.Form.Files[0];
+            var value = Request.Form.FirstOrDefault(c => c.Key == "DtoArticleParams").Value;
+            var CLS = Newtonsoft.Json.JsonConvert.DeserializeObject<DtoArticleParams>(value);      
+            return "wefwer";
         }
 
         [Route("Admin/Article")]

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { JwtService } from 'src/app/services/jwt.service.';
 import { Router } from '@angular/router';
-import { Select2OptionData } from 'ng2-select2';
 import { ArticleService } from 'src/app/services/article.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { TagService } from 'src/app/services/tag.service';
 import { ArticleParamsModel } from 'src/app/models/ArticleParamsModel';
 import { CategoryModel } from 'src/app/models/CategoryModel';
 import { ToastrService } from 'ngx-toastr';
+import { TagModel } from 'src/app/models/TagModel';
 
 
 @Component({
@@ -16,10 +16,13 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./article-add.component.css']
 })
 export class ArticleAddComponent implements OnInit {
-  public tags: Array<Select2OptionData>;
-  public options: Select2Options;
-  article={}
-  categories : CategoryModel[]
+  article={};
+  categories : CategoryModel[];
+  dropdownSettings = {};
+  tags = [];
+  selectedItems : TagModel[];
+  file :any;
+  
 
   constructor(private jwt: JwtService, private router: Router, private articleService: ArticleService, private categoryService: CategoryService, private tagService: TagService, private toastr: ToastrService) {
     if (this.jwt.TokenControl === false) {
@@ -28,10 +31,6 @@ export class ArticleAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.options = {
-      multiple: true
-    }
-
     this.categoryService.GetCategories(true, "").subscribe(
       (res: any) => {
         if (res.IsSuccess == true) {
@@ -51,11 +50,7 @@ export class ArticleAddComponent implements OnInit {
       this.tagService.GetTags(true, "").subscribe(
         (res: any) => {
           if (res.IsSuccess == true) {
-            this.tags = res.Result.map(function(tag){
-              return {"id": tag.Id, "text": tag.Name}
-            });
-
-            console.log(this.tags);
+            this.tags = res.Result;
           }
         },
         e => {
@@ -67,11 +62,31 @@ export class ArticleAddComponent implements OnInit {
           }
           this.toastr.error(er.Message, er.Details);
         })
+
+        this.dropdownSettings = {
+          singleSelection: false,
+          idField: 'Id',
+          textField: 'Name',
+          selectAllText: 'Tümünü Seç',
+          unSelectAllText: 'Tümünü Kaldır',
+          itemsShowLimit: 3,
+          allowSearchFilter: true
+        };
     
   }
 
-  onSubmit(){
-
+  onSubmit(files){
+    let fileToUpload = <File>files[0];
+    var formdata = new FormData();
+    formdata.append("file", fileToUpload);
+    formdata.append("DtoArticleParams", JSON.stringify(this.article));
+    this.articleService.PostArticle(formdata).subscribe(
+      (res: any) => {
+        if (res.IsSuccess == true) {
+          this.tags = res.Result;
+        }
+      }
+     )
   }
 
 }

@@ -39,7 +39,7 @@ namespace WebApi
             .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
             //Add Entity Context
-            var connection = @"Server=.\SQLEXPRESS;Database=Blog;Trusted_Connection=True;MultipleActiveResultSets=true";//Configuration.GetConnectionString("DatabaseConnection");
+            var connection ="Server=.\\;Database=Blog;Trusted_Connection=True;MultipleActiveResultSets=true";//Configuration.GetConnectionString("DatabaseConnection");
             services.AddDbContext<BgContext>(options => options.UseSqlServer(connection, b => b.MigrationsAssembly("WebApi")));
 
             //Inject Service

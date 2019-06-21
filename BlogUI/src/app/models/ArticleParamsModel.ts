@@ -3,6 +3,7 @@ export class ArticleParamsModel {
     CategoryId: number;
     Title: string;
     Body: string;
-    TagIds: number[];
+    Introduction: string;
+    TagIds: string[];
     Img: File;
 }

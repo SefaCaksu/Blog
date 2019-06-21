@@ -9,11 +9,12 @@ export class ArticleService {
     constructor(private httpClient: HttpClient) { }
 
     PostArticle(formData: FormData) {
+        console.log(formData);
         const headerContent = new HttpHeaders()
-            .set('Content-Type', 'application/json')
-            .set('Accept', "application/json")
+            // .set('Content-Type', 'application/json')
+            // .set('Accept', "application/json")
             .set("Authorization", "Bearer " + this.token);
 
-        return this.httpClient.post(this.baseUrl + '/Admin/Article', formData, { headers: headerContent, observe: 'body' });
+        return this.httpClient.post(this.baseUrl + '/Admin/Article', formData, { headers: headerContent, observe: 'events' });
     }
 }
