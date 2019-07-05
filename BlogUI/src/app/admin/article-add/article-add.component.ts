@@ -16,7 +16,7 @@ import { TagModel } from 'src/app/models/TagModel';
   styleUrls: ['./article-add.component.css']
 })
 export class ArticleAddComponent implements OnInit {
-  article={};
+  article = new ArticleParamsModel();
   categories : CategoryModel[];
   dropdownSettings = {};
   tags = [];
@@ -77,16 +77,24 @@ export class ArticleAddComponent implements OnInit {
 
   onSubmit(files){
     let fileToUpload = <File>files[0];
+
+    let tagArr : number[] = [];
+    this.selectedItems.forEach(item => {
+      tagArr.push(item.Id);
+    });
+
+    this.article.TagIds = tagArr;
+
     var formdata = new FormData();
+
     formdata.append("file", fileToUpload);
     formdata.append("DtoArticleParams", JSON.stringify(this.article));
+
     this.articleService.PostArticle(formdata).subscribe(
       (res: any) => {
         if (res.IsSuccess == true) {
-          this.tags = res.Result;
         }
       }
      )
   }
-
 }

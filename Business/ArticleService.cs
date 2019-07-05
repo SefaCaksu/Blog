@@ -22,6 +22,7 @@ namespace Business
             article.CategoryId = param.CategoryId;
             article.Title = param.Title;
             article.Body = param.Body;
+            article.Introduction = param.Introduction;
             article.CreatedDate = DateTime.Now;
             article.Img = param.Img;
 

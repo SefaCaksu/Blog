@@ -7,6 +7,7 @@ using Business.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json.Linq;
+using System.IO;
 
 namespace WebApi.Controllers
 {
@@ -109,10 +110,29 @@ namespace WebApi.Controllers
         [HttpPost]
         public object ArticleAdd()
         {
-            var a = Request.Form.Files[0];
             var value = Request.Form.FirstOrDefault(c => c.Key == "DtoArticleParams").Value;
-            var CLS = Newtonsoft.Json.JsonConvert.DeserializeObject<DtoArticleParams>(value);      
-            return "wefwer";
+
+            if(String.IsNullOrEmpty(value))
+            {
+                return "";
+            }
+
+            var article = Newtonsoft.Json.JsonConvert.DeserializeObject<DtoArticleParams>(value);
+            var file = Request.Form.Files[0];
+
+            if(file == null){
+                return "";
+            }
+
+            using (var target = new MemoryStream())
+            {
+                file.CopyToAsync(target);
+                article.Img = target.ToArray();
+            }
+
+            _Article.Add(article);
+
+            return article.Title;
         }
 
         [Route("Admin/Article")]

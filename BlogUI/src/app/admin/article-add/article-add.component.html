@@ -62,10 +62,10 @@
                                 </div>
                             </div>
                             <div class="col-sm-12">
-                                <quill-editor name="content" id="content"
-                                [(ngModel)]="article.Content" #Content="ngModel" required
-                                [ngClass]="{ 'is-invalid': f.submitted && Content.invalid }"></quill-editor>
-                                <small class="form-text text-danger" [hidden]="!Content.invalid ">Makale içeriğini giriniz.</small>
+                                <quill-editor name="body" id="body"
+                                [(ngModel)]="article.Body" #Body="ngModel" required
+                                [ngClass]="{ 'is-invalid': f.submitted && Body.invalid }"></quill-editor>
+                                <small class="form-text text-danger" [hidden]="!Body.invalid ">Makale içeriğini giriniz.</small>
                             </div>
                         </div>
                         <div class="row">

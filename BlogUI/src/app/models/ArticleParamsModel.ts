@@ -4,6 +4,6 @@ export class ArticleParamsModel {
     Title: string;
     Body: string;
     Introduction: string;
-    TagIds: string[];
+    TagIds: number[];
     Img: File;
 }
