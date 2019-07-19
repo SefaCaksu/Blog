@@ -24,6 +24,7 @@ const routes: Routes = [
   { path: 'admin/profile', component: ProfileComponent },
   { path: 'admin/articlelist', component: ArticleListComponent },
   { path: 'admin/articleadd', component: ArticleAddComponent },
+  { path: 'admin/articleadd/:id', component: ArticleAddComponent },
   { path: 'admin/category', component: CategoryComponent },
   { path: 'admin/tag', component: TagComponent },
   { path: '404', component: ErrorComponent },

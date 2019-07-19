@@ -4,10 +4,11 @@ import { Router } from '@angular/router';
 import { ArticleService } from 'src/app/services/article.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { TagService } from 'src/app/services/tag.service';
-import { ArticleParamsModel } from 'src/app/models/ArticleParamsModel';
+import { ArticleModel } from 'src/app/models/ArticleParamsModel';
 import { CategoryModel } from 'src/app/models/CategoryModel';
 import { ToastrService } from 'ngx-toastr';
 import { TagModel } from 'src/app/models/TagModel';
+import {ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -16,15 +17,25 @@ import { TagModel } from 'src/app/models/TagModel';
   styleUrls: ['./article-add.component.css']
 })
 export class ArticleAddComponent implements OnInit {
-  article = new ArticleParamsModel();
-  categories : CategoryModel[];
+  article = new ArticleModel();
+  categories: CategoryModel[];
   dropdownSettings = {};
   tags = [];
-  selectedItems : TagModel[];
-  file :any;
-  
+  selectedItems: TagModel[];
+  file: any;
+  articleId : number = 0;
 
-  constructor(private jwt: JwtService, private router: Router, private articleService: ArticleService, private categoryService: CategoryService, private tagService: TagService, private toastr: ToastrService) {
+
+
+  constructor(
+    private jwt: JwtService, 
+    private router: Router,
+     private articleService: ArticleService, 
+     private categoryService: CategoryService, 
+     private tagService: TagService,
+     private route: ActivatedRoute,
+    private toastr: ToastrService
+    ) {
     if (this.jwt.TokenControl === false) {
       this.router.navigate(['login']);
     }
@@ -47,38 +58,50 @@ export class ArticleAddComponent implements OnInit {
         this.toastr.error(er.Message, er.Details);
       })
 
-      this.tagService.GetTags(true, "").subscribe(
-        (res: any) => {
-          if (res.IsSuccess == true) {
-            this.tags = res.Result;
-          }
-        },
-        e => {
-          var er = e.error.Error;
-          if (er.ValidationErrors != undefined && er.ValidationErrors != null) {
-            er.ValidationErrors.forEach(function (value) {
-              this.toastr.error(value.Field, value.Message);
-            });
-          }
-          this.toastr.error(er.Message, er.Details);
-        })
+    this.tagService.GetTags(true, "").subscribe(
+      (res: any) => {
+        if (res.IsSuccess == true) {
+          this.tags = res.Result;
+        }
+      },
+      e => {
+        var er = e.error.Error;
+        if (er.ValidationErrors != undefined && er.ValidationErrors != null) {
+          er.ValidationErrors.forEach(function (value) {
+            this.toastr.error(value.Field, value.Message);
+          });
+        }
+        this.toastr.error(er.Message, er.Details);
+      })
 
-        this.dropdownSettings = {
-          singleSelection: false,
-          idField: 'Id',
-          textField: 'Name',
-          selectAllText: 'Tümünü Seç',
-          unSelectAllText: 'Tümünü Kaldır',
-          itemsShowLimit: 3,
-          allowSearchFilter: true
-        };
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'Id',
+      textField: 'Name',
+      selectAllText: 'Tümünü Seç',
+      unSelectAllText: 'Tümünü Kaldır',
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
+
+    let param = this.route.snapshot.paramMap.get("id");
     
+    if(param != null && param != undefined){
+      this.articleId = parseInt(param);
+      this.articleService.GetArticle(this.articleId).subscribe((res:any)=>{
+        console.log(res);
+        if(res.success === true){
+          this.article = res.Result;
+          console.log(this.article);
+        }
+      })
+    }
   }
 
-  onSubmit(files){
+  onSubmit(files) {
     let fileToUpload = <File>files[0];
 
-    let tagArr : number[] = [];
+    let tagArr: number[] = [];
     this.selectedItems.forEach(item => {
       tagArr.push(item.Id);
     });
@@ -92,9 +115,8 @@ export class ArticleAddComponent implements OnInit {
 
     this.articleService.PostArticle(formdata).subscribe(
       (res: any) => {
-        if (res.IsSuccess == true) {
-        }
+          this.toastr.success("Makale başarı ile kayıt altına alınmıştır.", "Başarılı");
       }
-     )
+    )
   }
 }

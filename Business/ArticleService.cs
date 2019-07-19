@@ -72,25 +72,26 @@ namespace Business
             dc.Remove(article);
             dc.SaveChanges();
         }
-
         public DtoArticle GetById(int id)
         {
-            var data = base.Get(id);
+            var data =  dc.Articles.FirstOrDefault(c=> c.Id == id);
+            
+            var article = new DtoArticle();
 
-            DtoArticle article = new DtoArticle();
+            if(article != null){
+                var category = dc.Categories.FirstOrDefault(c=> c.Id == data.CategoryId);
+                var articleTags = dc.ArticleTags.Where(c=> c.ArticleId == data.Id).ToList();
 
-            if (data != null)
-            {
                 article.Id = data.Id;
                 article.CategoryId = data.CategoryId;
-                article.CategoryName = data.Category.Name;
+                article.CategoryName = category.Name;
+                article.Introduction = data.Introduction;
                 article.Title = data.Title;
-                article.Body = data.Body;
                 article.Img = Convert.ToBase64String(data.Img);
-                article.Tags = dc.Tags.Where(c => data.ArticleTags.Any(t => t.TagId == c.Id)).Select(c => new DtoTag()
-                {
-                    Id = c.Id,
-                    Name = c.Name
+                article.Body = data.Body;
+                article.Tags = dc.Tags.Where(c=> articleTags.Any(t=> t.TagId == c.Id)).Select(c=> new DtoTag{
+                     Id = c.Id,
+                     Name = c.Name
                 }).ToList();
             }
 

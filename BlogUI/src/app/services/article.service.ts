@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { ArticleModel } from '../models/ArticleParamsModel';
 
 @Injectable({ providedIn: 'root' })
 export class ArticleService {
@@ -12,5 +13,15 @@ export class ArticleService {
         const headerContent = new HttpHeaders().set("Authorization", "Bearer " + this.token);
 
         return this.httpClient.post(this.baseUrl + '/Admin/Article', formData, { headers: headerContent, observe: 'events' });
+    }
+
+    
+    GetArticle(articleId: number) {
+        const headerContent = new HttpHeaders()
+            .set('Content-Type', 'applicaiton/json')
+            .set('Accept', 'application/json')
+            .set("Authorization", "Bearer " + this.token);
+
+        return this.httpClient.get<ArticleModel>(this.baseUrl + "/Admin/Article/" + articleId, { headers: headerContent, observe: 'body' });
     }
 }

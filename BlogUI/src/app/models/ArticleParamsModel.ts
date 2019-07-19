@@ -1,9 +1,9 @@
-export class ArticleParamsModel {
+export class ArticleModel {
     Id : number;
     CategoryId: number;
     Title: string;
     Body: string;
     Introduction: string;
     TagIds: number[];
-    Img: File;
+    Img: string;
 }

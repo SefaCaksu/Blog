@@ -53,10 +53,6 @@ export class CategoryService {
             .set('Accept', 'application/json')
             .set("Authorization", "Bearer " + this.token);
 
-        let params: any = {
-            "id": categoryId
-        };
-        
         return this.httpClient.get<CategoryModel>(this.baseUrl + "/Admin/Category/" + categoryId, { headers: headerContent, observe: 'body' });
     }
 }
