@@ -94,7 +94,7 @@ namespace WebApi.Controllers
 
         [Route("Admin/Article")]
         [HttpGet]
-        public object ArticleList(string title, int? categoryId, int? tagId, int page, int rowCount)
+        public object ArticleList(string title, int page, int rowCount, int categoryId, int tagId)
         {
             return _Article.List(title, categoryId, tagId, page, rowCount);
         }
@@ -112,7 +112,7 @@ namespace WebApi.Controllers
         {
             var value = Request.Form.FirstOrDefault(c => c.Key == "DtoArticleParams").Value;
 
-            if(String.IsNullOrEmpty(value))
+            if (String.IsNullOrEmpty(value))
             {
                 return "";
             }
@@ -120,7 +120,8 @@ namespace WebApi.Controllers
             var article = Newtonsoft.Json.JsonConvert.DeserializeObject<DtoArticleParams>(value);
             var file = Request.Form.Files[0];
 
-            if(file == null){
+            if (file == null)
+            {
                 return "";
             }
 
@@ -130,16 +131,38 @@ namespace WebApi.Controllers
                 article.Img = target.ToArray();
             }
 
-            _Article.Add(article);
-
-            return article.Title;
+            return _Article.Add(article);
         }
 
         [Route("Admin/Article")]
         [HttpPut]
-        public object ArticleEdit([FromBody]DtoArticleParams article)
+        public object ArticleEdit()
         {
+            var value = Request.Form.FirstOrDefault(c => c.Key == "DtoArticleParams").Value;
+
+            if (String.IsNullOrEmpty(value))
+            {
+                return "";
+            }
+
+            var article = Newtonsoft.Json.JsonConvert.DeserializeObject<DtoArticleParams>(value);
+
+            if (Request.Form.Files.Count <= 0)
+            {
+                article.Img = null;
+            }
+            else
+            {
+                var file = Request.Form.Files[0];
+                using (var target = new MemoryStream())
+                {
+                    file.CopyToAsync(target);
+                    article.Img = target.ToArray();
+                }
+            }
+
             _Article.Update(article);
+
             return article.Title;
         }
 
@@ -153,7 +176,7 @@ namespace WebApi.Controllers
 
         [Route("Admin/ArticleCount")]
         [HttpGet]
-        public object ArticleCount(string title, int? categoryId, int? tagId)
+        public object ArticleCount(string title, int categoryId, int tagId)
         {
             return _Article.Count(title, categoryId, tagId);
         }

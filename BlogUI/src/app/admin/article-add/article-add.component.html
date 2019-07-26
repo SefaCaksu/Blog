@@ -43,11 +43,11 @@
                                     <small class="form-text text-danger" [hidden]="selectedItems != undefined">Makalenin bağlı olduğu kategoriyi seçiniz.</small>
                                 </div>
                             </div>
-                            <div class="col-sm-8">
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="name">Tanıtım</label>
                                     <textarea type="text" class="form-control" name="introduction" id="introduction"
-                                        [(ngModel)]="article.Introduction" #Introduction="ngModel" required></textarea>
+                                        [(ngModel)]="article.Introduction" #Introduction="ngModel" rows="4" required></textarea>
                                 </div>
                                 <small class="form-text text-danger" [hidden]="!Introduction.invalid ">Makale tanıtımını giriniz.</small>
                             </div>
@@ -61,10 +61,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-sm-4">
+                                <img [src]="article.Img" class="img-thumbnail" alt="Cinque Terre" width="304" height="236" [hidden]="articleId == 0"> 
+                            </div>
                             <div class="col-sm-12">
                                 <quill-editor name="body" id="body"
-                                [(ngModel)]="article.Body" #Body="ngModel" required
-                                [ngClass]="{ 'is-invalid': f.submitted && Body.invalid }"></quill-editor>
+                                [(ngModel)]="article.Body" #Body="ngModel" required></quill-editor>
                                 <small class="form-text text-danger" [hidden]="!Body.invalid ">Makale içeriğini giriniz.</small>
                             </div>
                         </div>

@@ -8,7 +8,7 @@ import { ArticleModel } from 'src/app/models/ArticleParamsModel';
 import { CategoryModel } from 'src/app/models/CategoryModel';
 import { ToastrService } from 'ngx-toastr';
 import { TagModel } from 'src/app/models/TagModel';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -23,19 +23,19 @@ export class ArticleAddComponent implements OnInit {
   tags = [];
   selectedItems: TagModel[];
   file: any;
-  articleId : number = 0;
+  articleId: number = 0;
 
 
 
   constructor(
-    private jwt: JwtService, 
+    private jwt: JwtService,
     private router: Router,
-     private articleService: ArticleService, 
-     private categoryService: CategoryService, 
-     private tagService: TagService,
-     private route: ActivatedRoute,
+    private articleService: ArticleService,
+    private categoryService: CategoryService,
+    private tagService: TagService,
+    private route: ActivatedRoute,
     private toastr: ToastrService
-    ) {
+  ) {
     if (this.jwt.TokenControl === false) {
       this.router.navigate(['login']);
     }
@@ -85,20 +85,15 @@ export class ArticleAddComponent implements OnInit {
     };
 
     let param = this.route.snapshot.paramMap.get("id");
-    
-    if(param != null && param != undefined){
+
+    if (param != null && param != undefined) {
       this.articleId = parseInt(param);
-      this.articleService.GetArticle(this.articleId).subscribe((res:any)=>{
-        console.log(res);
-        if(res.success === true){
-          this.article = res.Result;
-          console.log(this.article);
-        }
-      })
+      this.GetArticle(this.articleId);
     }
   }
 
   onSubmit(files) {
+    this.article.Img = "";
     let fileToUpload = <File>files[0];
 
     let tagArr: number[] = [];
@@ -110,13 +105,37 @@ export class ArticleAddComponent implements OnInit {
 
     var formdata = new FormData();
 
-    formdata.append("file", fileToUpload);
+    if (fileToUpload != null) {
+      formdata.append("file", fileToUpload);
+    }
+
     formdata.append("DtoArticleParams", JSON.stringify(this.article));
 
-    this.articleService.PostArticle(formdata).subscribe(
-      (res: any) => {
+    if (this.articleId == 0) {
+      this.articleService.PostArticle(formdata).subscribe(
+        (res: any) => {
+          console.log(res.Result);
           this.toastr.success("Makale başarı ile kayıt altına alınmıştır.", "Başarılı");
+          this.router.navigate(['/admin/articleadd', res.Result]);
+        }
+      )
+    } else {
+      this.articleService.PutArticle(formdata).subscribe(
+        (res: any) => {
+          this.GetArticle(this.articleId);
+          this.toastr.success("Makale başarı ile düzenlenmiştir.", "Başarılı");
+        }
+      )
+    }
+  }
+
+  GetArticle(articleId:number){
+    this.articleService.GetArticle(articleId).subscribe((res: any) => {
+      if (res.IsSuccess == true) {
+        this.article = res.Result;
+        console.log(res.Result.Tags);
+        this.selectedItems = res.Result.Tags;
       }
-    )
+    })
   }
 }

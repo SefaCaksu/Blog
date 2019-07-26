@@ -6,4 +6,5 @@ export class ArticleModel {
     Introduction: string;
     TagIds: number[];
     Img: string;
+    CreatedDate: Date;
 }
