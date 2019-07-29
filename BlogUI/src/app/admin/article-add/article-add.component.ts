@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { JwtService } from 'src/app/services/jwt.service.';
 import { Router } from '@angular/router';
 import { ArticleService } from 'src/app/services/article.service';
 import { CategoryService } from 'src/app/services/category.service';
@@ -28,7 +27,6 @@ export class ArticleAddComponent implements OnInit {
 
 
   constructor(
-    private jwt: JwtService,
     private router: Router,
     private articleService: ArticleService,
     private categoryService: CategoryService,
@@ -36,9 +34,7 @@ export class ArticleAddComponent implements OnInit {
     private route: ActivatedRoute,
     private toastr: ToastrService
   ) {
-    if (this.jwt.TokenControl === false) {
-      this.router.navigate(['login']);
-    }
+
   }
 
   ngOnInit() {

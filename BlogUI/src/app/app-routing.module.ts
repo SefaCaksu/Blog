@@ -12,6 +12,7 @@ import { ArticleAddComponent } from './admin/article-add/article-add.component';
 import { CategoryComponent } from './admin/category/category.component';
 import { TagComponent } from './admin/tag/tag.component';
 import { LoginComponent } from './login/login.component';
+import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/blog', pathMatch: 'full' },
@@ -20,13 +21,13 @@ const routes: Routes = [
   { path: 'fincandibi', component: CupComponent },
   { path: 'detail/:title', component: DetailComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'admin/profile', component: ProfileComponent },
-  { path: 'admin/articlelist', component: ArticleListComponent },
-  { path: 'admin/articleadd', component: ArticleAddComponent },
-  { path: 'admin/articleadd/:id', component: ArticleAddComponent },
-  { path: 'admin/category', component: CategoryComponent },
-  { path: 'admin/tag', component: TagComponent },
+  { path: 'admin', component: AdminComponent, canActivate : [AuthService] },
+  { path: 'admin/profile', component: ProfileComponent, canActivate : [AuthService] },
+  { path: 'admin/articlelist', component: ArticleListComponent, canActivate : [AuthService] },
+  { path: 'admin/articleadd', component: ArticleAddComponent, canActivate : [AuthService] },
+  { path: 'admin/articleadd/:id', component: ArticleAddComponent, canActivate : [AuthService] },
+  { path: 'admin/category', component: CategoryComponent , canActivate : [AuthService]},
+  { path: 'admin/tag', component: TagComponent, canActivate : [AuthService] },
   { path: '404', component: ErrorComponent },
   { path: '**', redirectTo: '/404' }
 ];

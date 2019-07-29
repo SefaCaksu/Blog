@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { JwtService } from '../services/jwt.service.';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -9,12 +7,9 @@ import { Router } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private jwt : JwtService, private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
-    if (this.jwt.TokenControl === false) {
-      this.router.navigate(['login']);
-    }
   }
 
 }

@@ -75,7 +75,7 @@ namespace Business
         public void Delete(int id)
         {
             var article = base.Get(id);
-            dc.RemoveRange(article.ArticleTags);
+            dc.RemoveRange(dc.ArticleTags.Where(c=> c.ArticleId == id));
             dc.Remove(article);
             dc.SaveChanges();
         }

@@ -47479,3 +47479,13 @@ form{
   border: 1px solid red;
   border-radius: 5px;
 }
+
+.breadcrumb{
+    display: flex;
+    flex-wrap: wrap;
+    padding: .3rem 1rem!important;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: #282c35;
+    border-radius: .25rem;
+}

@@ -166,7 +166,7 @@ namespace WebApi.Controllers
             return article.Title;
         }
 
-        [Route("Admin/Article")]
+        [Route("Admin/Article/{id:int}")]
         [HttpDelete]
         public object ArticleDelete(int id)
         {

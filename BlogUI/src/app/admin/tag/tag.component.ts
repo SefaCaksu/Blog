@@ -3,8 +3,6 @@ import { TagService } from 'src/app/services/tag.service';
 import { TagModel } from 'src/app/models/TagModel';
 import { ToastrService } from 'ngx-toastr';
 import { TagFilterModel } from 'src/app/models/TagFilterModel';
-import { JwtService } from 'src/app/services/jwt.service.';
-import { Router } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -14,7 +12,7 @@ declare var $: any;
 })
 export class TagComponent implements OnInit {
 
-  constructor(private tagService: TagService, private toastr: ToastrService, private jwt: JwtService, private router: Router) { }
+  constructor(private tagService: TagService, private toastr: ToastrService) { }
 
   tags: TagModel[];
   tag = new TagModel();
@@ -23,13 +21,9 @@ export class TagComponent implements OnInit {
   deleteId: number;
 
   ngOnInit() {
-    if (this.jwt.TokenControl === false) {
-      this.router.navigate(['login']);
-    } else {
       this.submitButton = "Tag Ekle";
       this.filter.filterStatus = 1
       this.List("", true);
-    }
   }
 
   onFilter() {

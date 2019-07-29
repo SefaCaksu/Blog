@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';    
 import { ToastrModule } from 'ngx-toastr'; 
 import { QuillModule } from 'ngx-quill';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
 import { CupComponent } from './cup/cup.component';
@@ -28,6 +28,9 @@ import { LoginComponent } from './login/login.component';
 import { ProfileService } from './services/profile.service';
 import { CategoryService } from './services/category.service';
 import { TagService } from './services/tag.service';
+import { ArticleService } from './services/article.service';
+import { AuthService } from './services/auth.service';
+import { ErrorInterceptor } from './services/error.interceptor.service';
 
 
 const toolbarOptions = [
@@ -92,7 +95,10 @@ const toolbarOptions = [
   providers: [
     ProfileService,
     CategoryService,
-    TagService
+    TagService,
+    ArticleService,
+    AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

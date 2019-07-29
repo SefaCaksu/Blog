@@ -3,8 +3,6 @@ import { CategoryService } from 'src/app/services/category.service';
 import { CategoryModel } from 'src/app/models/CategoryModel';
 import { ToastrService } from 'ngx-toastr';
 import { CategoryFilterModel } from 'src/app/models/CategoryFilterModel';
-import { JwtService } from 'src/app/services/jwt.service.';
-import { Router } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -14,7 +12,7 @@ declare var $: any;
 })
 export class CategoryComponent implements OnInit {
 
-  constructor(private categoryService: CategoryService, private toastr: ToastrService, private jwt: JwtService, private router: Router) { }
+  constructor(private categoryService: CategoryService, private toastr: ToastrService) { }
   categories: CategoryModel[];
   category = new CategoryModel();
   filter = new CategoryFilterModel();
@@ -22,13 +20,9 @@ export class CategoryComponent implements OnInit {
   deleteId: number;
 
   ngOnInit() {
-    if (this.jwt.TokenControl === false) {
-      this.router.navigate(['login']);
-    } else {
       this.submitButton = "Kategori Ekle";
       this.filter.filterStatus = 1
       this.List("", true);
-    }
   }
 
   onFilter() {

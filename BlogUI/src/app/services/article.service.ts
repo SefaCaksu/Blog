@@ -21,6 +21,15 @@ export class ArticleService {
         return this.httpClient.put(this.baseUrl + '/Admin/Article', formData, { headers: headerContent, observe: 'events' });
     }
 
+    DeleteArticle(id: number){
+        const headerContent = new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .set("Authorization", "Bearer " + this.token);
+
+        return this.httpClient.delete(this.baseUrl + '/Admin/Article/' + id, { headers: headerContent, observe: 'body' });
+    }
+
     GetArticle(articleId: number) {
         const headerContent = new HttpHeaders()
             .set('Content-Type', 'applicaiton/json')

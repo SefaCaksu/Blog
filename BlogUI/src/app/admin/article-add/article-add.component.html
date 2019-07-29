@@ -1,8 +1,15 @@
 <div class="pd-25">
     <div class="d-flex align-items-center justify-content-between">
         <h6 class="tx-size-12 tx-size-sm-14 tx-white tx-uppercase tx-spacing-2 mg-b-0">MAKALE YÖNET</h6>
-        <a routerLink="/admin" class="tx-gray-light tx-uppercase tx-size-12">ANASAYFAYA DÖN <i
-                class="fa fa-angle-right"></i></a>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/admin">Anasayfa</a></li>
+                <li class="breadcrumb-item"><a routerLink="/admin/profile">Profil</a></li>
+                <li class="breadcrumb-item" ><a routerLink="/admin/articlelist">Makaleler</a></li>
+                <li class="breadcrumb-item" ><a routerLink="/admin/category">Kategoriler</a></li>
+                <li class="breadcrumb-item" ><a routerLink="/admin/tag">Taglar</a></li>
+            </ol>
+        </nav>
     </div>
     <hr class="bd-color-gray">
     <div class="row">

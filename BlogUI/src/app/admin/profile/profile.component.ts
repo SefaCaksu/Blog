@@ -3,7 +3,6 @@ import { ProfileModel } from 'src/app/models/ProfileModel';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { JwtService } from 'src/app/services/jwt.service.';
 
 @Component({
   selector: 'app-profile',
@@ -12,14 +11,11 @@ import { JwtService } from 'src/app/services/jwt.service.';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private profileService: ProfileService, private toastr: ToastrService, private router: Router, private jwt: JwtService) { }
+  constructor(private profileService: ProfileService, private toastr: ToastrService, private router: Router) { }
 
   profile = new ProfileModel();
 
   ngOnInit() {
-    if (this.jwt.TokenControl === false) {
-      this.router.navigate(['login']);
-    } else {
       this.profileService.GetProfile().subscribe(
         (res: any) => {
           if (res.IsSuccess == true) {
@@ -41,7 +37,6 @@ export class ProfileComponent implements OnInit {
           this.toastr.error(er.Message, er.Details);
         }
       );
-    }
   }
 
   onSubmit() {
