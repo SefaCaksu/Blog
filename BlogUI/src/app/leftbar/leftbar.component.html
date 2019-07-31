@@ -18,66 +18,12 @@
     <h6 class="tx-info tx-size-11 tx-uppercase tx-spacing-2">KATEGORİLER</h6>
   </div>
   <ul class="nav nav-outline-vertical nav-gray-light flex-column wd-100p">
-    <li class="nav-item">
-      <a href="#" class="nav-link pd-x-25 active">
+    <li class="nav-item" *ngFor="let category of categories">
+      <a [routerLink]="[ '/makaleler']" [queryParams]="{category:category.Id}" class="nav-link pd-x-25">
         <div class="d-flex align-items-center">
           <i class="icon ion-ios-albums-outline tx-size-32 lh-0 mg-r-10"></i>
-          <span class="mg-r-auto">Overview</span>
-          <span class="tx-normal tx-size-12 tx-gray-light">52</span>
-        </div>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link pd-x-25">
-        <div class="d-flex align-items-center">
-          <i class="icon ion-ios-albums-outline tx-size-32 lh-0 mg-r-10"></i>
-          <span class="mg-r-auto">Genres</span>
-          <span class="tx-normal tx-size-12 tx-gray-light">9</span>
-        </div>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link pd-x-25">
-        <div class="d-flex align-items-center">
-          <i class="icon ion-ios-albums-outline tx-size-32 lh-0 mg-r-10"></i>
-          <span class="mg-r-auto">Charts</span>
-          <span class="tx-normal tx-size-12 tx-gray-light">33</span>
-        </div>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link pd-x-25">
-        <div class="d-flex align-items-center">
-          <i class="icon ion-ios-albums-outline tx-size-32 lh-0 mg-r-10"></i>
-          <span class="mg-r-auto">Discover</span>
-          <span class="tx-normal tx-size-12 tx-gray-light">25</span>
-        </div>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link pd-x-25">
-        <div class="d-flex align-items-center">
-          <i class="icon ion-ios-albums-outline tx-size-32 lh-0 mg-r-10"></i>
-          <span class="mg-r-auto">Concerts</span>
-          <span class="tx-normal tx-size-12 tx-gray-light">5</span>
-        </div>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link pd-x-25">
-        <div class="d-flex align-items-center">
-          <i class="icon ion-ios-albums-outline tx-size-32 lh-0 mg-r-10"></i>
-          <span class="mg-r-auto">New Releases</span>
-          <span class="tx-normal tx-size-12 tx-gray-light">7</span>
-        </div>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link pd-x-25">
-        <div class="d-flex align-items-center">
-          <i class="icon ion-ios-albums-outline tx-size-32 lh-0 mg-r-10"></i>
-          <span class="mg-r-auto">Podcast</span>
-          <span class="tx-normal tx-size-12 tx-gray-light">9</span>
+          <span class="mg-r-auto">{{category.Name}}</span>
+          <span class="tx-normal tx-size-12 tx-gray-light">{{category.ArticleCount}}</span>
         </div>
       </a>
     </li>
@@ -87,26 +33,9 @@
   </div>
   <div class="tagcloud">
     <ul>
-      <li><a href="#">tag<span>20</span></a></li>
-      <li><a href="#">tag<span>20</span></a></li>
-      <li><a href="#">tag<span>20</span></a></li>
-      <li><a href="#">tag<span>20</span></a></li>
-      <li><a href="#">tag<span>20</span></a></li>
-      <li><a href="#">tag<span>20</span></a></li>
-      <li><a href="#">tag<span>20</span></a></li>
-      <li><a href="#">tag<span>20</span></a></li>
-      <li><a href="#">tag<span>20</span></a></li>
-      <li><a href="#">Lorem ipsum dolor sit amet<span>20</span></a></li>
-      <li><a href="#">tag<span>20</span></a></li>
-      <li><a href="#">tag<span>20</span></a></li>
-      <li><a href="#">tag<span>20</span></a></li>
-      <li><a href="#">tag<span>20</span></a></li>
-      <li><a href="#">tag<span>20</span></a></li>
-      <li><a href="#">tag<span>20</span></a></li>
-      <li><a href="#">tag<span>20</span></a></li>
-      <li><a href="#">tag<span>20</span></a></li>
-      <li><a href="#">tag<span>20</span></a></li>
-      <li><a href="#">consectetur adipisicing elit<span>20</span></a></li>
+      <li *ngFor="let tag of tags">
+        <a [routerLink]="[ '/makaleler']" [queryParams]="{tag:tag.Id}">{{tag.Name}}</a>
+      </li>
     </ul>
   </div>
 

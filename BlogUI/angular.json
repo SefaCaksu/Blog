@@ -34,7 +34,7 @@
               "src/assets/lib/popper/popper.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js",
-              "node_modules/ngx-quill/bundles/ngx-quill.umd.js",
+      
               "node_modules/quill/dist/quill.js",
               "src/assets/lib/modernizr/modernizr.js",
               "src/assets/default.js"

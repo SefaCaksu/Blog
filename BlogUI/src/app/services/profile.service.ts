@@ -14,10 +14,13 @@ export class ProfileService {
   }
 
   GetProfile() {
-   
     const headerContent = new HttpHeaders()
       .set("Authorization", "Bearer " + this.token);
     return this.httpclient.get(this.baseUrl + '/Admin/Profile', { headers: headerContent});
+  }
+
+  GetBlogProfile() {
+    return this.httpclient.get(this.baseUrl + '/Profile');
   }
 
   PostProfile(profile: ProfileModel) {

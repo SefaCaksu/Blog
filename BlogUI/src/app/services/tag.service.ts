@@ -20,6 +20,10 @@ export class TagService {
         return this.httpClient.get(this.baseUrl + '/Admin/Tag', { params: param,  headers: headerContent });
     }
 
+    GetBlogTags() {
+        return this.httpClient.get(this.baseUrl + '/Tag');
+    }
+
     PostTag(tagName: string) {
         const headerContent = new HttpHeaders()
             .set('Content-Type', 'application/json')

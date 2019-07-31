@@ -1,19 +1,17 @@
 <div class="tx-center pd-y-25">
   <img src="assets/images/person.jpg" class="wd-100 rounded-circle" alt="">
-  <h6 class="tx-white mg-t-15 mg-b-2 tx-normal">Sefa Çaksu</h6>
-  <p class="mg-b-10">Software Developer - Human</p>
-
+  <h6 class="tx-white mg-t-15 mg-b-2 tx-normal">{{profile.Name}}</h6>
+  <p class="mg-b-10">{{profile.Title}}</p>
   <p class="pd-x-15 mg-b-5">
-    Bir şeyleri devamlı geliştirmeyi seven ve bu sebepten yazılım geliştiricisi olduğunu düşünen, hayata karşı biraz
-    rahatsız ama umutlu yaratılmış insan.
+    {{profile.Description}}
   </p>
 
   <nav class="nav tx-size-18 justify-content-center">
-    <a href="#" class="nav-link pd-x-5 tx-gray-light"><i class="fa fa-linkedin"></i></a>
-    <a href="#" class="nav-link pd-x-5 tx-gray-light"><i class="fa fa-medium"></i></a>
-    <a href="#" class="nav-link pd-x-5 tx-gray-light"><i class="fa fa-github"></i></a>
-    <a href="#" class="nav-link pd-x-5 tx-gray-light"><i class="fa fa-instagram"></i></a>
-    <a href="#" class="nav-link pd-x-5 tx-gray-light"><i class="fa fa-facebook"></i></a>
+    <a href="{{profile.Linkedin}}" target="_blank" class="nav-link pd-x-5 tx-gray-light"><i class="fa fa-linkedin"></i></a>
+    <a href="{{profile.Medium}}" target="_blank" class="nav-link pd-x-5 tx-gray-light"><i class="fa fa-medium"></i></a>
+    <a href="{{profile.Github}}" target="_blank" class="nav-link pd-x-5 tx-gray-light"><i class="fa fa-github"></i></a>
+    <a href="{{profile.Instagram}}" target="_blank" class="nav-link pd-x-5 tx-gray-light"><i class="fa fa-instagram"></i></a>
+    <a href="{{profile.Facebook}}" target="_blank" class="nav-link pd-x-5 tx-gray-light"><i class="fa fa-facebook"></i></a>
   </nav>
 </div>
 <div class="row no-gutters">

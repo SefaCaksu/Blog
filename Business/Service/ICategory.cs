@@ -11,5 +11,6 @@ namespace Business.Service
         void Delete(int id);
         void Edit(DtoCategory category);
         void Add (string name);
+        List<DtoCategory> List();
     }
 }

@@ -10,7 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
-import { CupComponent } from './cup/cup.component';
 import { DetailComponent } from './detail/detail.component';
 import { MainComponent } from './main/main.component';
 import { LeftbarComponent } from './leftbar/leftbar.component';
@@ -31,6 +30,7 @@ import { TagService } from './services/tag.service';
 import { ArticleService } from './services/article.service';
 import { AuthService } from './services/auth.service';
 import { ErrorInterceptor } from './services/error.interceptor.service';
+import { ArticlesComponent } from './articles/articles.component';
 
 
 const toolbarOptions = [
@@ -61,7 +61,6 @@ const toolbarOptions = [
   declarations: [
     AppComponent,
     ContactComponent,
-    CupComponent,
     DetailComponent,
     MainComponent,
     LeftbarComponent,
@@ -74,7 +73,8 @@ const toolbarOptions = [
     ArticleAddComponent,
     CategoryComponent,
     TagComponent,
-    LoginComponent
+    LoginComponent,
+    ArticlesComponent
   ],
   imports: [
     BrowserModule,

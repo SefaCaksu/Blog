@@ -20,6 +20,11 @@ export class CategoryService {
         return this.httpClient.get(this.baseUrl + '/Admin/Category', { params: param, headers: headerContent });
     }
 
+    GetBlogCategories() {
+        return this.httpClient.get(this.baseUrl + '/Category');
+    }
+
+
     PostCategory(categoryName: string) {
         const headerContent = new HttpHeaders()
             .set('Content-Type', 'application/json')

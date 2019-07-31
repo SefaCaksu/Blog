@@ -28,9 +28,9 @@ namespace Business
 
         public void Delete(int id)
         {
-           var deleteCategory = base.Get(id);
-           base.Delete(deleteCategory);
-           base.Save();
+            var deleteCategory = base.Get(id);
+            base.Delete(deleteCategory);
+            base.Save();
         }
 
         public void Edit(DtoCategory category)
@@ -46,29 +46,42 @@ namespace Business
 
         public DtoCategory GetById(int id)
         {
-           var data = base.Get(id);
+            var data = base.Get(id);
 
-           DtoCategory category = new DtoCategory();
-           category.Id = data.Id;
-           category.Name  = data.Name;
-           category.Active = data.Active;
+            DtoCategory category = new DtoCategory();
+            category.Id = data.Id;
+            category.Name = data.Name;
+            category.Active = data.Active;
 
-           return category;
+            return category;
         }
 
         public List<DtoCategory> List(string name, bool active)
         {
-            var list = dc.Categories.Where(c=> c.Active == active);
+            var list = dc.Categories.Where(c => c.Active == active);
 
-            if(!string.IsNullOrEmpty(name)){
-                list = list.Where(c=> c.Name.Contains(name));
+            if (!string.IsNullOrEmpty(name))
+            {
+                list = list.Where(c => c.Name.Contains(name));
             }
 
-            return list.Select(c=> new DtoCategory(){
-                 Id=c.Id,
+            return list.Select(c => new DtoCategory()
+            {
+                Id = c.Id,
                 Name = c.Name,
-                 Active = c.Active,
-                 ArticleCount = c.Articles.Count
+                Active = c.Active,
+                ArticleCount = c.Articles.Count
+            }).ToList();
+        }
+
+        public List<DtoCategory> List()
+        {
+            return dc.Categories.Where(c => c.Active).Select(c => new DtoCategory()
+            {
+                Id = c.Id,
+                Name = c.Name,
+                Active = c.Active,
+                ArticleCount = c.Articles.Count
             }).ToList();
         }
     }

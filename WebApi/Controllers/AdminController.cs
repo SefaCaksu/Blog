@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Dto;
 using Business.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using Newtonsoft.Json.Linq;
 using System.IO;
 
 namespace WebApi.Controllers
