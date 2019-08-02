@@ -93,7 +93,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public object ArticleList(string title, int page, int rowCount, int categoryId, int tagId)
         {
-            return _Article.List(title, categoryId, tagId, page, rowCount);
+            return _Article.List(title, categoryId, tagId, page, rowCount, 0);
         }
 
         [Route("Admin/Article/{id:int}")]
@@ -175,7 +175,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public object ArticleCount(string title, int categoryId, int tagId)
         {
-            return _Article.Count(title, categoryId, tagId);
+            return _Article.Count(title, categoryId, tagId, 0);
         }
 
         #endregion

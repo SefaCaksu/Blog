@@ -23,7 +23,7 @@ namespace Entity
         public string Title { get; set; }
 
          [Column("INTRODUCTION")]
-        [StringLength(200)]
+        [StringLength(500)]
         [Required(ErrorMessage = "Article introduction is invalid.")]
         public string Introduction { get; set; }
 
@@ -33,6 +33,10 @@ namespace Entity
 
         [Column("IMG")]
         public byte[] Img { get; set; }
+
+        
+        [Column("TYPE")]
+        public byte Type { get; set; }
 
         [Column("READ_COUNT")]
         public int? ReadCount { get; set; }

@@ -10,6 +10,13 @@ export class AdminComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if(localStorage.getItem("loginUrl") && localStorage.getItem("loginUrl")=="Login"){
+      localStorage.removeItem("loginUrl");
+      location.reload();
+    }else{
+      
+    }
+    
   }
 
 }

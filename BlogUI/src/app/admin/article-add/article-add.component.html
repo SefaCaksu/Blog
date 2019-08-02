@@ -5,9 +5,9 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a routerLink="/admin">Anasayfa</a></li>
                 <li class="breadcrumb-item"><a routerLink="/admin/profile">Profil</a></li>
-                <li class="breadcrumb-item" ><a routerLink="/admin/articlelist">Makaleler</a></li>
-                <li class="breadcrumb-item" ><a routerLink="/admin/category">Kategoriler</a></li>
-                <li class="breadcrumb-item" ><a routerLink="/admin/tag">Taglar</a></li>
+                <li class="breadcrumb-item"><a routerLink="/admin/articlelist">Makaleler</a></li>
+                <li class="breadcrumb-item"><a routerLink="/admin/category">Kategoriler</a></li>
+                <li class="breadcrumb-item"><a routerLink="/admin/tag">Taglar</a></li>
             </ol>
         </nav>
     </div>
@@ -23,64 +23,85 @@
                                     <label for="name">Başlık</label>
                                     <input type="text" class="form-control" name="title" id="title"
                                         [(ngModel)]="article.Title" #Title="ngModel" required>
-                                        <small class="form-text text-danger" [hidden]="!Title.invalid ">Makale başlığını giriniz.</small>
+                                    <small class="form-text text-danger" [hidden]="!Title.invalid ">Makale başlığını
+                                        giriniz.</small>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="name">Kategori</label>
                                     <select type="text" class="form-control" name="category" id="category"
-                                        [(ngModel)]="article.CategoryId" #CategoryId="ngModel" required
-                                        >
+                                        [(ngModel)]="article.CategoryId" #CategoryId="ngModel" required>
                                         <option *ngFor="let category of categories;" [value]="category.Id">
                                             {{category.Name}}
                                         </option>
                                     </select>
-                                    <small class="form-text text-danger" [hidden]="!CategoryId.invalid ">Makalenin bağlı olduğu kategoriyi seçiniz.</small>
-
+                                    <small class="form-text text-danger" [hidden]="!CategoryId.invalid ">Makalenin bağlı
+                                        olduğu kategoriyi seçiniz.</small>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="name">Tag</label>
-                                    <ng-multiselect-dropdown name="test" [placeholder]="'Tagları seçiniz.'" [data]="tags"
-                                        [(ngModel)]="selectedItems" [settings]="dropdownSettings"
-                                        >
+                                    <ng-multiselect-dropdown name="test" [placeholder]="'Tagları seçiniz.'"
+                                        [data]="tags" [(ngModel)]="selectedItems" [settings]="dropdownSettings">
                                     </ng-multiselect-dropdown>
-                                    <small class="form-text text-danger" [hidden]="selectedItems != undefined">Makalenin bağlı olduğu kategoriyi seçiniz.</small>
+                                    <small class="form-text text-danger" [hidden]="selectedItems != undefined">Makalenin
+                                        bağlı olduğu kategoriyi seçiniz.</small>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="name">Tanıtım</label>
                                     <textarea type="text" class="form-control" name="introduction" id="introduction"
-                                        [(ngModel)]="article.Introduction" #Introduction="ngModel" rows="4" required></textarea>
+                                        [(ngModel)]="article.Introduction" #Introduction="ngModel" rows="4"
+                                        required></textarea>
                                 </div>
-                                <small class="form-text text-danger" [hidden]="!Introduction.invalid ">Makale tanıtımını giriniz.</small>
+                                <small class="form-text text-danger" [hidden]="!Introduction.invalid ">Makale tanıtımını
+                                    giriniz.</small>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="name">File</label>
                                     <div class="custom-file">
-                                        <input type="file" #file class="custom-file-input" id="file" name="file" required>
+                                        <input type="file" #file class="custom-file-input" id="file" name="file"
+                                            required>
                                         <label class="custom-file-label" for="validatedCustomFile">Choose
                                             file...</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-4">
-                                <img [src]="article.Img" class="img-thumbnail" alt="Cinque Terre" width="304" height="236" [hidden]="articleId == 0"> 
+                                <img [src]="article.Img" class="img-thumbnail" alt="Cinque Terre" width="304"
+                                    height="236" [hidden]="articleId == 0">
                             </div>
                             <div class="col-sm-12">
-                                <quill-editor name="body" id="body"
-                                [(ngModel)]="article.Body" #Body="ngModel" required></quill-editor>
-                                <small class="form-text text-danger" [hidden]="!Body.invalid ">Makale içeriğini giriniz.</small>
+                                <quill-editor name="body" id="body" [(ngModel)]="article.Body" #Body="ngModel" required>
+                                </quill-editor>
+                                <small class="form-text text-danger" [hidden]="!Body.invalid ">Makale içeriğini
+                                    giriniz.</small>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-12 text-right">
-                                <br style="clear: both;">
-                                <br><br>
+                           
+                            <div class="col-sm-2">
+                                    <br style="clear: both;">
+                                    <br><br>
+                                    <br>
+                                    <div class="form-group">
+                                        <label for="name">Makale Tipi</label>
+                                        <select type="text" class="form-control" name="type" id="type"
+                                            [(ngModel)]="article.Type" #Type="ngModel" required>
+                                            <option [value]="0">Teknik Paylaşım</option>
+                                            <option [value]="1">Fincan Paylaşım</option>
+                                        </select>
+                                        <small class="form-text text-danger" [hidden]="!CategoryId.invalid ">Makalenin
+                                            tipini seçiniz.</small>
+                                    </div>
+                            </div>
+                            <div class="col-sm-10 text-right">
+                                    <br style="clear: both;">
+                                <br><br><br><br>
                                 <button type="submit" class="btn btn-primary">Kaydet</button>
                             </div>
                         </div>

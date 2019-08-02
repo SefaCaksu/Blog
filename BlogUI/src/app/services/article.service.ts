@@ -21,16 +21,17 @@ export class ArticleService {
         return this.httpClient.put(this.baseUrl + '/Admin/Article', formData, { headers: headerContent, observe: 'events' });
     }
 
-    DeleteArticle(id: number){
+    DeleteArticle(id: number) {
         const headerContent = new HttpHeaders()
-        .set('Content-Type', 'application/json')
-        .set('Accept', 'application/json')
-        .set("Authorization", "Bearer " + this.token);
+            .set('Content-Type', 'application/json')
+            .set('Accept', 'application/json')
+            .set("Authorization", "Bearer " + this.token);
 
         return this.httpClient.delete(this.baseUrl + '/Admin/Article/' + id, { headers: headerContent, observe: 'body' });
     }
 
     GetArticle(articleId: number) {
+
         const headerContent = new HttpHeaders()
             .set('Content-Type', 'applicaiton/json')
             .set('Accept', 'application/json')
@@ -64,6 +65,36 @@ export class ArticleService {
         }
 
         return this.httpClient.get(this.baseUrl + '/Admin/ArticleCount', { params: param, headers: headerContent });
+    }
+
+    GetBlogArticles(title: string, page: number, rowCount: number, type?: number, categoryId?: number, tagId?: number) {
+
+        let param: any = {
+            "title": title,
+            "page": page,
+            "rowCount": rowCount,
+            "categoryId": categoryId == null ? 0 : categoryId,
+            "tagId": tagId == null ? 0 : tagId,
+            "type": type == null ? 0 : type,
+        }
+
+        return this.httpClient.get(this.baseUrl + '/Article', { params: param });
+    }
+
+    GetBlogArticleCount(title: string, type?: number, categoryId?: number, tagId?: number) {
+
+        let param: any = {
+            "title": title,
+            "categoryId": categoryId == null ? 0 : categoryId,
+            "tagId": tagId == null ? 0 : tagId,
+            "type": type == null ? 0 : type,
+        }
+
+        return this.httpClient.get(this.baseUrl + '/ArticleCount', { params: param });
+    }
+
+    GetArticleTypeCount() {
+        return this.httpClient.get(this.baseUrl + '/ArticleTypeCount');
     }
 
 }

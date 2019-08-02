@@ -21,7 +21,6 @@ export class ProfileComponent implements OnInit {
           if (res.IsSuccess == true) {
             this.profile = res.Result;
           } else {
-            console.log(res)
           }
         },
         (e) => {

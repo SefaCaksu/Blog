@@ -110,7 +110,6 @@ export class ArticleAddComponent implements OnInit {
     if (this.articleId == 0) {
       this.articleService.PostArticle(formdata).subscribe(
         (res: any) => {
-          console.log(res.Result);
           this.toastr.success("Makale başarı ile kayıt altına alınmıştır.", "Başarılı");
           this.router.navigate(['/admin/articleadd', res.Result]);
         }
@@ -129,7 +128,6 @@ export class ArticleAddComponent implements OnInit {
     this.articleService.GetArticle(articleId).subscribe((res: any) => {
       if (res.IsSuccess == true) {
         this.article = res.Result;
-        console.log(res.Result.Tags);
         this.selectedItems = res.Result.Tags;
       }
     })

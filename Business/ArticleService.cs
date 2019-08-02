@@ -25,6 +25,7 @@ namespace Business
             article.Introduction = param.Introduction;
             article.CreatedDate = DateTime.Now;
             article.Img = param.Img;
+            article.Type = param.Type;
 
             dc.Articles.Add(article);
 
@@ -50,7 +51,7 @@ namespace Business
             article.Title = param.Title;
             article.Body = param.Body;
             article.Introduction = param.Introduction;
-            article.CreatedDate = DateTime.Now;
+            article.Type = param.Type;
 
             if (param.Img != null)
             {
@@ -75,7 +76,7 @@ namespace Business
         public void Delete(int id)
         {
             var article = base.Get(id);
-            dc.RemoveRange(dc.ArticleTags.Where(c=> c.ArticleId == id));
+            dc.RemoveRange(dc.ArticleTags.Where(c => c.ArticleId == id));
             dc.Remove(article);
             dc.SaveChanges();
         }
@@ -97,6 +98,7 @@ namespace Business
                 article.Title = data.Title;
                 article.Img = "data:image/png;base64," + Convert.ToBase64String(data.Img);
                 article.Body = data.Body;
+                article.Type = data.Type;
                 article.Tags = dc.Tags.Where(c => articleTags.Any(t => t.TagId == c.Id) && c.Active == true).Select(c => new DtoTag
                 {
                     Id = c.Id,
@@ -108,7 +110,7 @@ namespace Business
             return article;
         }
 
-        public List<DtoArticleShort> List(string title, int categoryId, int tagId, int page, int rowCount)
+        public List<DtoArticleShort> List(string title, int categoryId, int tagId, int page, int rowCount, byte type)
         {
             var articles = dc.Articles.Where(c => true);
 
@@ -125,6 +127,11 @@ namespace Business
             if (tagId > 0)
             {
                 articles = articles.Where(c => c.ArticleTags.Any(t => t.TagId == tagId));
+            }
+
+            if (type > 0)
+            {
+                articles = articles.Where(c => c.Type == type);
             }
 
             if (articles.Count() <= 0)
@@ -132,23 +139,34 @@ namespace Business
                 return new List<DtoArticleShort>();
             }
 
+
             var list = (from a in articles
                         join c in dc.Categories on a.CategoryId equals c.Id
                         orderby a.CreatedDate descending
-                        select new DtoArticleShort()
+                        select new
                         {
                             Id = a.Id,
                             CategoryId = a.CategoryId,
                             CategoryName = c.Name,
                             Title = a.Title,
                             Introduction = a.Introduction,
-                            CreatedDate = a.CreatedDate
-                        }).Skip((page - 1) * rowCount).Take(rowCount).ToList();
+                            CreatedDate = a.CreatedDate,
+                            Img = a.Img
+                        }).Skip((page - 1) * rowCount).Take(rowCount);
 
-            return list;
+            return list.Select(c => new DtoArticleShort()
+            {
+                Id = c.Id,
+                CategoryId = c.CategoryId,
+                CategoryName = c.CategoryName,
+                Title = c.Title,
+                Introduction = c.Introduction,
+                CreatedDate = c.CreatedDate,
+                Img = "data:image/png;base64," + Convert.ToBase64String(c.Img)
+            }).ToList();
         }
 
-        public int Count(string title, int categoryId, int tagId)
+        public int Count(string title, int categoryId, int tagId, byte type)
         {
             var articles = dc.Articles.Where(c => true);
 
@@ -167,7 +185,23 @@ namespace Business
                 articles = articles.Where(c => c.ArticleTags.Any(t => t.TagId == tagId));
             }
 
+            if (categoryId > 0)
+            {
+                articles = articles.Where(c => c.Type == type);
+            }
+
+
             return articles.Count();
+        }
+
+        public DtoTypeCount GetTypeCount()
+        {
+            var articles = dc.Articles.Where(c => true);
+            return new DtoTypeCount
+            {
+                TechnicalCount = articles.Count(c => c.Type == 0),
+                CupCount = articles.Count(c => c.Type == 1)
+            };
         }
     }
 }

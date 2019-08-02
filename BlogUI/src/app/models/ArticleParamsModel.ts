@@ -6,5 +6,6 @@ export class ArticleModel {
     Introduction: string;
     TagIds: number[];
     Img: string;
+    Type: number;
     CreatedDate: Date;
 }

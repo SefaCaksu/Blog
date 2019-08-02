@@ -21,7 +21,7 @@ export class JwtService {
   Logout() {
     localStorage.removeItem('blogToken');
   }
- 
+
   public get TokenControl(): boolean {
     return (localStorage.getItem('blogToken') !== null);
   }

@@ -7,31 +7,15 @@
   <hr class="mg-y-25 bd-color-gray">
 
   <div class="row">
-    <div class="col-sm-6 col-lg-3">
-      <img src="assets/images/img27.jpg" class="img-fluid rounded" alt="">
-      <h6 class="tx-size-14 tx-normal mg-t-15 mg-b-5"><a [routerLink]="['/detail', 'Test-baslik-gonder']" class="tx-white">Electric Guitar Soundtrack</a></h6>
-      <p class="mg-b-5">A calm and relaxing guitar soundtrack.</p>
+    <div class="col-sm-6 col-lg-3" *ngFor="let tech of techArticles">
+      <img [src]="tech.Img" class="img-fluid rounded" alt="{{tech.Title}}" style="width:500px;height: 250px;">
+      <h6 class="tx-size-14 tx-normal mg-t-15 mg-b-5">
+        <a [routerLink]="['/detail', 'Test-baslik-gonder']" class="tx-white">{{tech.Title}}</a>
+      </h6>
+      <p class="mg-b-5">{{tech.Introduction}}</p>
       <span class="tx-gray-light">10, 323 Listeners</span>
-    </div><!-- col-3 -->
-    <div class="col-sm-6 col-lg-3 mg-t-25 mg-sm-t-0">
-      <img src="assets/images/img26.jpg" class="img-fluid rounded" alt="">
-      <h6 class="tx-size-14 tx-normal mg-t-15 mg-b-5"><a href="#" class="tx-white">Ocean Deep Waves</a></h6>
-      <p class="mg-b-5">Relax to the sound of ocean deep waves.</p>
-      <span class="tx-gray-light">7, 323 Listeners</span>
-    </div><!-- col-3 -->
-    <div class="col-sm-6 col-lg-3 mg-t-25 mg-lg-t-0">
-      <img src="assets/images/img33.jpg" class="img-fluid rounded" alt="">
-      <h6 class="tx-size-14 tx-normal mg-t-15 mg-b-5"><a href="#" class="tx-white">Country Hit List</a></h6>
-      <p class="mg-b-5">A country album celebrating the best music.</p>
-      <span class="tx-gray-light">9, 992 Listeners</span>
-    </div><!-- col-3 -->
-    <div class="col-sm-6 col-lg-3 mg-t-25 mg-lg-t-0">
-      <img src="assets/images/img58.jpg" class="img-fluid rounded" alt="">
-      <h6 class="tx-size-14 tx-normal mg-t-15 mg-b-5"><a href="#" class="tx-white">All New All Now</a></h6>
-      <p class="mg-b-5">All the music you need to hear right now.</p>
-      <span class="tx-gray-light">5, 095 Listeners</span>
-    </div><!-- col-3 -->
-  </div><!-- row -->
+    </div>
+  </div>
 
   <div class="d-flex align-items-center justify-content-between mg-t-60">
     <h6 class="tx-size-12 tx-size-sm-14 tx-white tx-uppercase tx-spacing-2 mg-b-0">SON FİNCAN DİBİ YAZILARIM</h6>

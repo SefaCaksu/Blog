@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { TagModel } from '../models/TagModel';
+import { JwtService } from './jwt.service.';
 
 @Injectable({ providedIn: 'root' })
 export class TagService {

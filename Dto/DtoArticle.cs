@@ -12,6 +12,7 @@ namespace Dto
         public string Title { get; set; }
         public string Body { get; set; }
         public string Img { get; set; }
+        public byte Type {get;set;}
         public DateTime CreatedDate { get; set; }
         public List<DtoTag> Tags { get; set; }
     }

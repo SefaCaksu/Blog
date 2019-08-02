@@ -9,7 +9,6 @@ export class AuthService implements CanActivate {
   }
 
   canActivate(gidilecekSayfa: ActivatedRouteSnapshot, gelinenSayfa: RouterStateSnapshot): boolean {
-    console.log(localStorage.getItem('blogToken'));
       if (localStorage.getItem('blogToken') !== null)
           return true;
            

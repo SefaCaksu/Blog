@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
           } else {
             let token = res.Result.substring(0, res.Result.length - 1).substring(1, res.Result.length);
             localStorage.setItem("blogToken", token);
+            localStorage.setItem("loginUrl", "Login");
             this.router.navigate(['admin']);
           }
         } else {
