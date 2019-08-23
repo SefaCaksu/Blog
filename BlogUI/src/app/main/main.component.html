@@ -8,12 +8,17 @@
 
   <div class="row">
     <div class="col-sm-6 col-lg-3" *ngFor="let tech of techArticles">
-      <img [src]="tech.Img" class="img-fluid rounded" alt="{{tech.Title}}" style="width:500px;height: 250px;">
-      <h6 class="tx-size-14 tx-normal mg-t-15 mg-b-5">
-        <a [routerLink]="['/detail', 'Test-baslik-gonder']" class="tx-white">{{tech.Title}}</a>
-      </h6>
-      <p class="mg-b-5">{{tech.Introduction}}</p>
-      <span class="tx-gray-light">10, 323 Listeners</span>
+      <a [routerLink]="['/detail', 'Test-baslik-gonder']">
+        <img [src]="tech.Img" class="img-fluid rounded" alt="{{tech.Title}}" style="width:500px;height: 250px;"></a>
+      <div style="min-height: 32px;">
+        <h6 class="tx-size-14 tx-normal mg-t-15 mg-b-5">
+          <a [routerLink]="['/detail', 'Test-baslik-gonder']" class="tx-white">{{tech.Title}}</a>
+        </h6>
+      </div>
+      <p class="mg-b-5">{{tech.Introduction | slice:0:90}} <a [routerLink]="['/detail', 'Test-baslik-gonder']">...</a>
+      </p>
+      <span class="tx-primary tx-size-14">{{tech.CategoryName}} - </span><span
+        class="tx-gray-light">{{tech.CreatedDate  | date: 'dd/MM/yyyy'}}</span>
     </div>
   </div>
 
@@ -25,27 +30,20 @@
   <hr class="mg-y-25 bd-color-gray">
 
   <div class="row">
-    <div class="col-sm-6 col-lg-3">
-      <img src="assets/images/img47.jpg" class="img-fluid rounded" alt="">
-      <h6 class="tx-size-14 mg-t-15 mg-b-5 tx-normal"><a href="detail.html" class="tx-white">Katherine Lumaad</a></h6>
-      <span class="tx-gray-light">210, 323 Followers</span>
-    </div><!-- col-3 -->
-    <div class="col-sm-6 col-lg-3 mg-t-25 mg-sm-t-0">
-      <img src="assets/images/img197.jpg" class="img-fluid rounded" alt="">
-      <h6 class="tx-size-14 mg-t-15 mg-b-5 tx-normal"><a href="#" class="tx-white">Angeline Mercado</a></h6>
-      <span class="tx-gray-light">7, 323 Followers</span>
-    </div><!-- col-3 -->
-    <div class="col-sm-6 col-lg-3 mg-t-25 mg-lg-t-0">
-      <img src="assets/images/img202.jpg" class="img-fluid rounded" alt="">
-      <h6 class="tx-size-14 mg-t-15 mg-b-5 tx-normal"><a href="#" class="tx-white">Joyce Chua</a></h6>
-      <span class="tx-gray-light">143,021 Followers</span>
-    </div><!-- col-3 -->
-    <div class="col-sm-6 col-lg-3 mg-t-25 mg-lg-t-0">
-      <img src="assets/images/img200.jpg" class="img-fluid rounded" alt="">
-      <h6 class="tx-size-14 mg-t-15 mg-b-5 tx-normal"><a href="#" class="tx-white">Reynante Labares</a></h6>
-      <span class="tx-gray-light">21, 323 Followers</span>
-    </div><!-- col-3 -->
-  </div><!-- row -->
+    <div class="col-sm-6 col-lg-3" *ngFor="let tech of cupArticles">
+      <a [routerLink]="['/detail', 'Test-baslik-gonder']">
+        <img [src]="tech.Img" class="img-fluid rounded" alt="{{tech.Title}}" style="width:500px;height: 250px;"></a>
+      <div style="min-height: 32px;">
+        <h6 class="tx-size-14 tx-normal mg-t-15 mg-b-5">
+          <a [routerLink]="['/detail', 'Test-baslik-gonder']" class="tx-white">{{tech.Title}}</a>
+        </h6>
+      </div>
+      <p class="mg-b-5">{{tech.Introduction | slice:0:90}} <a [routerLink]="['/detail', 'Test-baslik-gonder']">...</a>
+      </p>
+      <span class="tx-primary tx-size-14">{{tech.CategoryName}} - </span><span
+        class="tx-gray-light">{{tech.CreatedDate  | date: 'dd/MM/yyyy'}}</span>
+    </div>
+  </div>
 
   <hr class="mg-t-60 bd-color-gray">
 

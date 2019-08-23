@@ -129,10 +129,7 @@ namespace Business
                 articles = articles.Where(c => c.ArticleTags.Any(t => t.TagId == tagId));
             }
 
-            if (type > 0)
-            {
-                articles = articles.Where(c => c.Type == type);
-            }
+            articles = articles.Where(c => c.Type == type);
 
             if (articles.Count() <= 0)
             {
