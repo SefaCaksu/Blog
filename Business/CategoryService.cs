@@ -80,6 +80,7 @@ namespace Business
             {
                 Id = c.Id,
                 Name = c.Name,
+                LinkName = c.Name.LinkReplace(),
                 Active = c.Active,
                 ArticleCount = c.Articles.Count
             }).ToList();

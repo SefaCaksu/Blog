@@ -129,13 +129,20 @@ namespace Business
                 articles = articles.Where(c => c.ArticleTags.Any(t => t.TagId == tagId));
             }
 
-            articles = articles.Where(c => c.Type == type);
+
+            if (type < 2)
+            {
+                articles = articles.Where(c => c.Type == type);
+            }
 
             if (articles.Count() <= 0)
             {
                 return new List<DtoArticleShort>();
             }
 
+            if(rowCount > 0){
+                articles = articles.Skip((page - 1) * rowCount).Take(rowCount);
+            }
 
             var list = (from a in articles
                         join c in dc.Categories on a.CategoryId equals c.Id
@@ -149,7 +156,7 @@ namespace Business
                             Introduction = a.Introduction,
                             CreatedDate = a.CreatedDate,
                             Img = a.Img
-                        }).Skip((page - 1) * rowCount).Take(rowCount);
+                        });
 
             return list.Select(c => new DtoArticleShort()
             {
@@ -157,6 +164,7 @@ namespace Business
                 CategoryId = c.CategoryId,
                 CategoryName = c.CategoryName,
                 Title = c.Title,
+                LinkTitle = c.Title.LinkReplace(),
                 Introduction = c.Introduction,
                 CreatedDate = c.CreatedDate,
                 Img = "data:image/png;base64," + Convert.ToBase64String(c.Img)

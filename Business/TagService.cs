@@ -57,6 +57,7 @@ namespace Business
             {
                 Id = c.Id,
                 Name = c.Name,
+                LinkName = c.Name.LinkReplace(),
                 Active = c.Active,
             }).ToList();
         }

@@ -8,14 +8,14 @@
 
   <div class="row">
     <div class="col-sm-6 col-lg-3" *ngFor="let tech of techArticles">
-      <a [routerLink]="['/detail', 'Test-baslik-gonder']">
+      <a [routerLink]="['/detail', tech.Id, tech.LinkTitle]">
         <img [src]="tech.Img" class="img-fluid rounded" alt="{{tech.Title}}" style="width:500px;height: 250px;"></a>
       <div style="min-height: 32px;">
         <h6 class="tx-size-14 tx-normal mg-t-15 mg-b-5">
-          <a [routerLink]="['/detail', 'Test-baslik-gonder']" class="tx-white">{{tech.Title}}</a>
+          <a [routerLink]="['/detail', tech.Id, tech.LinkTitle]" class="tx-white">{{tech.Title}}</a>
         </h6>
       </div>
-      <p class="mg-b-5">{{tech.Introduction | slice:0:90}} <a [routerLink]="['/detail', 'Test-baslik-gonder']">...</a>
+      <p class="mg-b-5">{{tech.Introduction | slice:0:90}} <a [routerLink]="['/detail', tech.Id, tech.LinkTitle]">...</a>
       </p>
       <span class="tx-primary tx-size-14">{{tech.CategoryName}} - </span><span
         class="tx-gray-light">{{tech.CreatedDate  | date: 'dd/MM/yyyy'}}</span>
@@ -31,14 +31,14 @@
 
   <div class="row">
     <div class="col-sm-6 col-lg-3" *ngFor="let tech of cupArticles">
-      <a [routerLink]="['/detail', 'Test-baslik-gonder']">
+      <a [routerLink]="['/detail', tech.Id, tech.LinkTitle]">
         <img [src]="tech.Img" class="img-fluid rounded" alt="{{tech.Title}}" style="width:500px;height: 250px;"></a>
       <div style="min-height: 32px;">
         <h6 class="tx-size-14 tx-normal mg-t-15 mg-b-5">
-          <a [routerLink]="['/detail', 'Test-baslik-gonder']" class="tx-white">{{tech.Title}}</a>
+          <a [routerLink]="['/detail', tech.Id, tech.LinkTitle]"class="tx-white">{{tech.Title}}</a>
         </h6>
       </div>
-      <p class="mg-b-5">{{tech.Introduction | slice:0:90}} <a [routerLink]="['/detail', 'Test-baslik-gonder']">...</a>
+      <p class="mg-b-5">{{tech.Introduction | slice:0:90}} <a [routerLink]="['/detail', tech.Id, tech.LinkTitle]">...</a>
       </p>
       <span class="tx-primary tx-size-14">{{tech.CategoryName}} - </span><span
         class="tx-gray-light">{{tech.CreatedDate  | date: 'dd/MM/yyyy'}}</span>

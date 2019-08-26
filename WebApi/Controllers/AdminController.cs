@@ -93,7 +93,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public object ArticleList(string title, int page, int rowCount, int categoryId, int tagId)
         {
-            return _Article.List(title, categoryId, tagId, page, rowCount, 0);
+            return _Article.List(title, categoryId, tagId, page, rowCount, 2);
         }
 
         [Route("Admin/Article/{id:int}")]
