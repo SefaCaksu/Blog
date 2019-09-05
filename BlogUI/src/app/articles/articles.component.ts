@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ArticleService } from '../services/article.service';
 import { ArticleModel } from '../models/ArticleParamsModel';
 
@@ -10,18 +10,36 @@ import { ArticleModel } from '../models/ArticleParamsModel';
 })
 export class ArticlesComponent implements OnInit {
 
-  articles : ArticleModel[];
-  constructor(private router: Router, private articleService: ArticleService) { }
+  articles: ArticleModel[];
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private articleService: ArticleService) { }
 
   ngOnInit() {
-    let ty = this.router.url == "/code" ? 0 : 1;
-    this.GetArticleList(ty);
+    let pageSplit = this.router.url.split("/");
+    let page = pageSplit[1];
+    if (page) {
+      if (page == "code") {
+        this.GetArticleList(0);
+      } else if (page == "fincandibi") {
+        this.GetArticleList(1);
+      } else if (page == "tags") {
+        this.route.params.subscribe(param=>{
+          this.GetArticleList(2, param.id, null)
+        });
+      } else if (page == "categories") {
+        this.route.params.subscribe(param=>{
+          this.GetArticleList(2, null, param.id)
+        });
+      }
+    }
   }
 
-  GetArticleList(type: number) {
-    this.articleService.GetBlogArticles("", 1, 0, type, null, null).subscribe((res: any) => {
+  GetArticleList(type: number, tagId?: number, categoryId?: number) {
+    this.articleService.GetBlogArticles("", 1, 0, type, categoryId, tagId).subscribe((res: any) => {
       if (res.IsSuccess == true) {
-       this.articles = res.Result;
+        this.articles = res.Result;
       }
     });
   }

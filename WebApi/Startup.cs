@@ -48,6 +48,7 @@ namespace WebApi
             services.AddScoped<ITag, TagService>();
             services.AddScoped<IProfile, ProfileService>();
             services.AddScoped<IUser, UserService>();
+            services.AddScoped<INews, NewsService>();
             services.AddSingleton<IConfiguration>(Configuration);
 
             //JWT

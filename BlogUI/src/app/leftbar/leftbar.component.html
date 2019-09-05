@@ -19,7 +19,7 @@
   </div>
   <ul class="nav nav-outline-vertical nav-gray-light flex-column wd-100p">
     <li class="nav-item" *ngFor="let category of categories">
-      <a [routerLink]="[ '/makaleler', category.Id, category.LinkName]" class="nav-link pd-x-25">
+      <a [routerLink]="[ '/categories', category.Id, category.LinkName]" class="nav-link pd-x-25">
         <div class="d-flex align-items-center">
           <i class="icon ion-ios-albums-outline tx-size-32 lh-0 mg-r-10"></i>
           <span class="mg-r-auto">{{category.Name}}</span>
@@ -34,7 +34,7 @@
   <div class="tagcloud">
     <ul>
       <li *ngFor="let tag of tags">
-        <a [routerLink]="[ '/makaleler', tag.Id,tag.LinkName]">{{tag.Name}}</a>
+        <a [routerLink]="[ '/tags', tag.Id,tag.LinkName]">{{tag.Name}}</a>
       </li>
     </ul>
   </div>
