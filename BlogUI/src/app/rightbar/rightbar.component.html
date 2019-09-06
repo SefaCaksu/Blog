@@ -33,32 +33,20 @@
     </div>
   </div>
 </div>
-<div class="pd-x-10 pd-t-25">
+<div class="pd-x-10 pd-t-25 tx-center">
   <h6 class="tx-info tx-size-11 tx-uppercase tx-spacing-2">Haberdar Ol </h6>
-  <div class="input-group">
-    <input type="text" class="form-control form-control-inverse bd-color-gray-dark-light bd-r-0-force"
-      placeholder="E-posta">
-    <span class="input-group-btn">
-      <button class="btn btn-inverse tx-gray pd-x-15 bd-color-gray-dark-light bd-l-0-force" type="button"><i
-          class="fa fa-envelope-o"></i></button>
-    </span>
-  </div>
-</div>
-<div class="pd-x-10 pd-t-25">
-  <h6 class="tx-info tx-size-11 tx-uppercase tx-spacing-2">Bunlar da Var</h6>
-  <nav class="nav nav-gray-light flex-column">
-    <div class="list-group">
-      <a href="#" class="list-group-item list-group-item-action">
-        Cras justo odio
-      </a>
-      <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-      <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-      <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-      <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Vestibulum at
-        eros</a>
-      <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-      <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+  <form name="form" (ngSubmit)="f.form.valid && onSubmitNews()" #f="ngForm" novalidate>
+    <div class="input-group" [ngClass]="{ 'is-invalid': Email.invalid }">
+      <input type="email" name="userEmail" id="userEmail"  class="form-control form-control-inverse bd-color-gray-dark-light bd-r-0-force"
+        placeholder="E-posta" [(ngModel)]="news.Email" #Email="ngModel" email>
+      <span class="input-group-btn">
+        <button class="btn btn-inverse tx-gray pd-x-15 bd-color-gray-dark-light bd-l-0-force" type="submit"><i class="fa fa-envelope-o"></i></button>
+      </span>
     </div>
-  </nav>
+  </form>
+</div>
+<div class="pd-t-25 pd-x-2 tx-center">
+  <h6 class="tx-info tx-size-11 tx-uppercase tx-spacing-2">Çalma Listem</h6>
+  <iframe src="https://open.spotify.com/embed/playlist/12BN0hSACrUgjkNVuj8TFb&theme=white" width="236" height="356" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
   <br>
 </div>

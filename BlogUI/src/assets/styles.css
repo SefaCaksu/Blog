@@ -8,6 +8,7 @@
 @import url("https://fonts.googleapis.com/css?family=Playball|Engagement|Yesteryear");
 @import url("https://fonts.googleapis.com/css?family=Aldrich|Arimo:400,700");
 @import url("https://fonts.googleapis.com/css?family=Fjalla+One|Rubik:300,400,500,700");
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
 
 /*! ########## 2. toastr IMPORT  ########## */
 @import '~ngx-toastr/toastr.css';
@@ -47488,4 +47489,13 @@ form{
     list-style: none;
     background-color: #282c35;
     border-radius: .25rem;
+}
+
+.af{
+  font-family: 'Noto Sans', sans-serif;
+font-weight: 400;
+line-height: 2;
+font-style: normal;
+color:#fff;
+font-size: 15px;
 }
