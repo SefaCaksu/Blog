@@ -4,25 +4,18 @@
   </div>
   <hr class="mg-y-25 bd-color-gray">
   <div class="row">
-    <div class="col-sm-6 col-lg-3" [ngClass]="{'mg-t-30': i > 3}" *ngFor="let tech of articles let i = index">
-      <a [routerLink]="['/detail', tech.Id, tech.LinkTitle]">
-        <img [src]="tech.Img" class="img-fluid rounded" alt="{{tech.Title}}" style="width:500px;height: 250px;"></a>
-      <div style="min-height: 32px;">
-        <h6 class="tx-size-14 tx-normal mg-t-15 mg-b-5">
-          <a [routerLink]="['/detail', tech.Id, tech.LinkTitle]" class="tx-white">{{tech.Title}}</a>
-        </h6>
-      </div>
-      <p class="mg-b-5">{{tech.Introduction | slice:0:90}} <a [routerLink]="['/detail', tech.Id, tech.LinkTitle]">...</a>
-      </p>
-      <span class="tx-primary tx-size-14">{{tech.CategoryName}} - </span><span
-        class="tx-gray-light">{{tech.CreatedDate  | date: 'dd/MM/yyyy'}}</span>
-    </div>
-  </div>
-
-  <hr class="mg-t-60 bd-color-gray">
-
-  <div class="d-md-flex align-items-center flex-row-reverse justify-content-between">
-    <span class="d-block tx-size-11 tx-size-sm-12 mg-t-15 mg-sm-t-10 mg-md-t-0">&copy; 2019, Sefa Çaksu.
-      Tüm hakları saklıdır. </span>
-  </div>
+      <div class="col-sm-6 col-lg-3 story-card" [ngClass]="{'mg-t-30': i > 3}" *ngFor="let tech of articles let i = index">
+          <a [routerLink]="['/detail', tech.Id, tech.LinkTitle]">
+            <div class="story-card-img"  [ngStyle]="{background: 'url('+ tech.Img +')'}"></div>
+            </a>
+          <div class="title">
+              <a [routerLink]="['/detail', tech.Id, tech.LinkTitle]">{{tech.Title}}</a>
+          </div>
+          <div class="inst">
+          <p>{{tech.Introduction | slice:0:90}} <a [routerLink]="['/detail', tech.Id, tech.LinkTitle]">...</a></p>
+        </div>
+        <span style="padding-left: 10px;color:#000;font-weight:500;"><i>{{tech.CreatedDate  | date: 'dd/MM/yyyy'}}</i></span>
+        <a class="tag">{{tech.CategoryName}}</a>
+          <!-- <span class="tx-primary tx-size-14">{{tech.CategoryName}} - </span> -->
+        </div>
 </div>
