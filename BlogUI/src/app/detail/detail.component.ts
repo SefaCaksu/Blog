@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ArticleService } from '../services/article.service';
 
 @Component({
   selector: 'app-detail',
@@ -8,11 +9,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetailComponent implements OnInit {
 
-  title:string;
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private articleService: ArticleService
+  ) { }
 
   ngOnInit() {
-    this.title = this.route.snapshot.params.username;
+    this.route.params.subscribe(param=>{
+     
+    });
   }
-
 }

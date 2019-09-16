@@ -67,6 +67,12 @@ namespace WebApi.Controllers {
             return _Article.List (title, categoryId, tagId, page, rowCount, type);
         }
 
+        [Route ("Article/{id:int}")]
+        [HttpGet]
+        public object ArticleGet (int id) {
+            return _Article.GetById (id);
+        }
+
         //Helper
         bool IsValidEmail (string email) {
             if (string.IsNullOrWhiteSpace (email))
