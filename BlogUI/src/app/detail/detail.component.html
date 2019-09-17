@@ -1,92 +1,41 @@
 <div class="pd-10">
     <div class="row" style="display:flex;flex-direction:row;justify-content: center;">
+        <div class="col-lg-1 text-right hidden-xs-down hidden-sm-down hidden-md-down" style="margin-top: 25%">
+                <a [routerLink]="['/detail', article.PreviousId, article.PreviousTitle]" [hidden]="article.PreviousId == 0" title="Önceki Makale">
+                    <i class="icon fa fa-arrow-circle-left fa-5x" style="color:#ffca39"></i>
+                </a>
+        </div>
         <div class="col-lg-9 col-md-12 col-sm-12">
             <div class="card">
                 <div class="card-body">
                     <div class="card-header">
-                        <h5 class="tx-spacing-2 mg-b-0">Sefanın Makalesi Uzun</h5>
+                        <h5 class="tx-spacing-2 mg-b-0">{{article.Title}}</h5>
                     </div>
-                    <div class="col mg-y-5">
-                        <div class="tx-size-14 tx-info">
-                            <span>20 Şubat 2019</span><span class="ml-4"><a class="tx-info" href="">.Net Core</a></span>
-                        </div>
+                    <div class="col mg-y-5 tx-size-14 tx-info">
+                            <i class="fa fa-calendar"></i><span class="ml-1">{{article.CreatedDate | date: 'dd/MM/yyyy'}}</span>
+                            <i class="fa fa-folder ml-4"></i><span class="ml-1"><a class="tx-info" [routerLink]="['/categories', article.CategoryId, article.CategoryLinkName]">{{article.CategoryName}}</a></span>
                     </div>
+                    <hr style="margin-top: 0px!important">
                     <div class="col tx-blog af mg-y-20">
                         <p>
-                            <img src="https://media.boingboing.net/wp-content/uploads/2017/09/monkey.jpg"
-                                class="img img-responsive" style="float:right; width: 400px;">
-                            Yaygın inancın tersine, Lorem Ipsum rastgele sözcüklerden oluşmaz.
-                            Kökleri
-                            M.Ö.
-                            45 tarihinden bu yana klasik Latin edebiyatına kadar uzanan 2000 yıllık bir
-                            geçmişi vardır. Virginia'daki Hampden-Sydney College'dan Latince profesörü Richard
-                            McClintock, bir Lorem Ipsum pasajında geçen ve anlaşılması en güç sözcüklerden
-                            biri olan 'consectetur' sözcüğünün klasik edebiyattaki örneklerini incelediğinde kesin bir
-                            kaynağa ulaşmıştır. Lorm Ipsum, Çiçero tarafından M.Ö. 45 tarihinde
-                            kaleme alınan "de Finibus Bonorum et Malorum" (İyi ve Kötünün Uç Sınırları) eserinin 1.10.32
-                            ve 1.10.33 sayılı bölümlerinden gelmektedir. Bu kitap,
-                            ahlak kuramı üzerine bir tezdir ve Rönesans döneminde çok popüler olmuştur. Lorem Ipsum
-                            pasajının ilk satırı olan "Lorem ipsum dolor sit amet" 1.10.32
-                            sayılı bölümdeki bir satırdan gelmektedir.
-                            <br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;1500'lerden beri kullanılmakta olan standard Lorem Ipsum metinleri
-                            ilgilenenler
-                            için yeniden üretilmiştir.
-                            Çiçero tarafından yazılan 1.10.32 ve 1.10.33 bölümleri de 1914 H. Rackham çevirisinden
-                            alınan İngilizce sürümleri eşliğinde özgün biçiminden yeniden üretilmiştir.
+                            <img [src]="article.Img" class="img img-responsive" style="float:right; max-width: 250px;margin-left:5px;">
+                            {{article.Introduction}}
 
                         </p>
-                        <p> &nbsp;&nbsp;&nbsp;&nbsp;Yaygın inancın tersine, Lorem Ipsum rastgele sözcüklerden oluşmaz.
-                            Kökleri
-                            M.Ö.
-                            45 tarihinden bu yana klasik Latin edebiyatına kadar uzanan 2000 yıllık bir
-                            geçmişi vardır. Virginia'daki Hampden-Sydney College'dan Latince profesörü Richard
-                            McClintock, bir Lorem Ipsum pasajında geçen ve anlaşılması en güç sözcüklerden
-                            biri olan 'consectetur' sözcüğünün klasik edebiyattaki örneklerini incelediğinde kesin bir
-                            kaynağa ulaşmıştır. Lorm Ipsum, Çiçero tarafından M.Ö. 45 tarihinde
-                            kaleme alınan "de Finibus Bonorum et Malorum" (İyi ve Kötünün Uç Sınırları) eserinin 1.10.32
-                            ve 1.10.33 sayılı bölümlerinden gelmektedir. Bu kitap,
-                            ahlak kuramı üzerine bir tezdir ve Rönesans döneminde çok popüler olmuştur. Lorem Ipsum
-                            pasajının ilk satırı olan "Lorem ipsum dolor sit amet" 1.10.32
-                            sayılı bölümdeki bir satırdan gelmektedir.
-                            <br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;1500'lerden beri kullanılmakta olan standard Lorem Ipsum metinleri
-                            ilgilenenler
-                            için yeniden üretilmiştir.
-                            Çiçero tarafından yazılan 1.10.32 ve 1.10.33 bölümleri de 1914 H. Rackham çevirisinden
-                            alınan İngilizce sürümleri eşliğinde özgün biçiminden yeniden üretilmiştir.</p>
-                        <p> &nbsp;&nbsp;&nbsp;&nbsp;Yaygın inancın tersine, Lorem Ipsum rastgele sözcüklerden oluşmaz.
-                            Kökleri
-                            M.Ö.
-                            45 tarihinden bu yana klasik Latin edebiyatına kadar uzanan 2000 yıllık bir
-                            geçmişi vardır. Virginia'daki Hampden-Sydney College'dan Latince profesörü Richard
-                            McClintock, bir Lorem Ipsum pasajında geçen ve anlaşılması en güç sözcüklerden
-                            biri olan 'consectetur' sözcüğünün klasik edebiyattaki örneklerini incelediğinde kesin bir
-                            kaynağa ulaşmıştır. Lorm Ipsum, Çiçero tarafından M.Ö. 45 tarihinde
-                            kaleme alınan "de Finibus Bonorum et Malorum" (İyi ve Kötünün Uç Sınırları) eserinin 1.10.32
-                            ve 1.10.33 sayılı bölümlerinden gelmektedir. Bu kitap,
-                            ahlak kuramı üzerine bir tezdir ve Rönesans döneminde çok popüler olmuştur. Lorem Ipsum
-                            pasajının ilk satırı olan "Lorem ipsum dolor sit amet" 1.10.32
-                            sayılı bölümdeki bir satırdan gelmektedir.
-                            <br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;1500'lerden beri kullanılmakta olan standard Lorem Ipsum metinleri
-                            ilgilenenler
-                            için yeniden üretilmiştir.
-                            Çiçero tarafından yazılan 1.10.32 ve 1.10.33 bölümleri de 1914 H. Rackham çevirisinden
-                            alınan İngilizce sürümleri eşliğinde özgün biçiminden yeniden üretilmiştir.</p>
+                        <p [innerHtml]="article.Body"></p>
                     </div>
-                    <div class="card-footer">
+                    <hr>
                         <div class="align-items-center justify-content-between tx-size-14">
-                            <b class="af">Etiketler:</b>
-                            <a href="#" class="ml-2"> <span class="badge badge-primary tx-size-12">Etiket</span></a>
-                            <a href="#" class="ml-2"> <span class="badge badge-primary tx-size-12">Deneme
-                                    Etiket</span></a>
-                            <a href="#" class="ml-2"> <span class="badge badge-primary tx-size-12">Etiketin Etiketi ve
-                                    uzun</span></a>
+                            <b class="af ml-2">Etiketler:</b>
+                            <p><a [routerLink]="['/tags', tag.Id, tag.LinkName]" class="ml-2 article-tag" *ngFor="let tag of article.Tags">{{tag.Name}}</a></p>
                         </div>
-                    </div>
                 </div>
             </div>
+        </div>
+        <div class="col-lg-1 text-left hidden-xs-down hidden-sm-down hidden-md-down" style="margin-top: 25%" >
+                <a [routerLink]="['/detail', article.NextId, article.NextTitle]" [hidden]="article.NextId == 0" title="Sonraki Makale">
+                    <i class="icon fa fa-arrow-circle-right fa-5x" style="color:#ffca39"></i>
+                </a>
         </div>
     </div>
 </div>

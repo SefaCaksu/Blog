@@ -18,7 +18,7 @@
     <h6 class="tx-info tx-size-11 tx-uppercase tx-spacing-2">KATEGORİLER</h6>
   </div>
   <ul class="nav nav-outline-vertical nav-gray-light flex-column wd-100p">
-    <li class="nav-item" *ngFor="let category of categories">
+    <li class="nav-item tx-white" *ngFor="let category of categories">
       <a [routerLink]="[ '/categories', category.Id, category.LinkName]" class="nav-link pd-x-25">
         <div class="d-flex align-items-center">
           <i class="icon ion-ios-albums-outline tx-size-32 lh-0 mg-r-10"></i>
@@ -38,8 +38,12 @@
       </li>
     </ul>
   </div>
-
-  <div class="pd-y-25 tx-center">
+  <div class="pd-x-20 pd-t-5 tx-center">
+    <hr>
+    <p class="tx-white">Sefa Çaksu © 2019. </p>
+    <p>Her hakkı saklıdır. Bu web sitesindeki içerikler izinsiz kopyalanamaz, internet, yazılı ve görsel basın dahil hiçbir mecrada kullanılamaz.</p>
+  </div>
+  <div class="tx-center">
     <hr>
     <nav class="nav tx-size-18 justify-content-center">
       <a routerLink="/login" class="nav-link pd-x-5 tx-gray-light"><i class="fa fa-sign-in"></i></a>

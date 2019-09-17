@@ -11,6 +11,7 @@ import { ArticleModel } from '../models/ArticleParamsModel';
 export class ArticlesComponent implements OnInit {
 
   articles: ArticleModel[];
+  pageTitle: String;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -22,14 +23,18 @@ export class ArticlesComponent implements OnInit {
     if (page) {
       if (page == "code") {
         this.GetArticleList(0);
+        this.pageTitle = "Teknik Yazılarım"
       } else if (page == "fincandibi") {
+        this.pageTitle = "Fincan Dibi Yazılarım"
         this.GetArticleList(1);
       } else if (page == "tags") {
         this.route.params.subscribe(param=>{
+          this.pageTitle = param.title;
           this.GetArticleList(2, param.id, null)
         });
       } else if (page == "categories") {
         this.route.params.subscribe(param=>{
+          this.pageTitle = param.title;
           this.GetArticleList(2, null, param.id)
         });
       }

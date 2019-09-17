@@ -21,6 +21,7 @@ export class MainComponent implements OnInit {
   GetArticleList(type: number) {
     this.articleService.GetBlogArticles("", 1, 4, type, null, null).subscribe((res: any) => {
       if (res.IsSuccess == true) {
+        console.log(res.Result);
         if (type == 0) {
           this.techArticles = res.Result;
         } else {

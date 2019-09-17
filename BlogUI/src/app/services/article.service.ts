@@ -93,12 +93,8 @@ export class ArticleService {
         return this.httpClient.get(this.baseUrl + '/ArticleCount', { params: param });
     }
 
-    GetBlogArticle(articleId: number) {
-        const headerContent = new HttpHeaders()
-            .set('Content-Type', 'applicaiton/json')
-            .set('Accept', 'application/json')
-            
-        return this.httpClient.get<ArticleModel>(this.baseUrl + "/Admin/Article/" + articleId, { headers: headerContent, observe: 'body' });
+    GetBlogArticle(articleId: number) {     
+        return this.httpClient.get<ArticleModel>(this.baseUrl + "/Article/" + articleId);
     }
 
     GetArticleTypeCount() {

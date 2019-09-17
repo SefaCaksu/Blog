@@ -1567,7 +1567,7 @@ body{
 }
 
 .nav-gray-light .nav-link {
-  color: #989da8;
+  color: #fff;
 }
 .nav-gray-light .nav-link:hover, .nav-gray-light .nav-link:focus {
   color: #7c8391;
@@ -47493,8 +47493,8 @@ form{
 
 .af{
   font-family: 'Noto Sans', sans-serif;
-font-weight: 600;
-line-height: 1.7;
+font-weight: 500;
+line-height: 1.5!important;;
 font-style: normal;
 color:#212529;
 font-size: 15px;
@@ -47568,4 +47568,28 @@ font-size: 15px;
 
 .story-card a.tag:hover{
   color: #fff;
+  margin-top: 0px;
+}
+
+.ql-syntax{
+  background-color: #f8f9fa;
+  padding: 10px;
+}
+
+.article-tag{
+  display: inline-block;
+  max-width: 100px;
+  height: 20px;
+  line-height: 18px;
+  padding: 0 1em;
+  background-color: rgba(0, 123, 255, 0.07058823529411765);
+  border: 1px solid rgba(170, 170, 170, 0.62);
+  border-radius: 3px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #1695f5;
+  font-size: 13px;
+  text-decoration: none;
+  transition: .2s;
 }
