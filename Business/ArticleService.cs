@@ -73,18 +73,22 @@ namespace Business {
         }
 
         public DtoArticle GetById (int id) {
-            int NextId = 0;
-            string NextTitle = "";
-            int PreviousId = 0;
-            string PreviousTitle = "";
+            int nextId = 0;
+            string nextTitle = "";
+            string nextLinkTitle = "";
+            int previousId = 0;
+            string previousTitle = "";
+            string previousLinkTitle = "";
 
             var previous = dc.Articles.Where (c => c.Id < id).OrderByDescending (c => c.Id).Take (1).FirstOrDefault ();
-            PreviousId = previous == null ? 0 : previous.Id;
-            PreviousTitle = previous == null ? "" : previous.Title.LinkReplace ();
+            previousId = previous == null ? 0 : previous.Id;
+            previousLinkTitle = previous == null ? "" : previous.Title.LinkReplace ();
+            previousTitle = previous == null ? "" : previous.Title;
 
             var next = dc.Articles.Where (c => c.Id > id).Take (1).FirstOrDefault ();
-            NextId = next == null ? 0 : next.Id;
-            NextTitle = next == null ? "" : next.Title.LinkReplace ();
+            nextId = next == null ? 0 : next.Id;
+            nextLinkTitle = next == null ? "" : next.Title.LinkReplace ();
+            nextTitle = next == null ? "" : next.Title;
 
             var data = (from a in dc.Articles join c in dc.Categories on a.CategoryId equals c.Id where a.Id == id select new {
                 Id = a.Id,
@@ -118,10 +122,12 @@ namespace Business {
                         LinkName = c.Name.LinkReplace (),
                         Active = c.Active
                 }).ToList ();
-                article.NextId = NextId;
-                article.NextTitle = NextTitle;
-                article.PreviousId = PreviousId;
-                article.PreviousTitle = PreviousTitle;
+                article.NextId = nextId;
+                article.NextTitle = nextTitle;
+                article.NextLinkTitle = nextLinkTitle;
+                article.PreviousId = previousId;
+                article.PreviousTitle = previousTitle;
+                article.PreviousLinkTitle = previousLinkTitle;
             }
 
             return article;

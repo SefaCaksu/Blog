@@ -16,7 +16,9 @@ namespace Dto {
         public List<DtoTag> Tags { get; set; }
         public int NextId { get; set; }
         public string NextTitle { get; set; }
+        public string NextLinkTitle {get;set;}
         public int PreviousId { get; set; }
         public string PreviousTitle { get; set; }
+        public string PreviousLinkTitle { get; set; }
     }
 }

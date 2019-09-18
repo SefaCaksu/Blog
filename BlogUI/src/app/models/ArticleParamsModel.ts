@@ -14,6 +14,8 @@ export class ArticleModel {
     CreatedDate: Date;
     NextId: number;
     NextTitle: string;
+    NextLinkTitle: string;
     PreviousId: number;
     PreviousTitle: string;
+    PreviousLinkTitle: string;
 }

@@ -47572,8 +47572,9 @@ font-size: 15px;
 }
 
 .ql-syntax{
-  background-color: #f8f9fa;
+  background-color: #282C34;
   padding: 10px;
+  color : #fff;
 }
 
 .article-tag{
@@ -47592,4 +47593,26 @@ font-size: 15px;
   font-size: 13px;
   text-decoration: none;
   transition: .2s;
+}
+
+.change-article{
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  display:inline-block;
+  border-radius: 50px;
+}
+
+.change-article i {
+  color:#ffca39;
+}
+
+.change-article .link {
+  color:#727780;
+  font-size: 14px;
+}
+
+.article-top-card{
+ background-color: rgba(255, 255, 255, 0) !important;
+ border: none!important;
 }

@@ -1,41 +1,65 @@
 <div class="pd-10">
     <div class="row" style="display:flex;flex-direction:row;justify-content: center;">
-        <div class="col-lg-1 text-right hidden-xs-down hidden-sm-down hidden-md-down" style="margin-top: 25%">
-                <a [routerLink]="['/detail', article.PreviousId, article.PreviousTitle]" [hidden]="article.PreviousId == 0" title="Önceki Makale">
-                    <i class="icon fa fa-arrow-circle-left fa-5x" style="color:#ffca39"></i>
-                </a>
-        </div>
         <div class="col-lg-9 col-md-12 col-sm-12">
+            <div class="card article-top-card">
+                <div class="row" style="height: 50px;">
+                    <div class="col-sm-6" >
+                        <a class="change-article" [hidden]="article.PreviousId == 0" [routerLink]="['/detail', article.PreviousId, article.PreviousLinkTitle]">
+                            <div class="row">
+                                <div class="col-sm-2 pt-1">
+                                    <i class="icon fa fa-arrow-left fa-3x ml-1"></i>
+                                </div>
+                                <div class="col-sm-10 pt-3 text-primary link">
+                                    {{article.PreviousTitle}}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <a class="change-article" [hidden]="article.NextId == 0" [routerLink]="['/detail', article.NextId, article.NextLinkTitle]">
+                            <div class="row">
+                                <div class="col-sm-10 pt-3 text-primary link">
+                                        {{article.NextTitle}}
+                                </div>
+                                <div class="col-sm-2 pt-1">
+                                    <i class="icon fa fa-arrow-right fa-3x  mr-1"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-12 col-sm-12 mg-y-15">
             <div class="card">
                 <div class="card-body">
                     <div class="card-header">
                         <h5 class="tx-spacing-2 mg-b-0">{{article.Title}}</h5>
                     </div>
                     <div class="col mg-y-5 tx-size-14 tx-info">
-                            <i class="fa fa-calendar"></i><span class="ml-1">{{article.CreatedDate | date: 'dd/MM/yyyy'}}</span>
-                            <i class="fa fa-folder ml-4"></i><span class="ml-1"><a class="tx-info" [routerLink]="['/categories', article.CategoryId, article.CategoryLinkName]">{{article.CategoryName}}</a></span>
+                        <i class="fa fa-calendar"></i><span
+                            class="ml-1">{{article.CreatedDate | date: 'dd/MM/yyyy'}}</span>
+                        <i class="fa fa-folder ml-4"></i><span class="ml-1"><a class="tx-info"
+                                [routerLink]="['/categories', article.CategoryId, article.CategoryLinkName]">{{article.CategoryName}}</a></span>
                     </div>
                     <hr style="margin-top: 0px!important">
                     <div class="col tx-blog af mg-y-20">
                         <p>
-                            <img [src]="article.Img" class="img img-responsive" style="float:right; max-width: 250px;margin-left:5px;">
+                            <img [src]="article.Img" class="img img-responsive"
+                                style="float:right; max-width: 250px;margin-left:5px;">
                             {{article.Introduction}}
 
                         </p>
                         <p [innerHtml]="article.Body"></p>
                     </div>
                     <hr>
-                        <div class="align-items-center justify-content-between tx-size-14">
-                            <b class="af ml-2">Etiketler:</b>
-                            <p><a [routerLink]="['/tags', tag.Id, tag.LinkName]" class="ml-2 article-tag" *ngFor="let tag of article.Tags">{{tag.Name}}</a></p>
-                        </div>
+                    <div class="align-items-center justify-content-between tx-size-14">
+                        <b class="af ml-2">Etiketler:</b>
+                        <p><a [routerLink]="['/tags', tag.Id, tag.LinkName]" class="ml-2 article-tag"
+                                *ngFor="let tag of article.Tags">{{tag.Name}}</a></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-1 text-left hidden-xs-down hidden-sm-down hidden-md-down" style="margin-top: 25%" >
-                <a [routerLink]="['/detail', article.NextId, article.NextTitle]" [hidden]="article.NextId == 0" title="Sonraki Makale">
-                    <i class="icon fa fa-arrow-circle-right fa-5x" style="color:#ffca39"></i>
-                </a>
         </div>
     </div>
 </div>
