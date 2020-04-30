@@ -23,7 +23,7 @@
     "bootstrap": "^4.2.1",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
-    "jquery": "^2.1.4",
+    "jquery": "^3.5.0",
     "ng-multiselect-dropdown": "^0.2.3",
     "ngx-quill": "^5.1.0",
     "ngx-toastr": "^10.0.2",
